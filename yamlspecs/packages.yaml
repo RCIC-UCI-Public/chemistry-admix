@@ -1,0 +1,7 @@
+system:
+bootstrap:
+build:
+  - gromacs
+  - gromacs-module
+manifest:
+  - "{{build}}"

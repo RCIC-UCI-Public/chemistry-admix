@@ -1,0 +1,30 @@
+!include rcic-package.yaml
+---
+- package: GROMACS molecular dynamics 
+  name: gromacs 
+  versions: !include versions.yaml
+  version: "{{ versions.gromacs }}"
+  release: 1
+  builddir: build
+  vendor_source: ftp://ftp.gromacs.org/pub/gromacs/{{name}}-{{version}}.{{extension}}
+  description: >
+    GROMACS version {{version}} 
+  build:
+    configure: "echo no configure. uses cmake" 
+    modules: 
+      - foundation
+      - gcc/{{versions.gcc}}
+    pkgmake: > 
+      mkdir {{ builddir }};
+      cd {{ builddir }};
+      cmake -DGMX_BUILD_OWN_FFTW=ON -DCMAKE_INSTALL_PREFIX={{ root }} ..;
+      make
+    target: 
+  install:
+     makeinstall: >
+       cd {{ builddir }};
+       make DESTDIR=$(ROOT) install
+     installextra: $(INSTALL) -m 644  README* COPYING AUTHORS $(ROOT){{ root }} 
+  requires:
+    - gcc_{{ versions.gcc }} 
+  rpm: !include rpm.extras.yaml
