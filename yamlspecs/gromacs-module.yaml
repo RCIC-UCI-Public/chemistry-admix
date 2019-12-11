@@ -5,8 +5,11 @@
 ---
 - package: GROMACS molecular Dynamics 
   module:
+    lib: lib64
     prereq:
       - gcc/{{versions.gcc}}
+    setenv:
+      - GROMACS_DIR {{root}}
   requires:
     - "{{ name }}_{{ version }}"
     - rcic-module-support
