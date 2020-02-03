@@ -3,5 +3,7 @@ bootstrap:
 build:
   - gromacs
   - gromacs-module
+  - gromacs-latest
+  - gromacs-latest-module
 manifest:
   - "{{build}}"

@@ -1,6 +1,6 @@
 # Builds the module for gromacs. It first includes all the definitions
 # for the gromacs build and then overwrites specific keys
-!include gromacs.yaml
+!include gromacs-latest.yaml
 !include rcic-module.yaml
 ---
 - package: GROMACS molecular Dynamics 
