@@ -1,17 +1,3 @@
-# Builds the module for gromacs. It first includes all the definitions
-# for the gromacs build and then overwrites specific keys
+# Builds the module for gromacs.
 !include gromacs.yaml
-!include rcic-module.yaml
----
-- package: GROMACS molecular Dynamics 
-  category: CHEMISTRY
-  module:
-    lib: lib64
-    prereq:
-      - gcc/{{versions.gcc}}
-    setenv:
-      - GROMACS_DIR {{root}}
-  requires:
-    - "{{ name }}_{{ version }}"
-    - rcic-module-support
-    - gcc_{{versions.gcc}}-module
+!include module-common.yaml

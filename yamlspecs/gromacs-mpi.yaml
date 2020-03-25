@@ -1,0 +1,16 @@
+!include gromacs.yaml
+---
+- package: gromacs-mpi
+  pkgname: "{{name}}_{{version}}_{{compiler}}_{{compiler_ver}}_{{mpi}}_{{mpi_ver}}"
+  root: "{{pkg_defaults.app_path}}/{{name}}/{{version}}/{{compiler}}/{{compiler_ver}}/{{mpi}}/{{mpi_ver}}"
+  mpi: "{{versions.mpi.name}}"
+  mpi_ver: "{{versions.mpi.version}}"
+  build:
+    modules:
+      - foundation
+      - gcc/{{versions.gcc}}
+      - "{{mpi}}/{{mpi_ver}}/{{compiler}}.{{compiler_ver}}"
+    cmake_args: -DGMX_BUILD_OWN_FFTW=ON -DGMX_MPI=ON -DGMX_BUILD_MDRUN_ONLY=ON -DCMAKE_INSTALL_PREFIX={{root}}
+  requires:
+    - "{{compiler}}_{{compiler_ver}}"
+    - "{{mpi}}_{{mpi_ver}}_{{compiler}}_{{compiler_ver}}"

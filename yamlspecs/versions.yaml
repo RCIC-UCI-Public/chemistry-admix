@@ -1,3 +1,6 @@
 gromacs: "2019.4"
 gromacs_latest: "2020"
 gcc: "8.4.0"
+mpi:
+   name: openmpi
+   version: "4.0.2"

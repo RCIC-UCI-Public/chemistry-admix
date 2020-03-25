@@ -1,0 +1,15 @@
+# for the gromacs build and then overwrites specific keys
+!include gromacs-latest-mpi.yaml
+!include module-common.yaml
+---
+  pkgname: "{{name}}_{{version}}_{{compiler}}_{{compiler_ver}}_{{mpi}}_{{mpi_ver}}-module"
+  version: "{{versions.gromacs_latest}}"
+  specs: "{{compiler}}.{{compiler_ver}}-{{mpi}}.{{mpi_ver}}"
+  module:
+    prereq:
+      - "{{compiler}}/{{compiler_ver}}"
+      - "{{mpi}}/{{mpi_ver}}/{{compiler}}.{{compiler_ver}}"
+  requires:
+    - rcic-module-support
+    - "{{compiler}}_{{compiler_ver}}-module"
+    - "{{ name }}_{{ version }}_{{compiler}}_{{compiler_ver}}_{{mpi}}_{{mpi_ver}}"

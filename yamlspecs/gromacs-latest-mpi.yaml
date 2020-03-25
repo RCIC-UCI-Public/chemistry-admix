@@ -1,0 +1,4 @@
+!include gromacs-mpi.yaml
+---
+- package: gromacs MPI
+  version: "{{versions.gromacs_latest}}"

@@ -3,7 +3,11 @@ bootstrap:
 build:
   - gromacs
   - gromacs-module
+  - gromacs-mpi
+  - gromacs-mpi-module
   - gromacs-latest
   - gromacs-latest-module
+  - gromacs-latest-mpi
+  - gromacs-latest-mpi-module
 manifest:
   - "{{build}}"
