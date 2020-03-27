@@ -1,0 +1,3 @@
+# Builds the module for amber
+!include amber.yaml
+!include amber-module-common.yaml

@@ -1,0 +1,70 @@
+!include rcic-package.yaml
+---
+- package: AMBER molecular dynamics 
+  name: amber 
+  pkgname: "{{name}}_{{version}}_{{compiler}}_{{compiler_ver}}"
+  versions: !include versions.yaml
+  version: "{{versions.amber.major}}.{{versions.amber.patch}}"
+  src_dir: "{{name}}{{versions.amber.tools}}"
+  root: "{{pkg_defaults.app_path}}/{{name}}/{{version}}/{{compiler}}/{{compiler_ver}}"
+  compiler: gcc
+  compiler_ver: "{{versions.gcc}}"
+  vendor_source: ""
+  description: |
+    AMBER version {{version}}.
+  build:
+    configure: echo no configure
+    modules: 
+      - gcc/{{versions.gcc}}
+      - python/{{versions.python3}}
+    pkgmake: > 
+      export AMBERHOME=`pwd`;
+      ./update_amber --update ;
+      ./configure --no-updates --with-python `which python` gnu; 
+      make -j8 install 
+    target: 
+  install:
+     makeinstall: >
+       mkdir -p $(ROOT){{root}}/src;
+       cp src/config.h $(ROOT)/{{root}}/src;
+       /bin/cp AmberTools/src/FEW/FEW.pl bin;
+       cp -r bin dat include share lib $(ROOT){{root}};
+       cp AmberTools/src/FEW/FEW.pl $(ROOT){{root}}/bin;
+       (cd $(ROOT){{root}} ; ln -s lib lib64)
+  requires:
+    - gcc_{{versions.gcc}} 
+    - python_{{versions.python3}}
+  provides:
+    - perl(atom_matching)
+    - perl(AtomWithType)
+    - perl(check_input)
+    - perl(common_prepare_MD)
+    - perl(Descriptive)
+    - perl(Distributions)
+    - perl(ForkManager)
+    - perl(global)
+    - perl(LIEW)
+    - perl(Normality)
+    - perl(prepare_params)
+    - perl(prepare_top_crd_MD)
+    - perl(ReadBackwards)
+    - perl(read_data)
+    - perl(RMSD_Kabsch)
+    - perl(separate_structures)
+    - perl(setup_MD)
+    - perl(setup_PB_GB)
+    - perl(setup_TI_MD)
+    - perl(Smoother)
+    - perl(TIW)
+    - perl(WAMM)
+  rpm: !include rpm.extras.yaml
+
+#./configure --with-python /opt/apps/python/3.8.0/bin/python gnu
+#./update_amber --show-applied-patches
+#./update_amber --version
+# ./update_amber -v
+# ./update_amber --check-updates
+# ./update_amber --update
+# ./update_amber -v
+# 19.11
+#      ./configure -mpi gnu; make -j8 install; make clean
