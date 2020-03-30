@@ -1,0 +1,11 @@
+# Builds the module for mdanalysis
+!include mdanalysis.yaml
+!include rcic-module.yaml
+---
+- package: mdanalysis Module
+  category: CHEMISTRY
+  module:
+    prepend_path: ""
+    setenv: ""
+    prereq: 
+       - python/{{python_version}}  

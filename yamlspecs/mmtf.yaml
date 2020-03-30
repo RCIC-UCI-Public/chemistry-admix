@@ -1,0 +1,13 @@
+!include pycommon.yaml
+---
+- package: mmtf 
+  name: mmtf 
+  version: "{{versions.mmtf}}"
+  vendor_source: https://github.com/rcsb/mmtf-python/archive/v{{version}}.{{extension}}
+  src_dir: "{{name}}-python-{{version}}"
+  description: |
+    The macromolecular transmission format (MMTF) {{version}} is 
+    a binary encoding of biological structures.
+  requires:
+    - python_{{python_version}}  
+    - python_{{python_version}}-msgpack

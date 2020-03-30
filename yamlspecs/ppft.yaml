@@ -1,0 +1,10 @@
+!include pycommon.yaml
+---
+- package: ppft 
+  name: ppft 
+  version: "{{versions.ppft}}"
+  src_dir: "{{name}}-{{name}}-{{version}}"
+  vendor_source: https://github.com/uqfoundation/ppft/archive/{{name}}-{{version}}.{{extension}}
+  description: |
+    ppft {{version}} is a fork of Parallel Python, and is 
+    developed as part of pathos https://github.com/uqfoundation/pathos

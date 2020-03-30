@@ -1,0 +1,10 @@
+!include pycommon.yaml
+---
+- package: msmtools 
+  name: msmtools 
+  version: "{{versions.msmtools}}"
+  vendor_source: https://github.com/markovmodel/msmtools/archive/v{{version}}.{{extension}}
+  description: |
+    Msmtools {{version}} is an open source collection of algorithms
+    for the estimation and analysis of discrete state space Markov chains
+    via Markov state models (MSM). See https://github.com/markovmodel/msmtools

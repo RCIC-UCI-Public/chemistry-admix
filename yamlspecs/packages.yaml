@@ -1,6 +1,20 @@
 system:
+  - tcsh
+  - which
+  - flex
+  - bison
+  - patch
+  - bc
+  - libXt-devel
+  - libXext-devel 
+  - util-linux
+  - wget
+  - bzip2-devel
+  - zlib-devel
 bootstrap:
 build:
+  - amber
+  - amber-module
   - gromacs
   - gromacs-module
   - gromacs-mpi
@@ -9,5 +23,22 @@ build:
   - gromacs-latest-module
   - gromacs-latest-mpi
   - gromacs-latest-mpi-module
+  - bhmm
+  - gsd
+  - GridDataFormats
+  - mdtraj
+  - mmtf
+  - msmtools
+  - mdanalysis
+  - mdanalysis-module
+  - openmm
+  - openmm-module
+  - openmoltools
+  - openmoltools-module
+  - ppft
+  - pathos
+  - pyemma
+  - pyemma-module
 manifest:
+  - "{{bootstrap}}"
   - "{{build}}"

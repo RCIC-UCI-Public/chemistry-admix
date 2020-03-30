@@ -1,0 +1,11 @@
+!include pycommon.yaml
+---
+- package: mdtraj 
+  name: mdtraj 
+  version: "{{versions.mdtraj}}"
+  vendor_source: https://github.com/mdtraj/mdtraj/archive/{{version}}.{{extension}}
+  description: |
+    MDTraj {{version}} is a python library that allows users to manipulate molecular 
+    dynamics (MD) trajectories and perform a variety of analyses, including 
+    fast RMSD, solvent accessible surface area, hydrogen bonding, etc. 
+    See http://mdtraj.org

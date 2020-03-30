@@ -1,0 +1,42 @@
+!include rcic-package.yaml
+---
+- package: openmm 
+  name: openmm 
+  versions: !include versions.yaml
+  version: "{{versions.openmm}}"
+  python_version: "{{versions.python3}}"
+  python_family: "{{versions.python3_family}}"
+  vendor_source: https://github.com/openmm/openmm/archive/{{version}}.{{extension}}
+  description: |
+    OpenMM {{version}} is a toolkit for molecular simulation. It can be used either
+    as a stand-alone application for running simulations, or as a library you
+    call from your own code.  See https://simtk.org/projects/openmm
+  builddir: builddir
+  root: "{{parent}}/{{version}}"
+  build:
+    pkgmake: >
+      mkdir {{builddir}};
+      cd {{builddir}};
+      cmake -DCMAKE_INSTALL_PREFIX={{root}} ..;
+      make
+    modules: 
+      - python/{{python_version}} 
+      - foundation
+  install:
+    makeinstall: >
+      cd {{builddir}};
+      make DESTDIR=$(ROOT) install;
+      export _OPENMM_LIB_PATH=`pwd`;
+      sed -i 's/OPENMM_LIB_PATH/_OPENMM_LIB_PATH/g' python/setup.py;
+      make DESTDIR=$(ROOT) PythonInstall;
+      rm -rf $(ROOT){{root}}/docs
+  requires:
+    - python_{{python_version}}  
+  files:
+    - "{{root}}"
+    - "{{pkg_defaults.app_path}}/python/{{python_version}}/lib/python{{python_family}}/site-packages"
+  rpm: !include rpm.extras.yaml
+
+# In makeinstall target lines with export and sed provide a way to use 
+# created openmm libraries for python module before the libs  are installed 
+# in the final destintion

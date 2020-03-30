@@ -1,0 +1,13 @@
+# Builds the module for openmoltools
+!include openmoltools.yaml
+!include rcic-module.yaml
+---
+- package: openmoltools Module
+  category: CHEMISTRY
+  module:
+    prepend_path:
+      - PATH {{root}}/bin 
+    prereq: 
+       - python/{{python_version}}  
+       - amber/{{versions.amber}}/{{versions.compiler.name}}.{{versions.compiler.version}}
+    setenv: ""

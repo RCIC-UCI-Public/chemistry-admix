@@ -1,0 +1,13 @@
+!include pycommon.yaml
+---
+- package: gsd 
+  name: gsd 
+  version: "{{versions.gsd}}"
+  vendor_source: http://glotzerlab.engin.umich.edu/Downloads/gsd/{{name}}-v{{version}}.{{extension}}
+  src_dir: "{{name}}-v{{version}}"
+  description: |
+    The GSD file format {{version}} is the native file format for HOOMD-blue. 
+    GSD files store trajectories of the HOOMD-blue system state in a binary
+    file with efficient random access to frames. GSD allows all particle and
+    topology properties to vary from one frame to the next. 
+    See https://gsd.readthedocs.io

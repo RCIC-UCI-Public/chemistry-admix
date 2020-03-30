@@ -1,0 +1,14 @@
+!include pycommon.yaml
+---
+- package: openmoltools 
+  name: openmoltools 
+  version: "{{versions.openmoltools}}"
+  vendor_source: https://github.com/choderalab/openmoltools/archive/{{version}}.{{extension}}
+  description: |
+    Openmoltools {{version}} - a set of tools allows users to automate various 
+    tasks related to simulating small molecules using various molecules 
+    dynamics techniques. See https://github.com/choderalab/openmoltools
+  requires:
+    python_{{python_version}}-mdtraj
+    python_{{python_version}}-openmm
+

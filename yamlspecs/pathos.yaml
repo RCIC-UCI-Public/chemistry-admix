@@ -1,0 +1,18 @@
+!include pycommon.yaml
+---
+- package: pathos 
+  name: pathos 
+  version: "{{versions.pathos}}"
+  vendor_source: https://github.com/uqfoundation/pathos/archive/{{name}}-{{version}}.{{extension}}
+  src_dir: "{{name}}-{{name}}-{{version}}"
+  description: |
+    Pathos {{version}} is a framework for heterogenous computing. It provides
+    a consistent high-level interface for configuring and launching parallel 
+    computations across heterogenous resources.  
+  requires:
+    - python_{{python_version}}  
+    - python_{{python_version}}-pp
+    - python_{{python_version}}-dill
+    - python_{{python_version}}-pox
+    - python_{{python_version}}-ppft
+    - python_{{python_version}}-multiprocess

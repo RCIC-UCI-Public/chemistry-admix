@@ -1,0 +1,11 @@
+!include pycommon.yaml
+---
+- package: GridDataFormats 
+  name: GridDataFormats 
+  version: "{{versions.GridDataFormats}}"
+  vendor_source: https://github.com/MDAnalysis/GridDataFormats/archive/{{version}}.{{extension}}
+  description: |
+    The GridDataFormats {{version}} provides classes to unify reading and 
+    writing n-dimensional datasets. One can read grid data from files,
+    make them available as a Grid object, and write out the data again.
+    See https://www.mdanalysis.org/GridDataFormats/

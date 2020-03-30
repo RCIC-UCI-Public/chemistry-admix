@@ -1,0 +1,10 @@
+!include pycommon.yaml
+---
+- package: bhmm 
+  name: bhmm 
+  version: "{{versions.bhmm}}"
+  vendor_source: https://github.com/bhmm/bhmm/archive/{{version}}.{{extension}}
+  description: |
+    BHMM {{version}} ia a toolkit for Bayesian hidden Markov model analysis
+    of single-molecule trajectories. See https://github.com/bhmm/bhmm
+

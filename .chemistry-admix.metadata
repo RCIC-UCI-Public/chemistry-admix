@@ -1,2 +1,15 @@
 cff61782f6ac26b8a3569521c5b854f8475a1542  sources/gromacs-2019.4.tar.gz 1DJyt_yI48nuH7fof8mPq-uJylpu88HBe
 50da298839f3431443ade21872d0a764ce8d7b05  sources/gromacs-2020.tar.gz 1sha120evwG6gWVA5H6KtFchGzOYEAonY
+4a2eb72929f00e113384909bfde71e1d4f993390  sources/AmberTools19.tar.bz2 16y_9ugIFXsB5aIyrPaSWThbJ7aEFEz9R
+d393972e3ee9d50e520d19c91e64707ab313a739  sources/amber-19.11.tar.gz 1Jcf7pw_YHGl6ff9jo2eixF8vJOLKzjjv
+2440ecfd823087de00e7cead65c9e85215a9b490  sources/bhmm-0.6.3.tar.gz 1NS9xwo75oySrVMuS-7QPXZYxOhmL3Bda
+8effaea13e5d5743fa3de902da6add5fd96a541e  sources/GridDataFormats-0.5.0.tar.gz 12HtA7_aXIbeIz4tnjhMVXn8aiYlV1dX7
+05fbbf8a003595ce05f61066045c6abcc6927089  sources/gsd-2.1.0.tar.gz 1TTfP6ms7iv9L11Oy67Ra6rpjV6EfHXW2
+2d5d9045b3f7ef306e3a47c16d88f48efb2d3c93  sources/mdanalysis-0.20.1.tar.gz 1WkUEKo2kzvJXphgKGon73a6ChICFL3P-
+e49e0ee5468d75148bb1363e7a1f485715ca730c  sources/mdtraj-1.9.3.tar.gz 1tOBqfH0icPOkiTQFRqKq3lPbAFbW2TKT
+e7ca5dcad8907304fdf1ecfef666b0ca3931d907  sources/mmtf-1.1.2.tar.gz 1g3-In1isrg8oGcIi-Fb4mR-hSGfWY0SQ
+12266f4a6d28864fcc68de9b2a81f41a3648250a  sources/msmtools-1.2.5.tar.gz 1IFnX_QXn6BZ8Mj4priWkB9lAzIWX63C4
+85f76273666412ca6c36ea2b0f75fc01c7664e26  sources/openmm-7.4.1.tar.gz 1gSdQh11n0-1fH2bAN0pQy5wnlOnhAvmc
+42fd329b9fcb8b03fdd983c9deadb50b8f9e0d1c  sources/openmoltools-0.8.6.tar.gz 1qyuZQA6PPruUOY63icFDFyCWmOvXNf29
+e7f68863e0b9e6ae9344cb8a20d95cb0a15fa929  sources/pathos-0.2.5.tar.gz 1178LTcmUdT-hPSsA5ShvS2Vlybb6gcm0
+81624ab166d9f9d0f85faf6641be0237d46a3354  sources/ppft-1.6.6.1.tar.gz 1Y1WlKz9xkviznz_fGfuyf1uHh8g2EEvJ

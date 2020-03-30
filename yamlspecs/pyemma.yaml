@@ -1,0 +1,28 @@
+!include pycommon.yaml
+---
+- package: pyemma 
+  name: pyemma 
+  version: "{{versions.pyemma}}"
+  vendor_source: https://github.com/markovmodel/PyEMMA/archive/v{{version}}.{{extension}}
+  src_dir: PyEMMA-{{version}}
+  description: |
+    PyEMMA (EMMA = Emma’s Markov Model Algorithms) {{version}} is an open source 
+    Python/C package for analysis of extensive molecular dynamics simulations. 
+    See documentation at http://pyemma.org
+  install:
+    makeinstall: >
+      sed -i 's/    assert/\#    assert/' setup.py;
+      python{{python_major}} setup.py install --root $(ROOT) 
+  requires:
+    - python_{{python_version}}-bhmm
+    - python_{{python_version}}-decorator
+    - python_{{python_version}}-h5py
+    - python_{{python_version}}-matplotlib
+    - python_{{python_version}}-mdtraj
+    - python_{{python_version}}-msmtools
+    - python_{{python_version}}-numpy
+    - python_{{python_version}}-pathos
+    - python_{{python_version}}-psutil
+    - python_{{python_version}}-pyyaml
+    - python_{{python_version}}-scipy
+    - python_{{python_version}}-tqdm
