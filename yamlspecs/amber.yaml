@@ -4,14 +4,14 @@
   name: amber 
   pkgname: "{{name}}_{{version}}_{{compiler}}_{{compiler_ver}}"
   versions: !include versions.yaml
-  version: "{{versions.amber.major}}.{{versions.amber.patch}}"
-  src_dir: "{{name}}{{versions.amber.tools}}"
+  version: "{{versions.amber}}"
+  src_dir: "{{name}}{{versions.ambertools}}"
   root: "{{pkg_defaults.app_path}}/{{name}}/{{version}}/{{compiler}}/{{compiler_ver}}"
-  compiler: gcc
-  compiler_ver: "{{versions.gcc}}"
+  compiler: "{{versions.compiler.name}}"
+  compiler_ver: "{{versions.compiler.version}}"
   vendor_source: ""
   description: |
-    AMBER version {{version}}.
+    AMBER version {{version}}
   build:
     configure: echo no configure
     modules: 
@@ -19,7 +19,6 @@
       - python/{{versions.python3}}
     pkgmake: > 
       export AMBERHOME=`pwd`;
-      ./update_amber --update ;
       ./configure --no-updates --with-python `which python` gnu; 
       make -j8 install 
     target: 
@@ -30,7 +29,7 @@
        /bin/cp AmberTools/src/FEW/FEW.pl bin;
        cp -r bin dat include share lib $(ROOT){{root}};
        cp AmberTools/src/FEW/FEW.pl $(ROOT){{root}}/bin;
-       (cd $(ROOT){{root}} ; ln -s lib lib64)
+       (cd $(ROOT){{root}}; ln -s lib lib64)
   requires:
     - gcc_{{versions.gcc}} 
     - python_{{versions.python3}}
