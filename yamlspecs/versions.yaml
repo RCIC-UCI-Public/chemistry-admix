@@ -2,13 +2,13 @@ amber: "19.11"
 ambertools: "18"
 compiler:
   name: gcc
-  version: "8.3.0"
+  version: "8.4.0"
 gromacs: "2019.4"
 gromacs_latest: "2020"
 gcc: "8.4.0"
 mpi:
    name: openmpi
-   version: "4.0.2"
+   version: "4.0.3"
 python3: "3.8.0"
 python3_family: "3.8"
 python3_major: "3"
