@@ -6,7 +6,7 @@
   vendor_source: https://github.com/markovmodel/PyEMMA/archive/v{{version}}.{{extension}}
   src_dir: PyEMMA-{{version}}
   description: |
-    PyEMMA (EMMA = Emma’s Markov Model Algorithms) {{version}} is an open source 
+    PyEMMA (EMMA = Emmas Markov Model Algorithms) {{version}} is an open source 
     Python/C package for analysis of extensive molecular dynamics simulations. 
     See documentation at http://pyemma.org
   install:
