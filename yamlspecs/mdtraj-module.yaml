@@ -1,0 +1,12 @@
+# Builds the module for mdtraj
+!include mdtraj.yaml
+!include rcic-module.yaml
+---
+- package: mdtraj Module
+  category: CHEMISTRY
+  module:
+    prepend_path:
+      - PATH {{root}}/bin 
+    prereq: 
+       - python/{{python_version}}  
+    setenv: ""

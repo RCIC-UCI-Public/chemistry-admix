@@ -2,6 +2,7 @@
 ---
 - package: openmoltools 
   name: openmoltools 
+  pkgname: "{{name}}_{{version}}"
   version: "{{versions.openmoltools}}"
   vendor_source: https://github.com/choderalab/openmoltools/archive/{{version}}.{{extension}}
   description: |
@@ -9,6 +10,6 @@
     tasks related to simulating small molecules using various molecules 
     dynamics techniques. See https://github.com/choderalab/openmoltools
   requires:
-    python_{{python_version}}-mdtraj
-    python_{{python_version}}-openmm
+    mdtraj_{{versions.mdtraj}}
+    openmm_{{versions.openmm}}
 

@@ -2,6 +2,7 @@
 ---
 - package: mdanalysis 
   name: mdanalysis 
+  pkgname: "{{name}}_{{version}}"
   version: "{{versions.mdanalysis}}"
   vendor_source: https://github.com/MDAnalysis/mdanalysis/archive/release-{{version}}.{{extension}}
   src_dir: "{{name}}-release-{{version}}"
