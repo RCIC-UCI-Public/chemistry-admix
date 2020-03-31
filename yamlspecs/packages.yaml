@@ -27,6 +27,7 @@ build:
   - gsd
   - GridDataFormats
   - mdtraj
+  - mdtraj-module
   - mmtf
   - msmtools
   - mdanalysis
@@ -39,6 +40,8 @@ build:
   - pathos
   - pyemma
   - pyemma-module
+  - openeye-toolkits
+  - openeye-toolkits-module
 manifest:
   - "{{bootstrap}}"
   - "{{build}}"

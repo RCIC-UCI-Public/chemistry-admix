@@ -1,0 +1,40 @@
+Cheminformatics Development Platform: OpenEye provides a large suite of cheminformatics 
+toolkits to solve a wide variety of problems in molecule handling and representation.
+
+1 Cheminformatics
+
+The Cheminformatics suite of toolkits provides the core foundation upon which all of the
+OpenEye applications and remaining toolkits are built. The Cheminformatics suite is a 
+collection of seven individual yet interdependent toolkits that are described in the table below.
+
+  Toolkit	Major Functionality
+  ---------------------------------
+  FastROCS TK	Real-time shape similarity for virtual screening, lead hopping & shape clustering
+  OEChem TK	Core chemistry handling and representation as well as molecule file I/O
+  OEDepict TK	2D Molecule rendering and depiction
+  Grapheme™ TK	Advanced molecule rendering and report generation
+  GraphSim TK	2D molecular similarity (e.g. fingerprints) 
+  Lexichem TK 	name-to-structure, structure-to-name, foreign language translation 
+  MolProp TK	Molecular property calculation and filtering 
+  Quacpac TK	Tautomer enumeration and charge assignment
+  MedChem TK	Matched molecular pair analysis, fragmentation utilities, and molecular complexity metrics
+
+2 Modeling
+
+The Modeling suite of toolkits provides the core functionality underlying OpenEye's defining
+principle that shape & electrostatics are the two fundamental descriptors determining intermolecular 
+interactions. Many of the toolkits in the Modeling suite are directly associated with specific OpenEye 
+applications and can therefore be used to create new or extend existing functionality associated with 
+those applications.
+
+  Toolkit	Major Functionality
+  ---------------------------------
+  OEChem TK	Core chemistry handling and representation as well as molecule file I/O
+  OEDocking TK	Molecular docking and scoring
+  Omega TK	Conformer generation
+  Shape TK	3D shape description, optimization, and overlap
+  Spicoli TK	Surface generation, manipulation, and interrogation
+  Szmap TK	Understanding water interactions in a binding site
+  Szybki TK	General purpose optimization with MMFF94
+  Zap TK	Calculate Poisson-Boltzmann electrostatic potentials
+
