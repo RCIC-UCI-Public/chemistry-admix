@@ -11,3 +11,6 @@
        - python/{{python_version}}  
        - amber/{{versions.amber}}/{{versions.compiler.name}}.{{versions.compiler.version}}
     setenv: ""
+  requires:
+       - python_{{python_version}}
+       - python_{{python_version}}-{{name}}

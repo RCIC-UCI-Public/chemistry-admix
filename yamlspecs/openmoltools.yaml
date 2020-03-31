@@ -9,6 +9,6 @@
     tasks related to simulating small molecules using various molecules 
     dynamics techniques. See https://github.com/choderalab/openmoltools
   requires:
-    python_{{python_version}}-mdtraj
-    python_{{python_version}}-openmm
+    - python_{{python_version}}-mdtraj
+    - openmm_{{versions.openmm}}
 
