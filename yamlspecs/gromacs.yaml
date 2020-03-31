@@ -5,7 +5,7 @@
   pkgname: "{{name}}_{{version}}_{{compiler}}_{{compiler_ver}}"
   versions: !include versions.yaml
   version: "{{ versions.gromacs }}"
-  release: 2
+  release: 3
   builddir: build
   root: "{{pkg_defaults.app_path}}/{{name}}/{{version}}/{{compiler}}/{{compiler_ver}}/node"
   compiler: gcc
