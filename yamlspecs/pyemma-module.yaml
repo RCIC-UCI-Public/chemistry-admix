@@ -11,3 +11,7 @@
        - python/{{python_version}}  
        - hdf5/{{versions.hdf5}}/{{versions.compiler.name}}.{{versions.compiler.version}}
     setenv: ""
+  requires:
+    - python_{{python_version}}
+    - hdf5_{{versions.hdf5}}_{{versions.compiler.name}}_{{versions.compiler.version}}
+    - "{{name}_{{version}}"
