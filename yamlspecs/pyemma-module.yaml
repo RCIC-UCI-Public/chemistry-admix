@@ -14,4 +14,4 @@
   requires:
     - python_{{python_version}}
     - hdf5_{{versions.hdf5}}_{{versions.compiler.name}}_{{versions.compiler.version}}
-    - "{{name}_{{version}}"
+    - "{{name}}_{{version}}"
