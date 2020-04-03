@@ -1,16 +1,9 @@
 # Builds the module for amber.
-!include rcic-module.yaml
+!include rcic-module-spec.yaml
 ---
 - package: amber module 
-  pkgname: "{{name}}_{{version}}_{{compiler}}_{{compiler_ver}}-module"
   category: CHEMISTRY
-  specs: "{{compiler}}.{{compiler_ver}}"
-  modinstdir: "{{mod_defaults.path}}"
   module:
-    name: "{{specs}}"
-    loadname: "{{module.logname}}" 
-    logname: "{{name}}/{{version}}/{{specs}}"
-    path: "{{modinstdir}}/{{version}}"
     prepend_path:
       - "{{mod_defaults.prepend_path}}"
       - PYTHONPATH {{root}}/lib/python3.8/site-packages
@@ -19,10 +12,5 @@
       - AMBER_PREFIX {{root}}
       - AMBERHOME {{root}}
     prereq:
-      - "{{compiler}}/{{compiler_ver}}" 
+      - "{{compiler}}/{{compiler_version}}" 
       - python/{{versions.python3}}
-  requires:
-    - "{{name}}_{{version}}_{{compiler}}_{{compiler_ver}}"
-    - rcic-module-support
-  files:
-    - "{{modinstdir}}"

@@ -1,0 +1,10 @@
+# Builds the module for gromacs.
+!include rcic-module-spec.yaml
+---
+- package: gromacs module 
+  category: CHEMISTRY
+  module:
+    lib: lib64
+    setenv:
+      - "{{mod_defaults.setenv}}"
+      - GROMACS_HOME {{root}}

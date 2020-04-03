@@ -2,20 +2,20 @@
 ---
 - package: AMBER molecular dynamics 
   name: amber 
-  pkgname: "{{name}}_{{version}}_{{compiler}}_{{compiler_ver}}"
+  pkgname: "{{name}}_{{version}}_{{compiler}}_{{compiler_version}}"
   versions: !include versions.yaml
-  version: "{{versions.amber}}"
-  src_dir: "{{name}}{{versions.ambertools}}"
-  root: "{{pkg_defaults.app_path}}/{{name}}/{{version}}/{{compiler}}/{{compiler_ver}}"
+  version: "{{versions.amber.version}}"
+  src_dir: "{{name}}{{versions.amber.ambertools}}"
+  root: "{{pkg_defaults.app_path}}/{{name}}/{{version}}/{{compiler}}/{{compiler_version}}"
   compiler: "{{versions.compiler.name}}"
-  compiler_ver: "{{versions.compiler.version}}"
+  compiler_version: "{{versions.compiler.version}}"
   vendor_source: ""
   description: |
     AMBER version {{version}}
   build:
     configure: echo no configure
     modules: 
-      - gcc/{{versions.gcc}}
+      - "{{compiler}}/{{compiler_version}}"
       - python/{{versions.python3}}
     pkgmake: > 
       export AMBERHOME=`pwd`;
@@ -31,7 +31,7 @@
        cp AmberTools/src/FEW/FEW.pl $(ROOT){{root}}/bin;
        (cd $(ROOT){{root}}; ln -s lib lib64)
   requires:
-    - gcc_{{versions.gcc}} 
+    - "{{compiler}}_{{compiler_version}}"
     - python_{{versions.python3}}
   provides:
     - perl(atom_matching)
@@ -57,13 +57,3 @@
     - perl(TIW)
     - perl(WAMM)
   rpm: !include rpm.extras.yaml
-
-#./configure --with-python /opt/apps/python/3.8.0/bin/python gnu
-#./update_amber --show-applied-patches
-#./update_amber --version
-# ./update_amber -v
-# ./update_amber --check-updates
-# ./update_amber --update
-# ./update_amber -v
-# 19.11
-#      ./configure -mpi gnu; make -j8 install; make clean
