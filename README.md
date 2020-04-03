@@ -1,8 +1,13 @@
-# chemistry-admix
+## chemistry-admix
 chemistry and md software
 
 
-## Amber
+### Amber
+
+To build an mpi-enabled version will need to use on yaml
+```bash
+./configure -mpi gnu; make -j8 install; make clean
+```
 
 Download from https://ambermd.org/GetAmber.php after providing info on the form.
 No direct download link available. Put on google drive as AmberTools19.tar.bz2 
@@ -41,7 +46,7 @@ tar czvf amber-19.11.tar.gz   amber18
 
 Add amber-19.11.tar.gz to google drive and use this file for builds. 
 
-## Openeye toolkits
+### Openeye toolkits
 
 From https://www.eyesopen.com/downloads provide needed email/contact info
 get to  downloads page and see under TOOLKITS.
