@@ -1,0 +1,31 @@
+!include rcic-package.yaml
+---
+- package: 
+  name: wxWidgets 
+  versions: !include versions.yaml
+  version: "{{versions.wxWidgets}}"
+  pkgname: "{{name}}_{{version}}"
+  extension: tar.bz2
+  compiler: "{{versions.compiler.name}}"
+  compiler_version: "{{versions.compiler.version}}"
+  vendor_source: https://github.com/wxWidgets/wxWidgets/releases/download/v{{version}}/{{name}}-{{version}}.{{extension}}
+  description: |
+    wxWidgets {{version}} allows you to write native-looking GUI applications for
+    all the major desktop platforms and also helps with abstracting the differences
+    in the non-GUI aspects between them. Compiled with {{compiler}} {{compiler_version}}
+  build:
+    configure: ./configure
+    configure_args: >
+      --with-gtk --enable-unicode --prefix={{root}}
+    modules: 
+      - "{{compiler}}/{{compiler_version}}"
+    pkgmake: make -j8 
+    target: 
+  install:
+     makeinstall: >
+       mkdir -p $(ROOT){{root}};
+       make install DESTDIR=$(ROOT)
+  requires:
+    - "{{compiler}}_{{compiler_version}}"
+    - "{{compiler}}_{{compiler_version}}-libiconv"
+  rpm: !include rpm.extras.yaml

@@ -1,0 +1,9 @@
+# Builds the module for wxWidgets
+!include wxWidgets.yaml
+!include rcic-module.yaml
+---
+- package: wxWidgets Module
+  category: TOOLS
+  module:
+    prereq: 
+       - "{{compiler}}/{{compiler_version}}"

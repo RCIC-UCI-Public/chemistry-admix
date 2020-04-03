@@ -11,7 +11,11 @@ system:
   - wget
   - bzip2-devel
   - zlib-devel
+  - libxml2-devel
+  - gtk2-devel
 bootstrap:
+  - wxWidgets
+  - wxWidgets-module
 build:
   - amber
   - amber-module
@@ -42,6 +46,8 @@ build:
   - pyemma-module
   - openeye-toolkits
   - openeye-toolkits-module
+  - openbabel
+  - openbabel-module
 manifest:
   - "{{bootstrap}}"
   - "{{build}}"

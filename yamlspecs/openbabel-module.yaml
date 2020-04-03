@@ -1,0 +1,11 @@
+# Builds the module for openbabel
+!include openbabel.yaml
+!include rcic-module.yaml
+---
+- package: openbabel Module
+  category: CHEMISTRY
+  module:
+    prereq:
+      - "{{compiler}}/{{compiler_version}}"
+      - wxWidgets/{{versions.wxWidgets}}
+      - boost/{{versions.boost}}/{{compiler}}/{{compiler_version}}
