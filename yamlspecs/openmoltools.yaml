@@ -2,7 +2,7 @@
 ---
 - package: openmoltools 
   name: openmoltools 
-  pkgname: "{{name}}_{{version}}"
+  baserpm: "{{name}}_{{version}}"
   version: "{{versions.openmoltools}}"
   vendor_source: https://github.com/choderalab/openmoltools/archive/{{version}}.{{extension}}
   description: |
@@ -12,4 +12,3 @@
   requires:
     - mdtraj_{{versions.mdtraj}}
     - openmm_{{versions.openmm}}
-

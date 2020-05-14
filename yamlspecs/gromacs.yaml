@@ -2,18 +2,18 @@
 ---
 - package: GROMACS molecular dynamics 
   name: gromacs 
-  pkgname: "{{name}}_{{version}}_{{compiler}}_{{compiler_version}}"
+  baserpm: "{{name}}_{{version}}_{{compiler}}_{{compiler_version}}"
   versions: !include versions.yaml
-  version: "{{ versions.gromacs }}"
+  version: "{{versions.gromacs}}"
   release: 3
   builddir: build
   root: "{{pkg_defaults.app_path}}/{{name}}/{{version}}/{{compiler}}/{{compiler_version}}/node"
   compiler: "{{versions.compiler.name}}"
   compiler_version: "{{versions.compiler.version}}"
-
   vendor_source: ftp://ftp.gromacs.org/pub/gromacs/{{name}}-{{version}}.{{extension}}
-  description: >
-    GROMACS version {{version}}. Built with cmake {{build.cmake_args}}.
+  description: |
+    GROMACS version {{version}}. Built with cmake arguments 
+    {{build.cmake_args}}
   build:
     configure: "echo no configure. uses cmake" 
     modules: 
@@ -21,16 +21,16 @@
       - "{{compiler}}/{{compiler_version}}"
     cmake_args: -DGMX_BUILD_OWN_FFTW=ON -DCMAKE_INSTALL_PREFIX={{root}}
     pkgmake: > 
-      mkdir {{ builddir }};
-      cd {{ builddir }};
+      mkdir {{builddir}};
+      cd {{builddir}};
       cmake {{build.cmake_args}} ..;
       make -j 8
     target: 
   install:
      makeinstall: >
-       cd {{ builddir }};
+       cd {{builddir}};
        make DESTDIR=$(ROOT) install
-     installextra: $(INSTALL) -m 644  README* COPYING AUTHORS $(ROOT){{ root }} 
+     installextra: $(INSTALL) -m 644  README* COPYING AUTHORS $(ROOT){{root}} 
   requires:
     - "{{compiler}}_{{compiler_version}}"
   rpm: !include rpm.extras.yaml

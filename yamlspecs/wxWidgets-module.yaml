@@ -6,4 +6,6 @@
   category: TOOLS
   module:
     prereq: 
-       - "{{compiler}}/{{compiler_version}}"
+      - *ModuleCompiler_prereq
+    requires:
+      - *ModuleCompiler_requires

@@ -2,7 +2,7 @@
 ---
 - package: OpenEyeToolkits
   name: openeye-toolkits 
-  pkgname: "{{name}}_{{version}}"
+  baserpm: "{{name}}_{{version}}"
   version: "{{versions.openeyetoolkits}}"
   distroname: OpenEye-toolkits-python3-linux-x64
   src_dir: "{{distroname}}-{{version}}"

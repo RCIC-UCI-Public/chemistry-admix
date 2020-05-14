@@ -2,7 +2,7 @@
 ---
 - package: AMBER molecular dynamics 
   name: amber 
-  pkgname: "{{name}}_{{version}}_{{compiler}}_{{compiler_version}}"
+  baserpm: "{{name}}_{{version}}_{{compiler}}_{{compiler_version}}"
   versions: !include versions.yaml
   version: "{{versions.amber.version}}"
   src_dir: "{{name}}{{versions.amber.ambertools}}"
@@ -33,6 +33,12 @@
   requires:
     - "{{compiler}}_{{compiler_version}}"
     - python_{{versions.python3}}
+    - tcsh
+    - libXt-devel
+    - libXext-devel
+    - zlib-devel
+    - libXau-devel
+    - tcl
   provides:
     - perl(atom_matching)
     - perl(AtomWithType)

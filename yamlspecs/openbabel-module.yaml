@@ -6,6 +6,10 @@
   category: CHEMISTRY
   module:
     prereq:
-      - "{{compiler}}/{{compiler_version}}"
+      - *ModuleCompiler_prereq
       - wxWidgets/{{versions.wxWidgets}}
       - boost/{{versions.boost}}/{{compiler}}/{{compiler_version}}
+    requires:
+      - *ModuleCompiler_requires
+      - wxWidgets_{{versions.wxWidgets}}-module
+      - boost_{{versions.boost}}_{{compiler}}_{{compiler_version}}-module

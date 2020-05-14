@@ -12,6 +12,5 @@
       - python/{{python_version}} 
     setenv: ""
   requires:
-    - "{{name}}_{{version}}"
+    - *Requires
     - python_{{python_version}}-module
-    - rcic-module-support

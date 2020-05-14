@@ -2,7 +2,7 @@
 ---
 - package: mdtraj 
   name: mdtraj 
-  pkgname: "{{name}}_{{version}}"
+  baserpm: "{{name}}_{{version}}"
   version: "{{versions.mdtraj}}"
   vendor_source: https://github.com/mdtraj/mdtraj/archive/{{version}}.{{extension}}
   description: |

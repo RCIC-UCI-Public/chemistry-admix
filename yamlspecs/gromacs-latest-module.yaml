@@ -1,3 +1,5 @@
 # Builds the module for gromacs.
-!include gromacs-latest.yaml
-!include gromacs-module-common.yaml
+#!include gromacs-latest.yaml
+!include gromacs-module.yaml
+---
+- version: "{{versions.gromacs_latest}}"

@@ -5,7 +5,7 @@
   python_version: "{{versions.python3}}"
   python_family: "{{versions.python3_family}}"
   python_major: "{{versions.python3_major}}"
-  pkgname: "python_{{python_version}}-{{name}}"
+  baserpm: "python_{{python_version}}-{{name}}"
   root: "{{pkg_defaults.app_path}}/python/{{python_version}}"
   build:
     configure: echo

@@ -9,6 +9,6 @@
     setenv: ""
     prereq: 
        - python/{{python_version}}  
-  requires:
-    - python_{{python_version}}
-    - "{{name}}_{{version}}"
+    requires:
+      - *Requires
+      - python_{{python_version}}-module

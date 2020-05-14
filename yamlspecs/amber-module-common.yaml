@@ -1,16 +1,21 @@
-# Builds the module for amber.
-!include rcic-module-spec.yaml
+# Builds the module for amber
+!include amber.yaml
+!include rcic-module.yaml
 ---
 - package: amber module 
   category: CHEMISTRY
   module:
+    <<: *ModuleCompiler
     prepend_path:
-      - "{{mod_defaults.prepend_path}}"
+      - *Prepend_path
       - PYTHONPATH {{root}}/lib/python3.8/site-packages
     setenv:
-      - "{{mod_defaults.setenv}}"
+      - *Setenv
       - AMBER_PREFIX {{root}}
       - AMBERHOME {{root}}
     prereq:
-      - "{{compiler}}/{{compiler_version}}" 
+      - *ModuleCompiler_prereq
       - python/{{versions.python3}}
+    requires:
+      - *ModuleCompiler_requires
+      - python_{{versions.python3}}-module

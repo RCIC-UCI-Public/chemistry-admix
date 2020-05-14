@@ -16,6 +16,8 @@ system:
 bootstrap:
   - wxWidgets
   - wxWidgets-module
+  - mdtraj
+  - mdtraj-module
 build:
   - amber
   - amber-module
@@ -30,8 +32,6 @@ build:
   - bhmm
   - gsd
   - GridDataFormats
-  - mdtraj
-  - mdtraj-module
   - mmtf
   - msmtools
   - mdanalysis

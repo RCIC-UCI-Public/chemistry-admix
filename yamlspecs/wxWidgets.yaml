@@ -4,7 +4,6 @@
   name: wxWidgets 
   versions: !include versions.yaml
   version: "{{versions.wxWidgets}}"
-  pkgname: "{{name}}_{{version}}"
   extension: tar.bz2
   compiler: "{{versions.compiler.name}}"
   compiler_version: "{{versions.compiler.version}}"

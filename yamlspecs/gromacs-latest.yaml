@@ -1,4 +1,3 @@
 !include gromacs.yaml
 ---
-- package: gromacs
-  version: "{{versions.gromacs_latest}}"
+- version: "{{versions.gromacs_latest}}"
