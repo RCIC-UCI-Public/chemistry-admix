@@ -1,0 +1,52 @@
+!include rcic-package.yaml
+!include rpm.yaml
+---
+- package: charm
+  name: charm 
+  baserpm: "{{name}}_{{version}}_{{compiler}}_{{compiler_version}}"
+  versions: !include versions.yaml
+  version: "{{versions.charm}}"
+
+  root: "{{pkg_defaults.app_path}}/{{name}}/{{version}}/{{compiler}}/{{compiler_version}}"
+
+  compiler: "{{versions.compiler.name}}"
+  compiler_version: "{{versions.compiler.version}}"
+  vendor_source: http://charm.cs.illinois.edu/distrib/{{name}}-{{version}}.{{extension}}
+  description: |
+   CHARM++ version {{version}} is a machine independent parallel programming system. 
+   Programs written using this system will run unchanged on MIMD machines with or 
+   without a shared memory. It provides high-level mechanisms and strategies to 
+   facilitate the task of developing even highly complex parallel applications.
+   Built with charm++ build with arguments: {{build.build_args}}
+
+  builddir: cbuild
+  src_dir: "{{name}}-v{{version}}"
+
+  # Charm-specific defs
+  charm_arch: multicore-linux-x86_64
+  charm_compiler: gcc
+
+  build:
+    configure: echo use charm-supplied build script 
+    modules: 
+      - foundation
+      - "{{compiler}}/{{compiler_version}}"
+    build_args: >
+      charm++
+      {{charm_arch}} 
+      {{charm_compiler}}
+      --build-shared
+      --enable-zlib
+      --with-production  
+      --destination {{builddir}}
+      -j8
+    pkgmake: ./build 
+    target: "{{build.build_args}}" 
+  install:
+     makeinstall: >
+       cd {{builddir}}/tmp;
+       make DESTDIR=$(ROOT)/{{root}} install;
+       (cd $(ROOT)/{{root}}/lib/; ln -s ../lib_so/* . )
+     installextra: $(INSTALL) -m 644  README* COPYING AUTHORS $(ROOT){{root}} 
+  requires:
+    - "{{compiler}}_{{compiler_version}}"

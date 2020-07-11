@@ -1,0 +1,10 @@
+# Builds the module for charm++
+!include charm.yaml
+!include rcic-module.yaml
+---
+- package: "{{name}} module"
+  category: TOOLS
+  module:
+    <<: *ModuleCompiler
+#    setenv:
+#      - UDUNITS_HOME {{root}}
