@@ -1,0 +1,62 @@
+!include rcic-package.yaml
+---
+- package: NAMD Molecular Dynamics 
+  name: namd 
+  NAME: NAMD
+  release: 1
+  baserpm: "{{name}}_{{version}}_{{compiler}}_{{compiler_version}}"
+  versions: !include versions.yaml
+  version: "{{versions.namd}}"
+  builddir: build
+  root: "{{pkg_defaults.app_path}}/{{name}}/{{version}}/{{compiler}}/{{compiler_version}}"
+  compiler: "{{versions.compiler.name}}"
+  compiler_version: "{{versions.compiler.version}}"
+
+  vendor_source: https://www.ks.uiuc.edu/Development/Download/download.cgi
+  addsource:
+    - fftw-linux-x86_64.tar.gz
+    - tcl8.5.9-linux-x86_64-threaded.tar.gz
+    - tcl8.5.9-linux-x86_64.tar.gz
+
+  src_tarball: "{{NAME}}_{{version}}_Source.{{extension}}"
+  src_dir: "{{NAME}}_{{version}}_Source"
+ 
+  description: |
+    NAMD version {{version}} is a parallel molecular dynamics code designed 
+    for high-performance simulation of large biomolecular systems. 
+    Based on Charm++ parallel objects, NAMD scales to hundreds of cores for 
+    typical simulations and beyond 500,000 cores for the largest simulations. 
+    NAMD uses the popular molecular graphics program VMD for simulation setup and 
+    trajectory analysis, but is also file-compatible with AMBER, CHARMM, and 
+    X-PLOR. NAMD is distributed free of charge with source code 
+
+  
+  namd_arch: Linux-x86_64-g++  
+  build:
+    preconfigure: >
+       tar xzf ../fftw-linux-x86_64.tar.gz; mv linux-x86_64 fftw; 
+       tar xzf ../tcl8.5.9-linux-x86_64-threaded.tar.gz; 
+       mv tcl8.5.9-linux-x86_64-threaded tcl-threaded;
+       tar xzf ../tcl8.5.9-linux-x86_64.tar.gz;
+       mv tcl8.5.9-linux-x86_64 tcl
+
+    configure: ./config  
+    configure_args: "{{namd_arch}} --charm-base $$charm__PREFIX"
+    modules: 
+      - foundation
+      - "{{compiler}}/{{compiler_version}}"
+      - "charm/{{versions.charm}}/{{compiler}}.{{compiler_version}}"
+    pkgmake: > 
+      cd {{namd_arch}};
+      make -j 8
+    target: 
+  install:
+     makeinstall: >
+       cd {{namd_arch}};
+       mkdir -p $(ROOT)/{{root}}/{{namd_arch}};
+       install -m 755 charmrun flipbinpdb flipdcd namd2 psfgen sortreplicas $(ROOT)/{{root}}/{{namd_arch}}
+
+  requires:
+    - "{{compiler}}_{{compiler_version}}"
+    - "charm_{{versions.charm}}_{{compiler}}_{{compiler_version}}"
+  rpm: !include rpm.extras.yaml

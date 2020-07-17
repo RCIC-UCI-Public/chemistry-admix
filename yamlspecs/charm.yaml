@@ -9,6 +9,10 @@
 
   root: "{{pkg_defaults.app_path}}/{{name}}/{{version}}/{{compiler}}/{{compiler_version}}"
 
+  # Charm-specific defs. Change these to build different flavors
+  charm_arch: multicore-linux-x86_64
+  charm_compiler: gcc
+
   compiler: "{{versions.compiler.name}}"
   compiler_version: "{{versions.compiler.version}}"
   vendor_source: http://charm.cs.illinois.edu/distrib/{{name}}-{{version}}.{{extension}}
@@ -22,9 +26,6 @@
   builddir: cbuild
   src_dir: "{{name}}-v{{version}}"
 
-  # Charm-specific defs
-  charm_arch: multicore-linux-x86_64
-  charm_compiler: gcc
 
   build:
     configure: echo use charm-supplied build script 
@@ -45,7 +46,7 @@
   install:
      makeinstall: >
        cd {{builddir}}/tmp;
-       make DESTDIR=$(ROOT)/{{root}} install;
+       make DESTDIR=$(ROOT)/{{root}}/{{charm_arch}} install;
        (cd $(ROOT)/{{root}}/lib/; ln -s ../lib_so/* . )
      installextra: $(INSTALL) -m 644  README* COPYING AUTHORS $(ROOT){{root}} 
   requires:

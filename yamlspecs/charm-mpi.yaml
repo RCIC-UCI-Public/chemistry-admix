@@ -1,0 +1,22 @@
+!include charm.yaml
+---
+- package: charm-mpi
+  name: charm
+  pkgname: "{{baserpm}}_{{mpi}}_{{mpi_version}}"
+
+  # Charm-specific defs. Change these to build different flavors
+  charm_arch: mpi-linux-x86_64
+  charm_compiler: gcc
+
+  mpi: "{{versions.mpi.name}}"
+  mpi_version: "{{versions.mpi.version}}"
+
+  build:
+    modules: 
+      - foundation
+      - "{{compiler}}/{{compiler_version}}"
+      - "{{mpi}}/{{mpi_version}}/{{compiler}}.{{compiler_version}}"
+
+  requires:
+    - "{{compiler}}_{{compiler_version}}"
+    - "{{mpi}}_{{mpi_version}}_{{compiler}}_{{compiler_version}}"

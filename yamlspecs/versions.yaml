@@ -11,6 +11,8 @@ python3_family: "3.8"
 python3_major: "3"
 eigen: "3.3.7"
 boost: "1.66.0"
+fftw: "3.3.8"
+tcl: "8.6.9"
 # packages versions
 amber:
   version: "19.11"

@@ -2,10 +2,10 @@
 ---
 - package: GROMACS molecular dynamics 
   name: gromacs 
+  release: 4
   baserpm: "{{name}}_{{version}}_{{compiler}}_{{compiler_version}}"
   versions: !include versions.yaml
   version: "{{versions.gromacs}}"
-  release: 3
   builddir: build
   root: "{{pkg_defaults.app_path}}/{{name}}/{{version}}/{{compiler}}/{{compiler_version}}/node"
   compiler: "{{versions.compiler.name}}"
