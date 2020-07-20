@@ -1,0 +1,18 @@
+# Builds the module for namd 
+!include namd.yaml
+!include rcic-module.yaml
+---
+- package: "{{name}} module"
+  category: CHEMISTRY
+  module: 
+    <<: *ModuleCompiler
+    prepend_path: 
+      - PATH {{root}}/{{dest_arch}}
+    prereq:
+      - *ModuleCompiler_prereq
+      - charm/{{versions.charm}}
+      - mkl/{{versions.mkl}}
+    requires:
+      - *ModuleCompiler_requires
+      - charm_{{versions.charm}}_{{compiler}}_{{compiler_version}}-module
+      - mkl_{{versions.mkl}}-module

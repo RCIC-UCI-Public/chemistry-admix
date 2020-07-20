@@ -1,4 +1,5 @@
 !include rcic-package.yaml
+!include rpm.yaml
 ---
 - package: NAMD Molecular Dynamics 
   name: namd 
@@ -11,7 +12,6 @@
   root: "{{pkg_defaults.app_path}}/{{name}}/{{version}}/{{compiler}}/{{compiler_version}}"
   compiler: "{{versions.compiler.name}}"
   compiler_version: "{{versions.compiler.version}}"
-
   vendor_source: https://www.ks.uiuc.edu/Development/Download/download.cgi
   addsource:
     - fftw-linux-x86_64.tar.gz
@@ -32,6 +32,8 @@
 
   
   namd_arch: Linux-x86_64-g++  
+  dest_arch: "{{namd_arch}}"
+  with_cuda: "" 
   build:
     preconfigure: >
        tar xzf ../fftw-linux-x86_64.tar.gz; mv linux-x86_64 fftw; 
@@ -41,22 +43,28 @@
        mv tcl8.5.9-linux-x86_64 tcl
 
     configure: ./config  
-    configure_args: "{{namd_arch}} --charm-base $$charm__PREFIX"
+    configure_args: "{{namd_arch}} --charm-base $$charm__PREFIX --with-mkl {{with_cuda}}" 
     modules: 
       - foundation
       - "{{compiler}}/{{compiler_version}}"
       - "charm/{{versions.charm}}/{{compiler}}.{{compiler_version}}"
+      - mkl/{{versions.mkl}}
     pkgmake: > 
       cd {{namd_arch}};
       make -j 8
     target: 
+    requires:
+      - "{{compiler}}_{{compiler_version}}"
+      - "charm_{{versions.charm}}_{{compiler}}_{{compiler_version}}"
+      - mkl_{{versions.mkl}}
+
   install:
      makeinstall: >
        cd {{namd_arch}};
-       mkdir -p $(ROOT)/{{root}}/{{namd_arch}};
-       install -m 755 charmrun flipbinpdb flipdcd namd2 psfgen sortreplicas $(ROOT)/{{root}}/{{namd_arch}}
+       mkdir -p $(ROOT)/{{root}}/{{dest_arch}};
+       install -m 755 charmrun flipbinpdb flipdcd namd2 psfgen sortreplicas $(ROOT)/{{root}}/{{dest_arch}}
 
   requires:
     - "{{compiler}}_{{compiler_version}}"
     - "charm_{{versions.charm}}_{{compiler}}_{{compiler_version}}"
-  rpm: !include rpm.extras.yaml
+    - mkl_{{versions.mkl}}

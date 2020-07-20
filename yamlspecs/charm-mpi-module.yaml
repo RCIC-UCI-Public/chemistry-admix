@@ -1,0 +1,11 @@
+# Builds the module for charm++
+!include charm-mpi.yaml
+!include rcic-module.yaml
+---
+- package: "{{name}} module"
+  category: TOOLS
+  pkgname: "{{baserpm}}_{{mpi}}_{{mpi_version}}-module"
+  module:
+    <<: *ModuleCompilerMpi
+#    setenv:
+#      - UDUNITS_HOME {{root}}

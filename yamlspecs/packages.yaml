@@ -21,6 +21,9 @@ bootstrap:
   - mdtraj-module
   - charm
   - charm-module
+  - charm-mpi
+  - charm-mpi-module
+
 build:
   - amber
   - amber-module
@@ -51,6 +54,10 @@ build:
   - openeye-toolkits-module
   - openbabel
   - openbabel-module
+  - namd
+  - namd-module
+  - namd-cuda
+  - namd-cuda-module
 manifest:
   - "{{bootstrap}}"
   - "{{build}}"

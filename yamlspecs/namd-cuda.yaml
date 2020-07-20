@@ -1,0 +1,20 @@
+!include namd.yaml
+---
+- package: NAMD Molecular Dynamics 
+  dest_arch: Linux-x86_64.cuda10 
+  with_cuda: "--with-cuda --cuda-prefix $$CUDA_HOME"
+  cuda_module: cuda/{{versions.cuda}}
+  cuda_requires: cuda-toolkit_{{versions.cuda}}
+  pkgname: "{{baserpm}}-cuda"
+  build:
+    modules: 
+      - "{{compiler}}/{{compiler_version}}"
+      - "charm/{{versions.charm}}/{{compiler}}.{{compiler_version}}"
+      - mkl/{{versions.mkl}}
+      - "{{cuda_module}}"
+  requires:
+    - "{{compiler}}_{{compiler_version}}"
+    - "charm_{{versions.charm}}_{{compiler}}_{{compiler_version}}"
+    - mkl_{{versions.mkl}}
+    - "{{cuda_requires}}" 
+

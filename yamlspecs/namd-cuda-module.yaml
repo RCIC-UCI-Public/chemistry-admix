@@ -1,0 +1,24 @@
+# Builds the module for namd 
+!include namd-cuda.yaml
+!include rcic-module.yaml
+---
+- package: "{{name}} module"
+  pkgname: "{{baserpm}}-cuda-module" 
+  category: CHEMISTRY
+  module:
+    <<: *ModuleCompiler
+    logname: "{{name}}/{{version}}/{{compiler}}.{{compiler_version}}-cuda"
+    name: "{{compiler}}.{{compiler_version}}-cuda"
+
+    prepend_path: 
+      - PATH {{root}}/{{dest_arch}}
+    prereq:
+      - *ModuleCompiler_prereq
+      - charm/{{versions.charm}}
+      - mkl/{{versions.mkl}}
+      - cuda/{{versions.cuda}}
+    requires:
+      - *ModuleCompiler_requires
+      - charm_{{versions.charm}}_{{compiler}}_{{compiler_version}}-module
+      - mkl_{{versions.mkl}}-module
+      - cuda_{{versions.cuda}}-module
