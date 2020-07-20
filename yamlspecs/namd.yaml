@@ -33,6 +33,7 @@
   
   namd_arch: Linux-x86_64-g++  
   dest_arch: "{{namd_arch}}"
+  charm_arch: multicore-linux-x86_64 
   with_cuda: "" 
   build:
     preconfigure: >
@@ -43,7 +44,7 @@
        mv tcl8.5.9-linux-x86_64 tcl
 
     configure: ./config  
-    configure_args: "{{namd_arch}} --charm-base $$charm__PREFIX --with-mkl {{with_cuda}}" 
+    configure_args: "{{namd_arch}} --charm-base $$charm__PREFIX --charm-arch {{charm_arch}} --with-mkl {{with_cuda}}" 
     modules: 
       - foundation
       - "{{compiler}}/{{compiler_version}}"

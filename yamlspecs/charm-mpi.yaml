@@ -11,6 +11,7 @@
   mpi: "{{versions.mpi.name}}"
   mpi_version: "{{versions.mpi.version}}"
 
+  charm_flags: --basedir=$$MPI_HOME 
   build:
     modules: 
       - foundation

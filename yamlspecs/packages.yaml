@@ -58,6 +58,8 @@ build:
   - namd-module
   - namd-cuda
   - namd-cuda-module
+  - namd-mpi
+  - namd-mpi-module
 manifest:
   - "{{bootstrap}}"
   - "{{build}}"
