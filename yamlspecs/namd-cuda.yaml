@@ -5,7 +5,7 @@
   with_cuda: "--with-cuda --cuda-prefix $$CUDA_HOME"
   cuda_module: cuda/{{versions.cuda}}
   cuda_requires: cuda-toolkit_{{versions.cuda}}
-  pkgname: "{{baserpm}}-cuda"
+  pkgname: "{{baserpm}}_cuda_{{versions.cuda}}"
   build:
     modules: 
       - "{{compiler}}/{{compiler_version}}"

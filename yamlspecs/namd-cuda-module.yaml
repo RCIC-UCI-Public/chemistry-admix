@@ -3,22 +3,22 @@
 !include rcic-module.yaml
 ---
 - package: "{{name}} module"
-  pkgname: "{{baserpm}}-cuda-module" 
+  pkgname: "{{baserpm}}_cuda_{{versions.cuda}}-module" 
   category: CHEMISTRY
+
+  # looks just like an MPI module, except cuds
+  mpi: cuda
+  mpi_version: "{{versions.cuda}}"
   module:
-    <<: *ModuleCompiler
-    logname: "{{name}}/{{version}}/{{compiler}}.{{compiler_version}}-cuda"
-    name: "{{compiler}}.{{compiler_version}}-cuda"
+    <<: *ModuleCompilerMpi
 
     prepend_path: 
       - PATH {{root}}/{{dest_arch}}
     prereq:
-      - *ModuleCompiler_prereq
+      - *ModuleCompilerMpi_prereq
       - charm/{{versions.charm}}
       - mkl/{{versions.mkl}}
-      - cuda/{{versions.cuda}}
     requires:
-      - *ModuleCompiler_requires
+      - *ModuleCompilerMpi_requires
       - charm_{{versions.charm}}_{{compiler}}_{{compiler_version}}-module
       - mkl_{{versions.mkl}}-module
-      - cuda_{{versions.cuda}}-module
