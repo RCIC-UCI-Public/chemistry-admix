@@ -6,7 +6,7 @@
   pkgname: "{{baserpm}}_cuda_{{versions.cuda}}-module" 
   category: CHEMISTRY
 
-  # looks just like an MPI module, except cuds
+  # Naming looks just like an MPI module, except cuda
   mpi: cuda
   mpi_version: "{{versions.cuda}}"
   module:
@@ -15,10 +15,12 @@
     prepend_path: 
       - PATH {{root}}/{{dest_arch}}
     prereq:
-      - *ModuleCompilerMpi_prereq
+      - *ModuleCompiler_prereq
       - charm/{{versions.charm}}
       - mkl/{{versions.mkl}}
+      - cuda/{{versions.cuda}}
     requires:
-      - *ModuleCompilerMpi_requires
+      - *ModuleCompiler_requires
       - charm_{{versions.charm}}_{{compiler}}_{{compiler_version}}-module
       - mkl_{{versions.mkl}}-module
+      - cuda-toolkit_{{versions.cuda}}
