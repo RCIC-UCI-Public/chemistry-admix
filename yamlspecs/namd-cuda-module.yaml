@@ -16,11 +16,9 @@
       - PATH {{root}}/{{dest_arch}}
     prereq:
       - *ModuleCompiler_prereq
-      - charm/{{versions.charm}}
-      - mkl/{{versions.mkl}}
-      - cuda/{{versions.cuda}}
+      - "{{build.basemodules}}"
+      - "{{cuda_module}}" 
     requires:
       - *ModuleCompiler_requires
-      - charm_{{versions.charm}}_{{compiler}}_{{compiler_version}}-module
-      - mkl_{{versions.mkl}}-module
-      - cuda-toolkit_{{versions.cuda}}
+      - "{{build.basemodulesrequires}}"
+      - cuda_{{versions.cuda}}-module 

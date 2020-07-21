@@ -5,7 +5,10 @@
   name: namd 
   NAME: NAMD
   release: 1
-  baserpm: "{{name}}_{{version}}_{{compiler}}_{{compiler_version}}"
+
+  basefamily: "{{name}}_{{version}}_{{compiler}}_{{compiler_version}}"
+  baserpm: "{{basefamily}}"
+
   versions: !include versions.yaml
   version: "{{versions.namd}}"
   builddir: build
@@ -45,19 +48,25 @@
 
     configure: ./config  
     configure_args: "{{namd_arch}} --charm-base $$charm__PREFIX --charm-arch {{charm_arch}} --with-mkl {{with_cuda}}" 
+    basemodules:
+      - "charm/{{versions.charm}}/{{compiler}}.{{compiler_version}}"
+      - mkl/{{versions.mkl}}
     modules: 
       - foundation
       - "{{compiler}}/{{compiler_version}}"
-      - "charm/{{versions.charm}}/{{compiler}}.{{compiler_version}}"
-      - mkl/{{versions.mkl}}
+      - "{{build.basemodules}}"
     pkgmake: > 
       cd {{namd_arch}};
       make -j 8
     target: 
-    requires:
-      - "{{compiler}}_{{compiler_version}}"
+
+    baserequires:
       - "charm_{{versions.charm}}_{{compiler}}_{{compiler_version}}"
       - mkl_{{versions.mkl}}
+    basemodulesrequires:
+      - "charm_{{versions.charm}}_{{compiler}}_{{compiler_version}}-module"
+      - mkl_{{versions.mkl}}-module
+ 
 
   install:
      makeinstall: >
@@ -67,5 +76,4 @@
 
   requires:
     - "{{compiler}}_{{compiler_version}}"
-    - "charm_{{versions.charm}}_{{compiler}}_{{compiler_version}}"
-    - mkl_{{versions.mkl}}
+    - "{{build.baserequires}}"

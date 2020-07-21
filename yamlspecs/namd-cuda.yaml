@@ -5,16 +5,14 @@
   with_cuda: "--with-cuda --cuda-prefix $$CUDA_HOME"
   cuda_module: cuda/{{versions.cuda}}
   cuda_requires: cuda-toolkit_{{versions.cuda}}
-  pkgname: "{{baserpm}}_cuda_{{versions.cuda}}"
+  baserpm: "{{basefamily}}_cuda_{{versions.cuda}}"
   build:
     modules: 
       - "{{compiler}}/{{compiler_version}}"
-      - "charm/{{versions.charm}}/{{compiler}}.{{compiler_version}}"
-      - mkl/{{versions.mkl}}
+      - "{{build.basemodules}}"
       - "{{cuda_module}}"
   requires:
     - "{{compiler}}_{{compiler_version}}"
-    - "charm_{{versions.charm}}_{{compiler}}_{{compiler_version}}"
-    - mkl_{{versions.mkl}}
+    - "{{build.baserequires}}"
     - "{{cuda_requires}}" 
 

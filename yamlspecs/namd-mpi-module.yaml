@@ -12,9 +12,7 @@
       - PATH {{root}}/{{dest_arch}}
     prereq:
       - *ModuleCompilerMpi_prereq
-      - charm/{{versions.charm}}
-      - mkl/{{versions.mkl}}
+      - "{{build.basemodules}}"
     requires:
       - *ModuleCompilerMpi_requires
-      - charm_{{versions.charm}}_{{compiler}}_{{compiler_version}}-module
-      - mkl_{{versions.mkl}}-module
+      - "{{build.basemodulesrequires}}"
