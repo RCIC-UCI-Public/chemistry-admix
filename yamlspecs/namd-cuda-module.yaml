@@ -5,6 +5,7 @@
 - package: "{{name}} module"
   pkgname: "{{baserpm}}_cuda_{{versions.cuda}}-module" 
   category: CHEMISTRY
+  release: 2
 
   # Naming looks just like an MPI module, except cuda
   mpi: cuda
@@ -20,5 +21,4 @@
       - "{{cuda_module}}" 
     requires:
       - *ModuleCompiler_requires
-      - "{{build.basemodulesrequires}}"
-      - cuda_{{versions.cuda}}-module 
+      - "{{module.prereq}}"

@@ -4,6 +4,7 @@
 ---
 - package: openbabel Module
   category: CHEMISTRY
+  release: 2
   module:
     prereq:
       - *ModuleCompiler_prereq
@@ -11,5 +12,4 @@
       - boost/{{versions.boost}}/{{compiler}}/{{compiler_version}}
     requires:
       - *ModuleCompiler_requires
-      - wxWidgets_{{versions.wxWidgets}}-module
-      - boost_{{versions.boost}}_{{compiler}}_{{compiler_version}}-module
+      - "{{module.prereq}}" 

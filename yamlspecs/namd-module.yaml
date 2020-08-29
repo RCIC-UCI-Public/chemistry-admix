@@ -4,6 +4,7 @@
 ---
 - package: "{{name}} module"
   category: CHEMISTRY
+  release: 2
   module: 
     <<: *ModuleCompiler
     prepend_path: 
@@ -13,4 +14,4 @@
       - "{{build.basemodules}}" 
     requires:
       - *ModuleCompiler_requires
-      - "{{build.basemodulesrequires}}"
+      - "{{module.prereq}}"

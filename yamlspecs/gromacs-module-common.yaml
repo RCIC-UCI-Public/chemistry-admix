@@ -3,6 +3,7 @@
 ---
 - package: gromacs module 
   category: CHEMISTRY
+  release: 2
   lib: &lib lib64
   env: &env
     - *Setenv

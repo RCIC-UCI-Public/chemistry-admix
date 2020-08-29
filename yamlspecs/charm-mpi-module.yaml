@@ -4,8 +4,7 @@
 ---
 - package: "{{name}} module"
   category: TOOLS
+  release: 2
   pkgname: "{{baserpm}}_{{mpi}}_{{mpi_version}}-module"
   module:
     <<: *ModuleCompilerMpi
-#    setenv:
-#      - UDUNITS_HOME {{root}}

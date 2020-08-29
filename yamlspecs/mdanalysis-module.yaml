@@ -4,6 +4,7 @@
 ---
 - package: mdanalysis Module
   category: CHEMISTRY
+  release: 2
   module:
     prepend_path: ""
     setenv: ""
@@ -11,4 +12,4 @@
        - python/{{python_version}}  
     requires:
       - *Requires
-      - python_{{python_version}}-module
+      - "{{module.prereq}}"

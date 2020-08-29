@@ -4,6 +4,7 @@
 ---
 - package: openmm Module
   category: CHEMISTRY
+  release: 2
   module:
     prepend_path:
       - *Flagspath
@@ -13,4 +14,4 @@
       - python/{{versions.python3}}
     requires:
       - *Requires
-      - python_{{versions.python3}}-module
+      - "{{module.prereq}}"

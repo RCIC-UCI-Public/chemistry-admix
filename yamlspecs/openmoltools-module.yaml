@@ -4,6 +4,7 @@
 ---
 - package: openmoltools Module
   category: CHEMISTRY
+  release: 2
   module:
     prepend_path:
       - PATH {{root}}/bin 
@@ -13,5 +14,4 @@
     setenv: ""
     requires:
       - *Requires
-      - python_{{python_version}}-module
-      - amber_{{versions.amber.version}}_{{versions.compiler.name}}_{{versions.compiler.version}}-module
+      - "{{module.prereq}}"

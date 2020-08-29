@@ -4,6 +4,7 @@
 ---
 - package: "{{name}} module"
   pkgname: "{{baserpm}}_{{mpi}}_{{mpi_version}}-module" 
+  release: 2
   category: CHEMISTRY
   module:
     <<: *ModuleCompilerMpi
@@ -15,4 +16,4 @@
       - "{{build.basemodules}}"
     requires:
       - *ModuleCompilerMpi_requires
-      - "{{build.basemodulesrequires}}"
+      - "{{module.prereq}}"
