@@ -9,7 +9,7 @@
     prereq:
       - *ModuleCompiler_prereq
       - wxWidgets/{{versions.wxWidgets}}
-      - boost/{{versions.boost}}/{{compiler}}/{{compiler_version}}
+      - boost/{{versions.boost}}/{{compiler}}.{{compiler_version}}
     requires:
       - *ModuleCompiler_requires
       - "{{module.prereq}}" 
