@@ -3,7 +3,6 @@
 !include rcic-module.yaml
 ---
 - package: "{{name}} module"
-  pkgname: "{{baserpm}}_cuda_{{versions.cuda}}-module" 
   category: CHEMISTRY
   release: 2
 
