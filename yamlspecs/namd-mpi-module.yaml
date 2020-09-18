@@ -3,7 +3,6 @@
 !include rcic-module.yaml
 ---
 - package: "{{name}} module"
-  pkgname: "{{baserpm}}_{{mpi}}_{{mpi_version}}-module" 
   release: 2
   category: CHEMISTRY
   module:
