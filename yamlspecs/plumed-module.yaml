@@ -1,0 +1,21 @@
+# Builds the module for plumed
+!include plumed.yaml
+!include rcic-module.yaml
+---
+- package: plumed Module
+  category: TOOLS
+  module:
+    <<: *ModuleCompiler
+    prepend_path:
+      - *Prepend_path
+      - PYTHONPATH {{root}}/lib/{{name}}/python
+    setenv:
+      - *Setenv
+      - PLUMED_KERNEL {{root}}/lib/lib{{name}}Kernel.so
+      - PLUMED_VIMPATH  {{root}}/lib/{{name}}/vim
+    prereq:
+      - *ModuleCompiler_prereq
+      - "{{build.basemodules}}" 
+    requires:
+      - *ModuleCompiler_requires
+      - "{{module.prereq}}"

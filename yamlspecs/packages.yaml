@@ -35,6 +35,12 @@ build:
   - gromacs-latest-module
   - gromacs-latest-mpi
   - gromacs-latest-mpi-module
+  - gromacs-cuda
+  - gromacs-cuda-module
+  - gromacs-cuda-mpi
+  - gromacs-cuda-mpi-module
+  - gromacs-cuda-mpi-plumed
+  - gromacs-cuda-mpi-plumed-module
   - bhmm
   - gsd
   - GridDataFormats

@@ -1,5 +1,4 @@
-# for the gromacs build and then overwrites specific keys
-#!include gromacs-latest-mpi.yaml
+# # Builds the module for gromacs-mpi. 
 !include gromacs-mpi-module.yaml
 ---
 - version: "{{versions.gromacs_latest}}"

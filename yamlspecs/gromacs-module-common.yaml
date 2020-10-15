@@ -1,10 +1,13 @@
-# Builds the module for gromacs.
+# Common file for gromacs modules 
 !include rcic-module.yaml
 ---
 - package: gromacs module 
   category: CHEMISTRY
-  release: 2
   lib: &lib lib64
   env: &env
     - *Setenv
     - GROMACS_HOME {{root}}
+  module: 
+    <<: *ModuleCompiler
+    lib: *lib
+    setenv: *env

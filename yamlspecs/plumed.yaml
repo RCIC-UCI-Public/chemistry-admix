@@ -1,0 +1,38 @@
+!include rcic-package.yaml
+---
+- package: PLUMED molecular dynamics 
+  name: plumed 
+  versions: !include versions.yaml
+  version: "{{versions.plumed}}"
+  baserpm: "{{name}}_{{version}}_{{compiler}}_{{compiler_version}}"
+  compiler: "{{versions.compiler.name}}"
+  compiler_version: "{{versions.compiler.version}}"
+  root: "{{pkg_defaults.app_path}}/{{name}}/{{version}}/{{compiler}}/{{compiler_version}}"
+  vendor_source: https://github.com/plumed/plumed2/archive/v{{version}}.{{extension}}
+  src_dir: plumed2-{{version}}
+  description: |
+    PLUMED {{version}} is an open-source, community-developed library that provides
+    a wide range of different methods including enhanced-sampling algorithms,
+    free-energy methods and tools to analyze the vast amounts of data produced
+    by molecular dynamics (MD) simulations. See https://www.plumed.org
+  build:
+    configure: ./configure
+    configure_args: --disable-mpi --prefix={{root}}
+    basemodules: 
+      - "{{compiler}}/{{compiler_version}}"
+      - python/{{versions.python3}}
+    modules: 
+      - "{{build.basemodules}}"
+    pkgmake: make -j 4
+    target: 
+    baserequires:
+      - "{{compiler}}_{{compiler_version}}"
+      - python_{{versions.python3}}
+  install:
+     makeinstall: >
+       mkdir -p $(ROOT){{root}};
+       make install DESTDIR=$(ROOT)
+     installextra: $(INSTALL) -m 644  README* COPY* $(ROOT){{root}} 
+  requires:
+    - "{{build.baserequires}}"
+  rpm: !include rpm.extras.yaml

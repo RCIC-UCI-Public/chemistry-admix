@@ -1,0 +1,15 @@
+!include plumed.yaml
+---
+- package: plumed-mpi
+  mpi: "{{versions.mpi.name}}"
+  mpi_version: "{{versions.mpi.version}}"
+  baserpm: "{{name}}_{{version}}_{{compiler}}_{{compiler_version}}_{{mpi}}_{{mpi_version}}"
+  root: "{{pkg_defaults.app_path}}/{{name}}/{{version}}/{{compiler}}/{{compiler_version}}/{{mpi}}/{{mpi_version}}"
+  build:
+    configure_args: CXX=mpicxx --prefix={{root}}
+    modules: 
+      - "{{build.basemodules}}"
+      - "{{mpi}}/{{mpi_version}}/{{compiler}}.{{compiler_version}}"
+  requires:
+    - "{{build.baserequires}}"
+    - "{{mpi}}_{{mpi_version}}_{{compiler}}_{{compiler_version}}"

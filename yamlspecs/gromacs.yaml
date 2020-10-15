@@ -3,27 +3,33 @@
 - package: GROMACS molecular dynamics 
   name: gromacs 
   release: 4
-  baserpm: "{{name}}_{{version}}_{{compiler}}_{{compiler_version}}"
+  basefamily: "{{name}}_{{version}}_{{compiler}}_{{compiler_version}}"
+  baserpm: "{{basefamily}}"
   versions: !include versions.yaml
   version: "{{versions.gromacs}}"
-  builddir: build
-  root: "{{pkg_defaults.app_path}}/{{name}}/{{version}}/{{compiler}}/{{compiler_version}}/node"
+  baseroot: "{{pkg_defaults.app_path}}/{{name}}/{{version}}/{{compiler}}/{{compiler_version}}"
+  root: "{{baseroot}}/node"
   compiler: "{{versions.compiler.name}}"
   compiler_version: "{{versions.compiler.version}}"
   vendor_source: ftp://ftp.gromacs.org/pub/gromacs/{{name}}-{{version}}.{{extension}}
+  builddir: build
+  enabled: "default options"
   description: |
     GROMACS version {{version}}. Built with cmake arguments 
-    {{build.cmake_args}}
+    {{build.options_args}} {{build.cmake_args}}.
+    Build with {{enabled}}
   build:
-    configure: "echo no configure. uses cmake" 
+    configure: "no configure, uses cmake" 
+    configure_args: ""
     modules: 
       - foundation
       - "{{compiler}}/{{compiler_version}}"
+    options_args: ""
     cmake_args: -DGMX_BUILD_OWN_FFTW=ON -DCMAKE_INSTALL_PREFIX={{root}}
     pkgmake: > 
       mkdir {{builddir}};
       cd {{builddir}};
-      cmake {{build.cmake_args}} ..;
+      cmake {{build.options_args}} {{build.cmake_args}} ..;
       make -j 8
     target: 
   install:
