@@ -4,7 +4,6 @@
 ---
 - package: openmm Module
   category: CHEMISTRY
-  release: 2
   module:
     prepend_path:
       - *Flagspath

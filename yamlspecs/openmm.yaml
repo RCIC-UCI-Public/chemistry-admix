@@ -1,6 +1,7 @@
 !include rcic-package.yaml
 ---
 - package: openmm 
+  release: 3
   name: openmm 
   versions: !include versions.yaml
   version: "{{versions.openmm}}"
@@ -33,7 +34,7 @@
   requires:
     - python_{{python_version}}  
   files:
-    - "{{root}}"
+    - "{{parent}}"
     - "{{pkg_defaults.app_path}}/python/{{python_version}}/lib/python{{python_family}}/site-packages"
   rpm: !include rpm.extras.yaml
 
