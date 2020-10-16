@@ -2,6 +2,7 @@
 ---
 - package: OpenEyeToolkits
   name: openeye-toolkits 
+  release: 3
   baserpm: "{{name}}_{{version}}"
   version: "{{versions.openeyetoolkits}}"
   distroname: OpenEye-toolkits-python3-linux-x64
@@ -22,3 +23,5 @@
       mkdir -p $(ROOT){{root}}/doc;
       cp ../README.openeye-toolkits $(ROOT){{root}}/doc;
       python setup.py install --prefix $(ROOT){{root}}
+  files:
+    - "{{parent}}"
