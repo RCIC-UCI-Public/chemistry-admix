@@ -20,7 +20,6 @@
   description: |
     LAMMPS version {{version}} - Large-scale Atomic/Molecular Massively Parallel
     Simulator.
-
     LAMMPS is a classical molecular dynamics simulation code designed to
     run efficiently on parallel computers.  It was developed at Sandia
     National Laboratories, a US Department of Energy facility, with
@@ -31,7 +30,7 @@
   builddir: build
   build:
     preconfigure: mkdir {{builddir}}
-    configure: cd {{builddir}}; cmake .. 
+    configure: cd {{builddir}}; cmake ../cmake
     configure_args: -DCMAKE_INSTALL_ROOT={{root}} 
     basemodules:
       - foundation 
