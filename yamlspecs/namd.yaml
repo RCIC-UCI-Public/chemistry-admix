@@ -4,7 +4,7 @@
 - package: NAMD Molecular Dynamics 
   name: namd 
   NAME: NAMD
-  release: 1
+  release: 2
 
   basefamily: "{{name}}_{{version}}_{{compiler}}_{{compiler_version}}"
   baserpm: "{{basefamily}}"

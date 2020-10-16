@@ -3,6 +3,7 @@
 ---
 - package: charm
   name: charm 
+  release: 2
   baserpm: "{{name}}_{{version}}_{{compiler}}_{{compiler_version}}"
   versions: !include versions.yaml
   version: "{{versions.charm}}"
