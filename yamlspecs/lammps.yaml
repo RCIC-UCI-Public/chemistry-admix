@@ -44,6 +44,6 @@
   install:
      makeinstall: >
        cd {{builddir}};
-       make install DESTDIR=$(ROOT)/{{root}}
+       make install DESTDIR=$(ROOT)
   requires:
     - "{{compiler}}_{{compiler_version}}"
