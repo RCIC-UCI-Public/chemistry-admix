@@ -23,7 +23,8 @@ bootstrap:
   - charm-module
   - charm-mpi
   - charm-mpi-module
-
+  - plumed
+  - plumed-module
 build:
   - amber
   - amber-module
@@ -66,6 +67,8 @@ build:
   - namd-cuda-module
   - namd-mpi
   - namd-mpi-module
+  - lammps
+  - lammps-module
 manifest:
   - "{{bootstrap}}"
   - "{{build}}"

@@ -1,0 +1,14 @@
+!include lammps.yaml
+!include rcic-module.yaml
+---
+- package: lammps module 
+  category: CHEMISTRY
+  module: 
+    <<: *ModuleCompiler
+    lib: lib64
+    prereq:
+      - *ModuleCompilerMpi_prereq
+      - "{{build.basemodules}}" 
+    requires:
+      - *ModuleCompilerMpi_requires
+      - "{{module.prereq}}"
