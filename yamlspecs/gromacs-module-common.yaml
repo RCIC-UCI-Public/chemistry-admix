@@ -3,6 +3,7 @@
 ---
 - package: gromacs module 
   category: CHEMISTRY
+  release: 6
   description: "{{base_description}}"
   lib: &lib lib64
   env: &env
