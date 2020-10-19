@@ -14,10 +14,11 @@
   vendor_source: ftp://ftp.gromacs.org/pub/gromacs/{{name}}-{{version}}.{{extension}}
   builddir: build
   enabled: "default options"
+  base_description: |
+    GROMACS version {{version}}.  Build with {{enabled}}.
   description: |
-    GROMACS version {{version}}. Built with cmake arguments 
-    {{build.options_args}} {{build.cmake_args}}.
-    Build with {{enabled}}
+    {{base_description}}
+    Built with cmake arguments {{build.options_args}} {{build.cmake_args}}.
   build:
     configure: "no configure, uses cmake" 
     configure_args: ""

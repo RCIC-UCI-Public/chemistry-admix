@@ -3,6 +3,7 @@
 ---
 - package: gromacs module 
   category: CHEMISTRY
+  description: "{{base_description}}"
   lib: &lib lib64
   env: &env
     - *Setenv
