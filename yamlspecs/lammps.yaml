@@ -52,11 +52,4 @@
     - ffmpeg_{{versions.ffmpeg}}
     - "{{mpi_requires}}"
 
-# To enable cuda
-# add to modules
-#      - cuda
-# add to cmake args
-#-D PKG_GPU=on
-
-# see build options 
-# https://git.ecdf.ed.ac.uk/multiscale/lammps/blob/f254b8e3a383c26fc3bf1edbc4b4291ebf849b89/cmake/README.md
+# see ../README.md comments

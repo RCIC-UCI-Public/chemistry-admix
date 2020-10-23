@@ -63,3 +63,8 @@ https://lammps.sandia.gov/doc/Build_basics.html
 
 Building LAMMPS using cmake (gitlab  develoeprs repo)
 https://git.ecdf.ed.ac.uk/multiscale/lammps/blob/master/cmake/README.md
+
+To enable cuda
+- add to modules cuda
+- add to cmake args -D PKG_GPU=on
+
