@@ -1,7 +1,6 @@
 ## chemistry-admix
 chemistry and md software
 
-
 ### Amber
 
 To build an mpi-enabled version will need to use on yaml
@@ -57,3 +56,10 @@ sha1sum  OpenEye-toolkits-python3-linux-x64-2019.10.2.tar.gz
 bd04df6d655015f528c2deee1fa4a368bcedf4bf OpenEye-toolkits-python3-linux-x64-2019.10.2.tar.gz
 ```
 
+### LAMMPS 
+
+Basic build options
+https://lammps.sandia.gov/doc/Build_basics.html
+
+Building LAMMPS using cmake (gitlab  develoeprs repo)
+https://git.ecdf.ed.ac.uk/multiscale/lammps/blob/master/cmake/README.md
