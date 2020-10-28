@@ -3,7 +3,7 @@
 ---
 - package: LAMMPS Molecular Dynamics 
   name: lammps 
-  release: 1
+  release: 2
   basefamily: "{{name}}_{{version}}_{{compiler}}_{{compiler_version}}"
   baserpm: "{{basefamily}}"
   versions: !include versions.yaml
@@ -36,12 +36,12 @@
     basemodules:
       - "{{compiler}}/{{compiler_version}}"
       - ffmpeg/{{versions.ffmpeg}}
+      - hdf5/{{versions.hdf5}}/{{compiler}}.{{compiler_version}}
+      - gsl/{{versions.gsl}}/{{compiler}}.{{compiler_version}}
     modules: 
       - "{{build.basemodules}}"
       - foundation 
       - "{{mpi_module}}"
-      - hdf5/{{versions.hdf5}}/{{compiler}}.{{compiler_version}}
-      - gsl/{{versions.gsl}}/{{compiler}}.{{compiler_version}}
     cmake_args: "-C ../../{{optsfile}} -DBUILD_SHARED_LIBS=on -DBUILD_LIB=on -DCMAKE_INSTALL_PREFIX={{root}}"
     pkgmake: > 
       sed -i -e 's/URL_MD5.*/URL_MD5 {{eigen_md5}}/' cmake/Modules/Packages/USER-SMD.cmake;
