@@ -68,3 +68,6 @@ To enable cuda
 - add to modules cuda
 - add to cmake args -D PKG_GPU=on
 
+Create lammps.<version>.cmake from copying <distro>/cmake/presets/ll_on.cmake
+and removing some of the packages.
+
