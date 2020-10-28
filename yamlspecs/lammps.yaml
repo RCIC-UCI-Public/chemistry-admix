@@ -56,7 +56,7 @@
        cd {{builddir}};
        make install DESTDIR=$(ROOT);
        cd build;
-       cp -p libkim-api.so libkim-api.so.2 $(ROOT){{root}}/lib64
+       mv libkim-api.so libkim-api.so.2 $(ROOT){{root}}/lib64
   requires:
     - "{{compiler}}_{{compiler_version}}"
     - ffmpeg_{{versions.ffmpeg}}
