@@ -13,7 +13,6 @@ mkl: "2019.5.281"
 cuda: "10.1.243"
 eigen: "3.3.7"
 boost: "1.66.0"
-fftw: "3.3.8"
 tcl: "8.6.9"
 # packages versions
 amber:
