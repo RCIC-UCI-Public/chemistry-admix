@@ -5,7 +5,6 @@
   release: 3
   baserpm: "{{name}}_{{version}}"
   version: "{{versions.openeyetoolkits}}"
-  release: 2
   distroname: OpenEye-toolkits-python3-linux-x64
   src_dir: "{{distroname}}-{{version}}"
   src_tarball: "{{distroname}}-{{version}}.{{extension}}"
