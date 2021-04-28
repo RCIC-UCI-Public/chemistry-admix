@@ -25,6 +25,8 @@ bootstrap:
   - charm-mpi-module
   - plumed
   - plumed-module
+  - plumed-mpi
+  - plumed-mpi-module
 build:
   - amber
   - amber-module
