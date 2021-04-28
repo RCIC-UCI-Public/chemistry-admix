@@ -1,5 +1,4 @@
 cff61782f6ac26b8a3569521c5b854f8475a1542  sources/gromacs-2019.4.tar.gz 1DJyt_yI48nuH7fof8mPq-uJylpu88HBe
-50da298839f3431443ade21872d0a764ce8d7b05  sources/gromacs-2020.tar.gz 1sha120evwG6gWVA5H6KtFchGzOYEAonY
 c4841cba1def618190362d8afc26bd7a2d8049ed  sources/gromacs-2020.4.tar.gz 1L5SupOXE_H9_ScWa34Si4LevPGK5iHTi
 4a2eb72929f00e113384909bfde71e1d4f993390  sources/AmberTools19.tar.bz2 16y_9ugIFXsB5aIyrPaSWThbJ7aEFEz9R
 d393972e3ee9d50e520d19c91e64707ab313a739  sources/amber-19.11.tar.gz 1Jcf7pw_YHGl6ff9jo2eixF8vJOLKzjjv
@@ -20,3 +19,5 @@ e7f68863e0b9e6ae9344cb8a20d95cb0a15fa929  sources/pathos-0.2.5.tar.gz 1178LTcmUd
 eba758d757d29cb9c76ab4ae5dcd692a637e598e  sources/charm-6.10.1.tar.gz 1jOd8K1FusCPm8yDVgFQ7R5sqRrNdyyye
 a52992e6589cb03956441e601a4437cb1f2b31fb  sources/NAMD_2.14b2_Source.tar.gz 1SM-O3e2ETvIyAqefjPW9uC1M6K7Tw5Sq
 bd04df6d655015f528c2deee1fa4a368bcedf4bf  sources/OpenEye-toolkits-python3-linux-x64-2019.10.2.tar.gz 1Tg3IXCA2SVYQNRqtxOxk82SIZFQJqJXO
+1f86b1f67e53623aff038c8ee94a7c822e80e06b  sources/plumed-2.6.1.tar.gz 1a8gbkyVDACT_QYCI7LRjFj0Lwh3nMqlp
+ae325cdf93a6a8c8597cfdf5acd26bf2503edc80  sources/lammps-3Mar2020.tar.gz 1KAuKqiVqVEG0gBxMwc1Qdiwt0skrwRHF
