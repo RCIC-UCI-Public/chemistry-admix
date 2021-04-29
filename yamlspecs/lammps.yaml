@@ -3,7 +3,7 @@
 ---
 - package: LAMMPS Molecular Dynamics 
   name: lammps 
-  release: 2
+  release: 3
   basefamily: "{{name}}_{{version}}_{{compiler}}_{{compiler_version}}"
   baserpm: "{{basefamily}}"
   versions: !include versions.yaml
@@ -31,6 +31,7 @@
     - "{{optsfile}}"
   builddir: builddir
   build:
+    patchfile: "{{name}}.{{version}}.USR-PTM.patch"
     configure: "no configure"
     configure_args: ""
     basemodules:

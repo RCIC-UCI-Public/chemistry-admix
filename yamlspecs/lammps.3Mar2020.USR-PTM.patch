@@ -1,0 +1,11 @@
+--- lammps-stable_3Mar2020/src/USER-PTM/compute_ptm_atom.cpp	2020-03-03 07:27:12.000000000 -0800
++++ lammps-stable_3Mar2020/src/USER-PTM/compute_ptm_atom.cpp.new	2021-04-29 11:14:11.619524416 -0700
+@@ -285,7 +285,7 @@
+ 
+   // zero output
+ 
+-  memset(output,0,nmax*NUM_COLUMNS*sizeof(double));
++  memset(&output[0][0],0,nmax*NUM_COLUMNS*sizeof(double));
+ 
+   for (int ii = 0; ii < inum; ii++) {
+ 
