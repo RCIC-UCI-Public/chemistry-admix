@@ -13,7 +13,6 @@
   description: |
     AMBER version {{version}}
   build:
-    configure: echo no configure
     modules: 
       - "{{compiler}}/{{compiler_version}}"
       - python/{{versions.python3}}
@@ -21,7 +20,6 @@
       export AMBERHOME=`pwd`;
       ./configure --no-updates --with-python `which python` gnu; 
       make -j8 install 
-    target: 
   install:
      makeinstall: >
        mkdir -p $(ROOT){{root}}/src;

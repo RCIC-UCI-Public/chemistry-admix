@@ -1,12 +1,6 @@
-# Builds the module for wxWidgets
 !include wxWidgets.yaml
 !include rcic-module.yaml
 ---
 - package: wxWidgets Module
   category: TOOLS
   release: 2
-  module:
-    prereq: 
-      - *ModuleCompiler_prereq
-    requires:
-      - *ModuleCompiler_requires

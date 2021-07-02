@@ -7,8 +7,4 @@
     <<: *ModuleCompiler
     lib: lib64
     prereq:
-      - *ModuleCompilerMpi_prereq
-      - "{{build.basemodules}}" 
-    requires:
-      - *ModuleCompilerMpi_requires
-      - "{{module.prereq}}"
+      - "{{build.base_modules}}" 

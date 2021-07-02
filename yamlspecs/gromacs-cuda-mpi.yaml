@@ -9,8 +9,7 @@
   root: "{{baseroot}}/cuda/{{cuda_version}}/{{mpi}}/{{mpi_version}}"
   enable: "cuda mpi"
   build:
-    modules: 
-      - foundation
+    base_modules: 
       - "{{compiler}}/{{compiler_version}}"
       - "{{cuda_module}}"
       - "{{mpi_module}}"

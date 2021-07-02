@@ -1,4 +1,4 @@
-# Builds the module for namd 
+# module for namd-cuda
 !include namd-cuda.yaml
 !include rcic-module.yaml
 ---
@@ -9,15 +9,8 @@
   # Naming looks just like an MPI module, except cuda
   mpi: cuda
   mpi_version: "{{versions.cuda}}"
+
   module:
     <<: *ModuleCompilerMpi
-
     prepend_path: 
       - PATH {{root}}/{{dest_arch}}
-    prereq:
-      - *ModuleCompiler_prereq
-      - "{{build.basemodules}}"
-      - "{{cuda_module}}" 
-    requires:
-      - *ModuleCompiler_requires
-      - "{{module.prereq}}"

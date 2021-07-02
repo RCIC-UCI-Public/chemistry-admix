@@ -19,7 +19,6 @@
     modules: 
       - "{{compiler}}/{{compiler_version}}"
     pkgmake: make -j8 
-    target: 
   install:
      makeinstall: >
        mkdir -p $(ROOT){{root}};

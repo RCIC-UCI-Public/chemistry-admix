@@ -7,17 +7,15 @@
   # Charm-specific defs. Change these to build different flavors
   charm_arch: mpi-linux-x86_64
   charm_compiler: gcc
+  charm_flags: --basedir=$$MPI_HOME 
 
   mpi: "{{versions.mpi.name}}"
   mpi_version: "{{versions.mpi.version}}"
-
-  charm_flags: --basedir=$$MPI_HOME 
   build:
+    base_modules: 
+      - "{{mpi}}/{{mpi_version}}/{{compiler}}.{{compiler_version}}"
     modules: 
       - foundation
-      - "{{compiler}}/{{compiler_version}}"
-      - "{{mpi}}/{{mpi_version}}/{{compiler}}.{{compiler_version}}"
-
+      - "{{build.base_modules}}"
   requires:
-    - "{{compiler}}_{{compiler_version}}"
     - "{{mpi}}_{{mpi_version}}_{{compiler}}_{{compiler_version}}"

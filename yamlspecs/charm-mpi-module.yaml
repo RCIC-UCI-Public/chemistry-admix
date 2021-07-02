@@ -9,3 +9,5 @@
   pkgname: "{{baserpm}}_{{mpi}}_{{mpi_version}}-module"
   module:
     <<: *ModuleCompilerMpi
+    prereq:
+      - "{{build.base_modules}}"

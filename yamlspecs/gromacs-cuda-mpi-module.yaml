@@ -1,4 +1,4 @@
-# Builds the module for gromacs-cuda-mpi. 
+# module for gromacs-cuda-mpi
 !include gromacs-cuda-mpi.yaml
 !include gromacs-module-common.yaml
 ---
@@ -8,8 +8,4 @@
     prepend_path: 
       - PATH {{root}}/bin
     prereq:
-      - *ModuleCompilerMpi_prereq
-      - "{{cuda_module}}"
-    requires:
-      - *ModuleCompilerMpi_requires
-      - "{{cuda_module}}"
+      - "{{build.base_modules}}"

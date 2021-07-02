@@ -1,4 +1,3 @@
-# Builds the module for charm++
 !include charm.yaml
 !include rcic-module.yaml
 ---
@@ -8,3 +7,5 @@
   description: "{{base_description}}"
   module:
     <<: *ModuleCompiler
+    prereq:
+      - "{{build.base_modules}}"

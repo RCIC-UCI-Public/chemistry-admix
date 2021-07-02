@@ -1,5 +1,4 @@
-# Builds the module for amber
-!include amber.yaml
+# common module for amber
 !include rcic-module.yaml
 ---
 - package: amber module 
@@ -14,9 +13,3 @@
       - *Setenv
       - AMBER_PREFIX {{root}}
       - AMBERHOME {{root}}
-    prereq:
-      - *ModuleCompiler_prereq
-      - python/{{versions.python3}}
-    requires:
-      - *ModuleCompiler_requires
-      - "{{module.prereq}}" 

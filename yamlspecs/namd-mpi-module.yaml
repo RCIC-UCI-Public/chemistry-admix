@@ -1,4 +1,4 @@
-# Builds the module for namd 
+# module for namd-mpi
 !include namd-mpi.yaml
 !include rcic-module.yaml
 ---
@@ -7,12 +7,5 @@
   category: CHEMISTRY
   module:
     <<: *ModuleCompilerMpi
-
     prepend_path: 
       - PATH {{root}}/{{dest_arch}}
-    prereq:
-      - *ModuleCompilerMpi_prereq
-      - "{{build.basemodules}}"
-    requires:
-      - *ModuleCompilerMpi_requires
-      - "{{module.prereq}}"

@@ -20,11 +20,11 @@
     {{base_description}}
     Built with cmake arguments {{build.options_args}} {{build.cmake_args}}.
   build:
-    configure: "no configure, uses cmake" 
-    configure_args: ""
+    base_modules: 
+      - "{{compiler}}/{{compiler_version}}"
     modules: 
       - foundation
-      - "{{compiler}}/{{compiler_version}}"
+      - "{{build.base_modules}}"
     options_args: ""
     cmake_args: -DGMX_BUILD_OWN_FFTW=ON -DCMAKE_INSTALL_PREFIX={{root}}
     pkgmake: > 
@@ -32,7 +32,6 @@
       cd {{builddir}};
       cmake {{build.options_args}} {{build.cmake_args}} ..;
       make -j 8
-    target: 
   install:
      makeinstall: >
        cd {{builddir}};

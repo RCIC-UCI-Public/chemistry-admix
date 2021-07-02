@@ -4,7 +4,6 @@
   mpi: "{{versions.mpi.name}}"
   mpi_version: "{{versions.mpi.version}}"
   baserpm: "{{basefamily}}_{{mpi}}_{{mpi_version}}"
-
   dest_arch: Linux-x86_64.{{mpi}} 
   charm_arch: mpi-linux-x86_64 
   build:

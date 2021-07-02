@@ -9,8 +9,7 @@
   root: "{{baseroot}}/{{mpi}}/{{mpi_version}}"
   enabled: "mpi"
   build:
-    modules:
-      - foundation
+    base_modules:
       - "{{compiler}}/{{compiler_version}}"
       - "{{mpi_module}}"
     options_args: -DGMX_MPI=ON -DGMX_BUILD_MDRUN_ONLY=ON

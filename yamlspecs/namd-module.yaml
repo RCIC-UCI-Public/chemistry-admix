@@ -1,4 +1,4 @@
-# Builds the module for namd 
+# module for namd 
 !include namd.yaml
 !include rcic-module.yaml
 ---
@@ -10,8 +10,4 @@
     prepend_path: 
       - PATH {{root}}/{{dest_arch}}
     prereq:
-      - *ModuleCompiler_prereq
       - "{{build.basemodules}}" 
-    requires:
-      - *ModuleCompiler_requires
-      - "{{module.prereq}}"

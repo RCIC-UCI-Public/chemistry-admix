@@ -24,7 +24,6 @@
     modules: 
       - "{{build.basemodules}}"
     pkgmake: make -j 4
-    target: 
     baserequires:
       - "{{compiler}}_{{compiler_version}}"
       - python_{{versions.python3}}

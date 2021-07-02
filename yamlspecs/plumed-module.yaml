@@ -1,4 +1,3 @@
-# Builds the module for plumed
 !include plumed.yaml
 !include rcic-module.yaml
 ---
@@ -14,8 +13,4 @@
       - PLUMED_KERNEL {{root}}/lib/lib{{name}}Kernel.so
       - PLUMED_VIMPATH  {{root}}/lib/{{name}}/vim
     prereq:
-      - *ModuleCompiler_prereq
       - "{{build.basemodules}}" 
-    requires:
-      - *ModuleCompiler_requires
-      - "{{module.prereq}}"

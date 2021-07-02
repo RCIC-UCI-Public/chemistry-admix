@@ -1,4 +1,4 @@
-# Builds the module for gromacs-cuda-mpi-plumed. 
+# module for gromacs-cuda-mpi-plumed
 !include gromacs-cuda-mpi-plumed.yaml
 !include gromacs-module-common.yaml
 ---
@@ -8,10 +8,4 @@
     prepend_path: 
       - PATH {{root}}/bin
     prereq:
-      - *ModuleCompilerMpi_prereq
-      - "{{cuda_module}}"
-      - "{{plumed_module}}"
-    requires:
-      - *ModuleCompilerMpi_requires
-      - "{{cuda_module}}"
-      - "{{plumed_module}}"
+      - "{{build.base_modules}}"

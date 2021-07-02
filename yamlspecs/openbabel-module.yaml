@@ -1,15 +1,9 @@
-# Builds the module for openbabel
 !include openbabel.yaml
 !include rcic-module.yaml
 ---
-- package: openbabel Module
+- package: openbabel module
   category: CHEMISTRY
   release: 2
   module:
     prereq:
-      - *ModuleCompiler_prereq
-      - wxWidgets/{{versions.wxWidgets}}
-      - boost/{{versions.boost}}/{{compiler}}.{{compiler_version}}
-    requires:
-      - *ModuleCompiler_requires
-      - "{{module.prereq}}" 
+      - "{{build.base_modules}}"
