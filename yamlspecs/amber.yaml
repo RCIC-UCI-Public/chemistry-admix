@@ -1,4 +1,5 @@
 !include rcic-package.yaml
+!include rpm.yaml
 ---
 - package: AMBER molecular dynamics 
   name: amber 
@@ -60,4 +61,3 @@
     - perl(Smoother)
     - perl(TIW)
     - perl(WAMM)
-  rpm: !include rpm.extras.yaml
