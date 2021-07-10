@@ -1,0 +1,5 @@
+!include gromacs-cuda.yaml
+---
+- version: "{{versions.gromacs_latest}}"
+  build:
+    cuda_args: "-DGMX_GPU=CUDA -DCUDA_TOOLKIT_ROOT_DIR=$$CUDA_PATH"

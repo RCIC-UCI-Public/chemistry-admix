@@ -32,18 +32,22 @@ build:
   - amber-module
   - gromacs
   - gromacs-module
-  - gromacs-mpi
-  - gromacs-mpi-module
-  - gromacs-latest
-  - gromacs-latest-module
-  - gromacs-latest-mpi
-  - gromacs-latest-mpi-module
   - gromacs-cuda
   - gromacs-cuda-module
+  - gromacs-mpi
+  - gromacs-mpi-module
   - gromacs-cuda-mpi
   - gromacs-cuda-mpi-module
-  - gromacs-cuda-mpi-plumed
-  - gromacs-cuda-mpi-plumed-module
+  - gromacs-latest
+  - gromacs-latest-module
+  - gromacs-latest-cuda
+  - gromacs-latest-cuda-module
+  - gromacs-latest-mpi
+  - gromacs-latest-mpi-module
+  - gromacs-latest-cuda-mpi
+  - gromacs-latest-cuda-mpi-module
+#  - gromacs-cuda-mpi-plumed
+#  - gromacs-cuda-mpi-plumed-module
   - bhmm
   - gsd
   - GridDataFormats
