@@ -2,7 +2,7 @@
 !include rpm.yaml
 ---
 - package: gromacs-cuda
-  version: "{{versions.gromacs_latest}}"
+  version: "{{versions.gromacs}}"
   cuda_version: "{{versions.cuda}}"
   cuda_module: cuda/{{cuda_version}}
   cuda_requires: cuda-toolkit_{{cuda_version}}

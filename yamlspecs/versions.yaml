@@ -18,7 +18,7 @@ tcl: "8.6.9"
 amber:
   version: "19.11"
   ambertools: "18"
-gromacs: "2019.4"
+gromacs: "2020.4"
 gromacs_latest: "2021.2"
 gsd: "2.1.0"
 bhmm: "0.6.3"
