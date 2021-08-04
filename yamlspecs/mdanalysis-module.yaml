@@ -5,5 +5,5 @@
   category: CHEMISTRY
   release: 2
   module:
-    prepend_path: ""
-    setenv: ""
+    prepend_path:
+    setenv:

@@ -12,7 +12,7 @@
   # Charm-specific defs. Change these to build different flavors
   charm_arch: multicore-linux-x86_64
   charm_compiler: gcc
-  charm_flags: ""
+  charm_flags:
 
   compiler: "{{versions.compiler.name}}"
   compiler_version: "{{versions.compiler.version}}"

@@ -26,7 +26,7 @@
     modules: 
       - foundation
       - "{{build.base_modules}}"
-    options_args: ""
+    options_args:
     cmake_args: -DGMX_BUILD_OWN_FFTW=ON -DCMAKE_INSTALL_PREFIX={{root}}
     pkgmake: > 
       mkdir {{builddir}};

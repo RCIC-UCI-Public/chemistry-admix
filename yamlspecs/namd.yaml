@@ -31,7 +31,7 @@
   namd_arch: Linux-x86_64-g++  
   dest_arch: "{{namd_arch}}"
   charm_arch: multicore-linux-x86_64 
-  with_cuda: "" 
+  with_cuda:
   build:
     preconfigure: >
        tar xzf ../fftw-linux-x86_64.tar.gz; mv linux-x86_64 fftw; 

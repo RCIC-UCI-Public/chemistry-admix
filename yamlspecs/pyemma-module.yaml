@@ -7,7 +7,7 @@
   module:
     prepend_path:
       - PATH {{root}}/bin 
-    setenv: ""
+    setenv:
     prereq: 
        - python/{{python_version}}  
        - hdf5/{{versions.hdf5}}/{{versions.compiler.name}}.{{versions.compiler.version}}

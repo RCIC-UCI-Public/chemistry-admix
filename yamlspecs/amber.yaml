@@ -10,7 +10,7 @@
   root: "{{pkg_defaults.app_path}}/{{name}}/{{version}}/{{compiler}}/{{compiler_version}}"
   compiler: "{{versions.compiler.name}}"
   compiler_version: "{{versions.compiler.version}}"
-  vendor_source: ""
+  vendor_source:
   description: |
     AMBER version {{version}}
   build:

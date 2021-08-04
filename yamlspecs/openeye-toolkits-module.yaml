@@ -7,4 +7,4 @@
     prepend_path:
       - PATH {{root}}/bin
       - PYTHONPATH {{root}}/lib/python{{python_major}}/site-packages
-    setenv: ""
+    setenv:
