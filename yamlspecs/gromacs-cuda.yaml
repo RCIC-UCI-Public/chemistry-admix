@@ -1,5 +1,4 @@
 !include gromacs.yaml
-!include rpm.yaml
 ---
 - package: gromacs-cuda
   version: "{{versions.gromacs_latest}}"
