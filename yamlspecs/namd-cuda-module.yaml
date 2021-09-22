@@ -1,16 +1,13 @@
-# module for namd-cuda
 !include namd-cuda.yaml
 !include rcic-module.yaml
 ---
 - package: "{{name}} module"
-  category: CHEMISTRY
   release: 2
-
-  # Naming looks just like an MPI module, except cuda
+  category: CHEMISTRY
+  # substitute cuda for mpi and inherit ModuleCompilerMpi
   mpi: cuda
-  mpi_version: "{{versions.cuda}}"
-
+  mpi_version: "{{versions.cuda.version}}"
   module:
     <<: *ModuleCompilerMpi
     prepend_path: 
-      - PATH {{root}}/{{dest_arch}}
+      - PATH {{root}}/{{namd_arch}}

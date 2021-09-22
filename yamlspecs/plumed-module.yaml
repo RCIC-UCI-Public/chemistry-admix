@@ -12,5 +12,3 @@
       - *Setenv
       - PLUMED_KERNEL {{root}}/lib/lib{{name}}Kernel.so
       - PLUMED_VIMPATH  {{root}}/lib/{{name}}/vim
-    prereq:
-      - "{{build.basemodules}}" 

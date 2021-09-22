@@ -1,4 +1,3 @@
-# module for gromacs-mpi
 !include gromacs-mpi.yaml
 !include gromacs-module-common.yaml
 ---

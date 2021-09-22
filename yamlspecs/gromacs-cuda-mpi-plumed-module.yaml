@@ -1,4 +1,3 @@
-# module for gromacs-cuda-mpi-plumed
 !include gromacs-cuda-mpi-plumed.yaml
 !include gromacs-module-common.yaml
 ---
@@ -7,5 +6,3 @@
     name: "{{compiler}}.{{compiler_version}}-cuda.{{cuda_version}}.{{mpi}}.{{mpi_version}}.plumed.{{plumed_version}}"
     prepend_path: 
       - PATH {{root}}/bin
-    prereq:
-      - "{{build.base_modules}}"

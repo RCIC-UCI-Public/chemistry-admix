@@ -21,8 +21,11 @@
     {{base_description}}
     Built with cmake arguments {{build.options_args}} {{build.cmake_args}}.
   build:
+    addmodules:
+    addrequires:
     base_modules: 
       - "{{compiler}}/{{compiler_version}}"
+      - "{{build.addmodules}}"
     modules: 
       - foundation
       - "{{build.base_modules}}"
@@ -40,3 +43,4 @@
      installextra: $(INSTALL) -m 644  README* COPYING AUTHORS $(ROOT){{root}} 
   requires:
     - "{{compiler}}_{{compiler_version}}"
+    - "{{build.addrequires}}"

@@ -1,4 +1,0 @@
-# module for gromacs-mpi latest version
-!include gromacs-mpi-module.yaml
----
-- version: "{{versions.gromacs_latest}}"

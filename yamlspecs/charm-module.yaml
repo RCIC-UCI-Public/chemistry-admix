@@ -4,7 +4,6 @@
 - package: "{{name}} module"
   category: TOOLS
   release: 2
-  description: "{{base_description}}"
   module:
     <<: *ModuleCompiler
     prereq:

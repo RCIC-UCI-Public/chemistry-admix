@@ -1,16 +1,12 @@
 !include namd.yaml
+!include common-mpi.yaml
 ---
-- package: NAMD Molecular Dynamics 
-  mpi: "{{versions.mpi.name}}"
-  mpi_version: "{{versions.mpi.version}}"
-  baserpm: "{{basefamily}}_{{mpi}}_{{mpi_version}}"
-  dest_arch: Linux-x86_64.{{mpi}} 
+- package: namd-mpi
+  namd_arch: Linux-x86_64.{{mpi}} 
   charm_arch: mpi-linux-x86_64 
-  build:
-    modules: 
-      - "{{build.basemodules}}"
-      - "{{mpi}}/{{mpi_version}}/{{compiler}}.{{compiler_version}}"
-  requires:
-    - "{{build.baserequires}}"
-    - "{{mpi}}_{{mpi_version}}_{{compiler}}_{{compiler_version}}"
-
+#  build:
+#    addmodules: 
+#      #- "{{build.basemodules}}"
+#      - "{{mpi_module}}"
+#    addrequires:
+#      - "{{mpi_requires}}"

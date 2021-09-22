@@ -1,4 +1,3 @@
-# Common file for gromacs modules 
 !include rcic-module.yaml
 ---
 - package: gromacs module 
@@ -13,3 +12,5 @@
     <<: *ModuleCompiler
     lib: *lib
     setenv: *env
+    prereq:
+      - "{{build.base_modules}}"

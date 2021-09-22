@@ -8,29 +8,27 @@
   versions: !include versions.yaml
   version: "{{versions.charm}}"
   root: "{{pkg_defaults.app_path}}/{{name}}/{{version}}/{{compiler}}/{{compiler_version}}"
-
-  # Charm-specific defs. Change these to build different flavors
-  charm_arch: multicore-linux-x86_64
-  charm_compiler: gcc
-  charm_flags:
-
   compiler: "{{versions.compiler.name}}"
   compiler_version: "{{versions.compiler.version}}"
   vendor_source: http://charm.cs.illinois.edu/distrib/{{name}}-{{version}}.{{extension}}
-  base_description: |
+  # Charm-specific defs. Change these to build different flavors
+  charm_arch: multicore-linux-x86_64
+  charm_compiler: "{{compiler}}"
+  charm_flags:
+  description: |
     CHARM++ version {{version}} is a machine independent parallel programming system. 
     Programs written using this system will run unchanged on MIMD machines with or 
     without a shared memory. It provides high-level mechanisms and strategies to 
     facilitate the task of developing even highly complex parallel applications.
-  description: |
-    {{base_description}}
-    Built with arguments {{build.build_args}}
+    Built with arguments {{charm_arch}} {{charm_compiler}} {{charm_flags}} --build-shared --enable-zlib
   builddir: cbuild
   src_dir: "{{name}}-v{{version}}"
   build:
     configure: echo use charm-supplied build script 
+    addmodules:
     base_modules: 
       - "{{compiler}}/{{compiler_version}}"
+      - "{{build.addmodules}}"
     modules: 
       - foundation
       - "{{build.base_modules}}"
@@ -46,6 +44,9 @@
       -j8
     pkgmake: ./build 
     target: "{{build.build_args}}" 
+    addrequires:
+    baserequires:
+      - "{{compiler}}_{{compiler_version}}"
   install:
      makeinstall: >
        cd {{builddir}}/tmp;
@@ -53,4 +54,5 @@
        (cd $(ROOT)/{{root}}/lib/; ln -s ../lib_so/* . )
      installextra: $(INSTALL) -m 644  README* COPYING AUTHORS $(ROOT){{root}} 
   requires:
-    - "{{compiler}}_{{compiler_version}}"
+    - "{{build.baserequires}}"
+    - "{{build.addrequires}}"

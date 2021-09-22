@@ -1,3 +1,0 @@
-!include gromacs-mpi.yaml
----
-- version: "{{versions.gromacs_latest}}"

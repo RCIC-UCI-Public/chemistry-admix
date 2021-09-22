@@ -1,18 +1,6 @@
 !include namd.yaml
+!include common-cuda.yaml
 ---
-- package: NAMD Molecular Dynamics 
-  dest_arch: Linux-x86_64.cuda10 
+- package: namd-cuda
+  namd_arch: Linux-x86_64.cuda10 
   with_cuda: "--with-cuda --cuda-prefix $$CUDA_HOME"
-  cuda_module: cuda/{{versions.cuda}}
-  cuda_requires: cuda-toolkit_{{versions.cuda}}
-  baserpm: "{{basefamily}}_cuda_{{versions.cuda}}"
-  build:
-    modules: 
-      - "{{compiler}}/{{compiler_version}}"
-      - "{{build.basemodules}}"
-      - "{{cuda_module}}"
-  requires:
-    - "{{compiler}}_{{compiler_version}}"
-    - "{{build.baserequires}}"
-    - "{{cuda_requires}}" 
-

@@ -1,7 +1,2 @@
-# module for gromacs
 !include gromacs.yaml
 !include gromacs-module-common.yaml
----
-- module:
-    prereq:
-      - "{{build.base_modules}}"

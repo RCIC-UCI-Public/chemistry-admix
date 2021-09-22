@@ -4,13 +4,15 @@ compiler:
   version: "8.4.0"
 hdf5: "1.10.5"
 mpi:
-   name: openmpi
-   version: "4.0.3"
+  name: openmpi
+  version: "4.0.3"
+cuda:
+  name: cuda
+  version:  "10.1.243"
 python3: "3.8.0"
 python3_family: "3.8"
 python3_major: "3"
 mkl: "2019.5.281"
-cuda: "10.1.243"
 eigen: "3.3.7"
 boost: "1.66.0"
 tcl: "8.6.9"
@@ -18,8 +20,7 @@ tcl: "8.6.9"
 amber:
   version: "19.11"
   ambertools: "18"
-gromacs: "2019.4"
-gromacs_latest: "2020.4"
+gromacs: "2020.4"
 gsd: "2.1.0"
 bhmm: "0.6.3"
 GridDataFormats: "0.5.0"
