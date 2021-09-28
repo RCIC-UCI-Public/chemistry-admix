@@ -7,6 +7,6 @@
   addfile: 
     - filter-requires-{{name}}.sh
   build:
-    cuda_args: "-DGMX_GPU=ON -DCUDA_TOOLKIT_ROOT_DIR=$$CUDA_PATH"
+    cuda_args: "-DGMX_GPU={{versions.gromacs.GMX_GPU}} -DCUDA_TOOLKIT_ROOT_DIR=$$CUDA_PATH"
     options_args: "{{build.cuda_args}}"
   rpmFilters: *filterRequires

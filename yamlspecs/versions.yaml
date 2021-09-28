@@ -20,7 +20,9 @@ tcl: "8.6.9"
 amber:
   version: "19.11"
   ambertools: "18"
-gromacs: "2020.4"
+gromacs: 
+  version: "2020.4"
+  GMX_GPU: "ON"
 gsd: "2.1.0"
 bhmm: "0.6.3"
 GridDataFormats: "0.5.0"

@@ -7,7 +7,7 @@
   basefamily: "{{name}}_{{version}}_{{compiler}}_{{compiler_version}}"
   baserpm: "{{basefamily}}"
   versions: !include versions.yaml
-  version: "{{versions.gromacs}}"
+  version: "{{versions.gromacs.version}}"
   baseroot: "{{pkg_defaults.app_path}}/{{name}}/{{version}}/{{compiler}}/{{compiler_version}}"
   root: "{{baseroot}}/node"
   compiler: "{{versions.compiler.name}}"

@@ -1,3 +1,5 @@
 !include versions.yaml
 ---
-gromacs: "2021.2"
+gromacs: 
+  version: "2021.2"
+  GMX_GPU: "CUDA"
