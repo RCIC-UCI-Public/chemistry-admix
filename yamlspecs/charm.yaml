@@ -20,7 +20,8 @@
     Programs written using this system will run unchanged on MIMD machines with or 
     without a shared memory. It provides high-level mechanisms and strategies to 
     facilitate the task of developing even highly complex parallel applications.
-    Built with arguments {{charm_arch}} {{charm_compiler}} {{charm_flags}} --build-shared --enable-zlib
+    Built with arguments charm++ {{charm_arch}} {{charm_compiler}} {{charm_flags}} --build-shared
+    --enable-zlib --with-production --destination {{builddir}} -j8
   builddir: cbuild
   src_dir: "{{name}}-v{{version}}"
   build:
@@ -33,15 +34,8 @@
       - foundation
       - "{{build.base_modules}}"
     build_args: >
-      charm++
-      {{charm_arch}} 
-      {{charm_compiler}}
-      {{charm_flags}}
-      --build-shared
-      --enable-zlib
-      --with-production  
-      --destination {{builddir}}
-      -j8
+      charm++ {{charm_arch}} {{charm_compiler}} {{charm_flags}} --build-shared
+      --enable-zlib --with-production --destination {{builddir}} -j8
     pkgmake: ./build 
     target: "{{build.build_args}}" 
     addrequires:
