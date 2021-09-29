@@ -1,22 +1,21 @@
 !include rcic-package.yaml
 !include rpm.yaml
+!include common-mpi.yaml
 ---
 - package: LAMMPS Molecular Dynamics 
   name: lammps 
-  release: 3
+  release: 4
   basefamily: "{{name}}_{{version}}_{{compiler}}_{{compiler_version}}"
   baserpm: "{{basefamily}}"
   versions: !include versions.yaml
-  version: "{{versions.lammps}}"
+  version: "{{versions.lammps.version}}"
+  reltype: "{{versions.lammps.rel}}"
   compiler: "{{versions.compiler.name}}"
   compiler_version: "{{versions.compiler.version}}"
-  mpi: "{{versions.mpi.name}}"
-  mpi_version: "{{versions.mpi.version}}"
-  mpi_module: "{{mpi}}/{{mpi_version}}/{{compiler}}.{{compiler_version}}"
-  mpi_requires: "{{mpi}}_{{mpi_version}}_{{compiler}}_{{compiler_version}}"
-  root: "{{pkg_defaults.app_path}}/{{name}}/{{version}}/{{compiler}}/{{compiler_version}}"
-  vendor_source: https://github.com/lammps/lammps/archive/stable_{{version}}.{{extension}}
-  src_dir: "{{name}}-stable_{{version}}"
+  baseroot: "{{pkg_defaults.app_path}}/{{name}}/{{version}}/{{compiler}}/{{compiler_version}}"
+  root: "{{baseroot}}/{{mpi}}/{{mpi_version}}"
+  vendor_source: https://github.com/lammps/lammps/archive/{{reltype}}_{{version}}.{{extension}}
+  src_dir: "{{name}}-{{reltype}}_{{version}}"
   description: |
     LAMMPS version {{version}} - Large-scale Atomic/Molecular Massively Parallel
     Simulator. LAMMPS is a classical molecular dynamics simulation code designed
@@ -30,23 +29,27 @@
     - "{{optsfile}}"
   builddir: builddir
   build:
-    patchfile: "{{name}}.{{version}}.USR-PTM.patch"
+    preconfigure:
+      sed -i -e 's/URL_MD5.*/URL_MD5 {{eigen_md5}}/' cmake/Modules/Packages/USER-SMD.cmake;
+      sed -i -e 's%URL http.*%URL {{eigen_url}}/{{versions.eigen}}/eigen-{{versions.eigen}}.tar.gz%' cmake/Modules/Packages/USER-SMD.cmake
+    patchfile: "{{name}}.{{version}}.patch"
     base_modules:
       - ffmpeg/{{versions.ffmpeg}}
       - hdf5/{{versions.hdf5}}/{{compiler}}.{{compiler_version}}
       - gsl/{{versions.gsl}}/{{compiler}}.{{compiler_version}}
-      - "{{mpi_module}}"
+      - "{{build.addmodules}}"
+      - fftw/3.3.8 
+# /gcc.8.4.0-openmpi.4.0.3 
     modules: 
       - "{{build.base_modules}}"
       - foundation 
-    cmake_args: "-C ../../{{optsfile}} -DBUILD_SHARED_LIBS=on -DBUILD_LIB=on -DCMAKE_INSTALL_PREFIX={{root}}"
+    gpu_opts: 
+    cmake_args: "-C ../../{{optsfile}} -DBUILD_SHARED_LIBS=on -DBUILD_LIB=on {{build.gpu_opts}} -DCMAKE_INSTALL_PREFIX={{root}}"
     pkgmake: > 
-      sed -i -e 's/URL_MD5.*/URL_MD5 {{eigen_md5}}/' cmake/Modules/Packages/USER-SMD.cmake;
-      sed -i -e 's%URL http.*%URL {{eigen_url}}/{{versions.eigen}}/eigen-{{versions.eigen}}.tar.gz%' cmake/Modules/Packages/USER-SMD.cmake;
       mkdir {{builddir}};
       cd {{builddir}};
       cmake {{build.cmake_args}} ../cmake;
-      make -j 8 
+      make #-j 2
   install:
      makeinstall: >
        cd {{builddir}};
@@ -57,6 +60,6 @@
     - ffmpeg_{{versions.ffmpeg}}
     - hdf5_{{versions.hdf5}}_{{compiler}}_{{compiler_version}}
     - gsl_{{versions.gsl}}_{{compiler}}_{{compiler_version}}
-    - "{{mpi_requires}}"
+    - "{{build.addrequires}}"
 
 # see ../README.md comments
