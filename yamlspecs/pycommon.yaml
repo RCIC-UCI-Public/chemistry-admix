@@ -11,7 +11,7 @@
   build:
     modules: python/{{python_version}} 
   install:
-    makeinstall: python{{python_major}} setup.py install --root $(ROOT) 
+    makeinstall: python{{python_family}} setup.py install --root $(ROOT) 
   requires:
     - python_{{python_version}}  
   files:
