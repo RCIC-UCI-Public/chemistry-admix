@@ -2,11 +2,5 @@
 !include common-mpi.yaml
 ---
 - package: namd-mpi
-  namd_arch: Linux-x86_64.{{mpi}} 
+  dest_arch: Linux-x86_64.{{mpi}} 
   charm_arch: mpi-linux-x86_64 
-#  build:
-#    addmodules: 
-#      #- "{{build.basemodules}}"
-#      - "{{mpi_module}}"
-#    addrequires:
-#      - "{{mpi_requires}}"

@@ -29,6 +29,7 @@
     trajectory analysis, but is also file-compatible with AMBER, CHARMM, and 
     X-PLOR. NAMD is distributed free of charge with source code 
   namd_arch: Linux-x86_64-g++  
+  dest_arch: "{{namd_arch}}"
   charm_arch: multicore-linux-x86_64 
   with_cuda:
   build:
@@ -59,8 +60,8 @@
   install:
      makeinstall: >
        cd {{namd_arch}};
-       mkdir -p $(ROOT)/{{root}}/{{namd_arch}};
-       install -m 755 charmrun flipbinpdb flipdcd namd2 psfgen sortreplicas $(ROOT)/{{root}}/{{namd_arch}}
+       mkdir -p $(ROOT)/{{root}}/{{dest_arch}};
+       install -m 755 charmrun flipbinpdb flipdcd namd2 psfgen sortreplicas $(ROOT)/{{root}}/{{dest_arch}}
   requires:
     - "{{build.baserequires}}"
     - "{{build.addrequires}}"
