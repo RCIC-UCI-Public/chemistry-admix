@@ -6,3 +6,4 @@
   # Charm-specific defs. Change these to build different flavors
   charm_arch: mpi-linux-x86_64
   charm_flags: --basedir=$$MPI_HOME 
+  charm_flags_desc: --basedir=\$MPI_HOME 
