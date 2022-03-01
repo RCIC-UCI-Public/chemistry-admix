@@ -33,12 +33,13 @@
       sed -i -e 's/URL_MD5.*/URL_MD5 {{eigen_md5}}/' cmake/Modules/Packages/USER-SMD.cmake;
       sed -i -e 's%URL http.*%URL {{eigen_url}}/{{versions.eigen}}/eigen-{{versions.eigen}}.tar.gz%' cmake/Modules/Packages/USER-SMD.cmake
     patchfile: "{{name}}.{{version}}.patch"
+    addmodules:
+      - fftw/{{versions.fftw}}/{{compiler}}.{{compiler_version}}
     base_modules:
       - ffmpeg/{{versions.ffmpeg}}
       - hdf5/{{versions.hdf5}}/{{compiler}}.{{compiler_version}}
       - gsl/{{versions.gsl}}/{{compiler}}.{{compiler_version}}
       - "{{build.addmodules}}"
-      - fftw/3.3.8 
 # /gcc.8.4.0-openmpi.4.0.3 
     modules: 
       - "{{build.base_modules}}"
