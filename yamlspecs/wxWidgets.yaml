@@ -19,7 +19,7 @@
       --with-gtk --enable-unicode --prefix={{root}}
     modules: 
       - "{{compiler}}/{{compiler_version}}"
-    pkgmake: make -j8 
+    pkgmake: unset MAKEFLAGS; make -j8 
   install:
      makeinstall: >
        mkdir -p $(ROOT){{root}};

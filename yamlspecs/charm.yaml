@@ -37,7 +37,7 @@
     build_args: >
       charm++ {{charm_arch}} {{charm_compiler}} {{charm_flags}} --build-shared
       --enable-zlib --with-production --destination {{builddir}} -j8
-    pkgmake: ./build 
+    pkgmake: unset MAKEFLAGS; ./build 
     target: "{{build.build_args}}" 
     addrequires:
     baserequires:
