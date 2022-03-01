@@ -10,6 +10,7 @@
   compiler_version: "{{versions.compiler.version}}"
   vendor_source: https://github.com/openbabel/openbabel/archive/{{name}}-{{version_str}}.{{extension}}
   src_dir: "{{name}}-{{name}}-{{version_str}}"
+  src_tarball: "{{name}}-{{version_str}}.{{extension}}"
   description: |
     Open babel {{version}} is a chemical toolbox designed to speak the many languages
     of chemical data. It's an open, collaborative project allowing anyone to search,
