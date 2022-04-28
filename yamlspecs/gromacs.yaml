@@ -12,7 +12,7 @@
   root: "{{baseroot}}/node"
   compiler: "{{versions.compiler.name}}"
   compiler_version: "{{versions.compiler.version}}"
-  vendor_source: ftp://ftp.gromacs.org/pub/gromacs/{{name}}-{{version}}.{{extension}}
+  vendor_source: https://ftp.gromacs.org/gromacs/{{name}}-{{version}}.{{extension}}
   builddir: build
   enabled: "default options"
   base_description: |
@@ -44,3 +44,6 @@
   requires:
     - "{{compiler}}_{{compiler_version}}"
     - "{{build.addrequires}}"
+
+# Source for version prior to 2022
+# ftp://ftp.gromacs.org/pub/gromacs/{{name}}-{{version}}.{{extension}}
