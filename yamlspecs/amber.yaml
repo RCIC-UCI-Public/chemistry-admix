@@ -19,8 +19,9 @@
       - python/{{versions.python3}}
     pkgmake: > 
       export AMBERHOME=`pwd`;
+      unset MAKEFLAGS;
       ./configure --no-updates --with-python `which python` gnu; 
-      make -j8 install 
+      unset MAKEFLAGS; make -j8 install
   install:
      makeinstall: >
        mkdir -p $(ROOT){{root}}/src;
