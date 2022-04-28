@@ -7,7 +7,7 @@
   baserpm: "{{name}}_{{version}}_{{compiler}}_{{compiler_version}}"
   versions: !include versions.yaml
   version: "{{versions.charm}}"
-  root: "{{pkg_defaults.app_path}}/{{name}}/{{version}}/{{compiler}}/{{compiler_version}}"
+  root: "{{pkg_defaults.app_path}}/{{name}}/{{version}}/{{compiler}}/{{compiler_version}}/{{charm_arch}}"
   compiler: "{{versions.compiler.name}}"
   compiler_version: "{{versions.compiler.version}}"
   vendor_source: http://charm.cs.illinois.edu/distrib/{{name}}-{{version}}.{{extension}}
@@ -16,13 +16,14 @@
   charm_compiler: "{{compiler}}"
   charm_flags:
   charm_flags_desc:
+  buildtype: "{{versions.charm_buildtype}}"
   description: |
     CHARM++ version {{version}} is a machine independent parallel programming system. 
     Programs written using this system will run unchanged on MIMD machines with or 
     without a shared memory. It provides high-level mechanisms and strategies to 
     facilitate the task of developing even highly complex parallel applications.
     Built with arguments charm++ {{charm_arch}} {{charm_compiler}} {{charm_flags_desc}} --build-shared
-    --enable-zlib --with-production --destination {{builddir}} -j8
+    --enable-zlib --with-production --destination={{builddir}} -j8
   builddir: cbuild
   src_dir: "{{name}}-v{{version}}"
   build:
@@ -36,18 +37,25 @@
       - "{{build.base_modules}}"
     build_args: >
       charm++ {{charm_arch}} {{charm_compiler}} {{charm_flags}} --build-shared
-      --enable-zlib --with-production --destination {{builddir}} -j8
-    pkgmake: unset MAKEFLAGS; ./build 
+      --enable-zlib --with-production --destination={{builddir}} -j8
+    pkgmake: unset MAKEFLAGS; ./build
     target: "{{build.build_args}}" 
     addrequires:
     baserequires:
       - "{{compiler}}_{{compiler_version}}"
   install:
-     makeinstall: >
-       cd {{builddir}}/tmp;
-       make DESTDIR=$(ROOT)/{{root}}/{{charm_arch}} install;
-       (cd $(ROOT)/{{root}}/lib/; ln -s ../lib_so/* . )
-     installextra: $(INSTALL) -m 644  README* COPYING AUTHORS $(ROOT){{root}} 
+    makeinstall: >
+      $(INSTALL) -m 644  README* LICENSE CITATION* $(ROOT){{root}};
+      cd {{builddir}};
+      if [ -f cmake_install.cmake ]; then \
+          cmake -DCMAKE_INSTALL_PREFIX=$(ROOT){{root}} -P cmake_install.cmake; \
+          chmod 755 $(ROOT){{root}}/lib_so/*; \
+          (cd $(ROOT)/{{root}}/lib; ln -s ../lib_so/* .) \
+      elif [ -f tmp/config.log ]; then \
+          cd tmp; \
+          make DESTDIR=$(ROOT){{root}}/ install; \
+          (cd $(ROOT)/{{root}}/lib; ln -s ../lib_so/* .) \
+      fi
   requires:
     - "{{build.baserequires}}"
     - "{{build.addrequires}}"
