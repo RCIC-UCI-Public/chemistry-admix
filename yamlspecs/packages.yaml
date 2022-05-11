@@ -15,8 +15,6 @@ system:
   - gtk2-devel
   - doxygen
 bootstrap:
-  - wxWidgets
-  - wxWidgets-module
   - mdtraj
   - mdtraj-module
   - charm
@@ -34,35 +32,12 @@ build:
   - gromacs-module
   - gromacs-mpi
   - gromacs-mpi-module
-#  - gromacs-latest
-#  - gromacs-latest-module
-#  - gromacs-latest-mpi
-#  - gromacs-latest-mpi-module
   - gromacs-cuda
   - gromacs-cuda-module
   - gromacs-cuda-mpi
   - gromacs-cuda-mpi-module
   - gromacs-cuda-mpi-plumed
   - gromacs-cuda-mpi-plumed-module
-  - bhmm
-  - gsd
-  - GridDataFormats
-  - mmtf
-  - msmtools
-  - mdanalysis
-  - mdanalysis-module
-  - openmm
-  - openmm-module
-  - openmoltools
-  - openmoltools-module
-  - ppft
-  - pathos
-  - pyemma
-  - pyemma-module
-  - openeye-toolkits
-  - openeye-toolkits-module
-  - openbabel
-  - openbabel-module
   - namd
   - namd-module
   - namd-cuda
@@ -76,3 +51,30 @@ manifest:
   - "{{build}}"
 sets:
   - latest
+  - gromacs2021
+  - gromacs2022
+  - centos8
+# Unused
+# in bootstrap
+# - wxWidgets
+# - wxWidgets-module
+# in build
+# - bhmm
+# - msmtools
+# - pathos
+# - pyemma
+# - pyemma-module
+# - openbabel
+# - openbabel-module
+# - gsd
+# - GridDataFormats
+# - mmtf
+# - mdanalysis
+# - mdanalysis-module
+# - openmm
+# - openmm-module
+# - openmoltools
+# - openmoltools-module
+# - ppft
+# - openeye-toolkits
+# - openeye-toolkits-module
