@@ -10,12 +10,13 @@
   versions: !include versions.yaml
   version: "{{versions.lammps.version}}"
   reltype: "{{versions.lammps.rel}}"
+  update: "{{versions.lammps.update}}"
   compiler: "{{versions.compiler.name}}"
   compiler_version: "{{versions.compiler.version}}"
   baseroot: "{{pkg_defaults.app_path}}/{{name}}/{{version}}/{{compiler}}/{{compiler_version}}"
   root: "{{baseroot}}/{{mpi}}/{{mpi_version}}"
-  vendor_source: https://github.com/lammps/lammps/archive/{{reltype}}_{{version}}.{{extension}}
-  src_dir: "{{name}}-{{reltype}}_{{version}}"
+  vendor_source: https://github.com/lammps/lammps/archive/{{reltype}}_{{version}}{{update}}.{{extension}}
+  src_dir: "{{name}}-{{reltype}}_{{version}}{{update}}"
   description: |
     LAMMPS version {{version}} - Large-scale Atomic/Molecular Massively Parallel
     Simulator. LAMMPS is a classical molecular dynamics simulation code designed
@@ -33,30 +34,31 @@
       sed -i -e 's/URL_MD5.*/URL_MD5 {{eigen_md5}}/' cmake/Modules/Packages/USER-SMD.cmake;
       sed -i -e 's%URL http.*%URL {{eigen_url}}/{{versions.eigen}}/eigen-{{versions.eigen}}.tar.gz%' cmake/Modules/Packages/USER-SMD.cmake
     patchfile: "{{name}}.{{version}}.patch"
-    addmodules:
-      - fftw/{{versions.fftw}}/{{compiler}}.{{compiler_version}}
     base_modules:
       - ffmpeg/{{versions.ffmpeg}}
       - hdf5/{{versions.hdf5}}/{{compiler}}.{{compiler_version}}
       - gsl/{{versions.gsl}}/{{compiler}}.{{compiler_version}}
       - "{{build.addmodules}}"
-# /gcc.8.4.0-openmpi.4.0.3 
+      - fftw/{{versions.fftw}}/{{compiler}}.{{compiler_version}}
+      - netcdf-c/{{versions.netcdfc}}/{{compiler}}.{{compiler_version}}
     modules: 
       - "{{build.base_modules}}"
-      - foundation 
+      - foundation/{{versions.foundation}}
     gpu_opts: 
-    cmake_args: "-C ../../{{optsfile}} -DBUILD_SHARED_LIBS=on -DBUILD_LIB=on {{build.gpu_opts}} -DCMAKE_INSTALL_PREFIX={{root}}"
+    netcdf_opts: "-DNETCDF_INCLUDE_DIR=$$NETCDF/include"
+    cmake_args: "-C ../../{{optsfile}} -DBUILD_SHARED_LIBS=on -DBUILD_LIB=on {{build.gpu_opts}} {{build.netcdf_opts}} -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX={{root}}"
     pkgmake: > 
       mkdir {{builddir}};
       cd {{builddir}};
+      unset MAKEFLAGS;
       cmake {{build.cmake_args}} ../cmake;
-      make #-j 2
+      unset MAKEFLAGS; make #-j 2
   install:
      makeinstall: >
        cd {{builddir}};
        make install DESTDIR=$(ROOT);
        cd build;
-       mv libkim-api.so libkim-api.so.2 $(ROOT){{root}}/lib64
+       mv libkim-api.so* $(ROOT){{root}}/lib64
   requires:
     - ffmpeg_{{versions.ffmpeg}}
     - hdf5_{{versions.hdf5}}_{{compiler}}_{{compiler_version}}
