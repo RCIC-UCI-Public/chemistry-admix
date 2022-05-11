@@ -9,4 +9,10 @@
   build:
     cuda_args: "-DGMX_GPU={{versions.gromacs.GMX_GPU}} -DCUDA_TOOLKIT_ROOT_DIR=$$CUDA_PATH"
     options_args: "{{build.cuda_args}}"
+    addmodules:
+      - "{{cuda_module}}"
+      -  !ifeq "{{version}},2022.1,python/{{versions.python3}},"
+    addrequires:
+      - "{{cuda_requires}}"
+      -  !ifeq "{{version}},2022.1,python_{{versions.python3}},"
   rpmFilters: *filterRequires
