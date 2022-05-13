@@ -1,13 +1,8 @@
+!include packages.yaml
 ---
 versions: versions-gromacs2021.yaml
+bootstrap:
 build:
-  - gromacs
-  - gromacs-module
-  - gromacs-mpi
-  - gromacs-mpi-module
-  - gromacs-cuda
-  - gromacs-cuda-module
-  - gromacs-cuda-mpi
-  - gromacs-cuda-mpi-module
+  - "{{base_gromacs}}"
 manifest:
   - "{{build}}"

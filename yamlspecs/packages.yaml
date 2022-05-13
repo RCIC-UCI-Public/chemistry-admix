@@ -25,9 +25,7 @@ bootstrap:
   - plumed-module
   - plumed-mpi
   - plumed-mpi-module
-build:
-  - amber
-  - amber-module
+base_gromacs:
   - gromacs
   - gromacs-module
   - gromacs-mpi
@@ -36,8 +34,14 @@ build:
   - gromacs-cuda-module
   - gromacs-cuda-mpi
   - gromacs-cuda-mpi-module
+extra_gromacs:
   - gromacs-cuda-mpi-plumed
   - gromacs-cuda-mpi-plumed-module
+build:
+  - amber
+  - amber-module
+  - "{{base_gromacs}}"
+  - "{{extra_gromacs}}"
   - namd
   - namd-module
   - namd-cuda
@@ -50,7 +54,6 @@ manifest:
   - "{{bootstrap}}"
   - "{{build}}"
 sets:
-  - latest
   - gromacs2021
   - gromacs2022
   - centos8
