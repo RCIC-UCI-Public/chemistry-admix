@@ -1,4 +1,5 @@
 !include rcic-package.yaml
+!include rpm.yaml
 ---
 - package: GROMACS molecular dynamics 
   name: gromacs 
@@ -6,12 +7,12 @@
   basefamily: "{{name}}_{{version}}_{{compiler}}_{{compiler_version}}"
   baserpm: "{{basefamily}}"
   versions: !include versions.yaml
-  version: "{{versions.gromacs}}"
+  version: "{{versions.gromacs.version}}"
   baseroot: "{{pkg_defaults.app_path}}/{{name}}/{{version}}/{{compiler}}/{{compiler_version}}"
   root: "{{baseroot}}/node"
   compiler: "{{versions.compiler.name}}"
   compiler_version: "{{versions.compiler.version}}"
-  vendor_source: ftp://ftp.gromacs.org/pub/gromacs/{{name}}-{{version}}.{{extension}}
+  vendor_source: https://ftp.gromacs.org/gromacs/{{name}}-{{version}}.{{extension}}
   builddir: build
   enabled: "default options"
   base_description: |
@@ -20,19 +21,21 @@
     {{base_description}}
     Built with cmake arguments {{build.options_args}} {{build.cmake_args}}.
   build:
-    configure: "no configure, uses cmake" 
-    configure_args: ""
+    addmodules:
+    addrequires:
+    base_modules: 
+      - "{{compiler}}/{{compiler_version}}"
+      - "{{build.addmodules}}"
     modules: 
       - foundation
-      - "{{compiler}}/{{compiler_version}}"
-    options_args: ""
+      - "{{build.base_modules}}"
+    options_args:
     cmake_args: -DGMX_BUILD_OWN_FFTW=ON -DCMAKE_INSTALL_PREFIX={{root}}
     pkgmake: > 
       mkdir {{builddir}};
       cd {{builddir}};
       cmake {{build.options_args}} {{build.cmake_args}} ..;
       make -j 8
-    target: 
   install:
      makeinstall: >
        cd {{builddir}};
@@ -40,4 +43,7 @@
      installextra: $(INSTALL) -m 644  README* COPYING AUTHORS $(ROOT){{root}} 
   requires:
     - "{{compiler}}_{{compiler_version}}"
-  rpm: !include rpm.extras.yaml
+    - "{{build.addrequires}}"
+
+# Source for version prior to 2022
+# ftp://ftp.gromacs.org/pub/gromacs/{{name}}-{{version}}.{{extension}}

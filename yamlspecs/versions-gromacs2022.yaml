@@ -1,0 +1,9 @@
+!include versions.yaml
+!include updates8.yaml
+# NOTE need latest cuda 11 but gcc < 10
+---
+gromacs: 
+  version: "2022.1"
+  GMX_GPU: "CUDA"
+compiler:
+  version: "8.4.0"

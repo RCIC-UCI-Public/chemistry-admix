@@ -13,7 +13,7 @@
   install:
     makeinstall: >
       sed -i 's/    assert/\#    assert/' setup.py;
-      python{{python_major}} setup.py install --root $(ROOT) 
+      python{{python_family}} setup.py install --root $(ROOT) 
   requires:
     - mdtraj_{{versions.mdtraj}}
     - python_{{python_version}}-bhmm

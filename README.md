@@ -1,7 +1,7 @@
 ## chemistry-admix
 chemistry and md software
 
-1. Amber
+1. Amber 19.11
 
    To build an mpi-enabled version will need to use on yaml
    ```bash
@@ -9,7 +9,7 @@ chemistry and md software
    ```
 
    Download from https://ambermd.org/GetAmber.php after providing info on the form.
-   No direct download link available. Put on google drive as AmberTools19.tar.bz2 
+   No direct download link available. Put on google drive as AmberTools19.tar.bz2
 
    From this download file create a distro with applied updates via:
 
@@ -26,7 +26,7 @@ chemistry and md software
    AmberTools 19 Applied Patches:
    ------------------------------
    update.1, update.2, update.3, update.4, update.5, update.6, update.7, update.8, update.9, update.10,
-   update.11 
+   update.11
    ```
 
    Check version of Amber after patching
@@ -41,7 +41,26 @@ chemistry and md software
    tar czvf amber-19.11.tar.gz   amber18
    ```
 
-   Add amber-19.11.tar.gz to google drive and use this file for builds. 
+   Add amber-19.11.tar.gz to google drive and use this file for builds.
+
+1. Amber 21.12
+
+   Similarly to amber 19.11, after applying patches create amber-21.12.tar.gz for Ambertools21.tar.bz2
+   ```bash
+   tar czf amber-21.12.tar.gz amber20_src
+   ```
+
+   Additional patching of source:
+
+   - have to unset MAKEFAGS before configuration step as Cmake makes
+     additional packages configurations before compiling
+
+   - Initially the build was failing with python3.10.2 but workgin with python3.8.0.
+     The fix is to redo cythonize in AmberTools/src/pytraj. This command regenerates correct
+      _<name>.cpp_  files.
+
+   - Build fails when attempts to create a link to non-existing file.
+     Remove linking lines in dat/CMakeLists.txt via sed.
 
 1. Openeye toolkits
 
@@ -59,7 +78,7 @@ chemistry and md software
    In yaml file makeinstall target lines with export and sed provide a way to use created
    openmm libraries for python module before the libs  are installed in the final destintion
 
-1. LAMMPS 
+1. LAMMPS
 
    Info on Basic build options https://lammps.sandia.gov/doc/Build_basics.html
 
@@ -71,7 +90,7 @@ chemistry and md software
    - add to cmake args -D PKG_GPU=on
 
    Create lammps.<version>.cmake from copying <distro>/cmake/presets/ll_on.cmake
-   and removing some of the packages that do not build with the current OS or 
+   and removing some of the packages that do not build with the current OS or
    current compiled apps, for example USER-VTK.
 
    CMake is not able to find currently installed eigen provided via module

@@ -1,0 +1,12 @@
+---
+- cuda: "{{versions.cuda.name}}"
+  cuda_version: "{{versions.cuda.version}}"
+  cuda_module: "{{cuda}}/{{cuda_version}}"
+  cuda_requires: cuda-toolkit_{{versions.cuda.version}}
+  basefamily: "{{name}}_{{version}}_{{compiler}}_{{compiler_version}}"
+  baserpm: "{{basefamily}}_{{cuda}}_{{cuda_version}}"
+  build:
+    addmodules: 
+      - "{{cuda_module}}"
+    addrequires:
+      - "{{cuda_requires}}" 

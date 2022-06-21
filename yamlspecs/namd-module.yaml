@@ -1,17 +1,10 @@
-# Builds the module for namd 
 !include namd.yaml
 !include rcic-module.yaml
 ---
 - package: "{{name}} module"
-  category: CHEMISTRY
   release: 2
-  module: 
+  category: CHEMISTRY
+  module:
     <<: *ModuleCompiler
-    prepend_path: 
-      - PATH {{root}}/{{dest_arch}}
-    prereq:
-      - *ModuleCompiler_prereq
-      - "{{build.basemodules}}" 
-    requires:
-      - *ModuleCompiler_requires
-      - "{{module.prereq}}"
+    prepend_path:
+      - PATH {{root}}/{{namd_arch}}

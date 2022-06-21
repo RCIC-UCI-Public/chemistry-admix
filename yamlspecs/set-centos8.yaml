@@ -1,0 +1,21 @@
+!include packages.yaml
+---
+versions: versions-centos8.yaml
+bootstrap:
+  - mdtraj
+  - mdtraj-module
+  - charm
+  - charm-module
+  - plumed
+  - plumed-module
+  - plumed-mpi
+  - plumed-mpi-module
+build:
+  - amber-cmake
+  - amber-cmake-module
+  - lammps
+  - lammps-module
+# gromacs - see set-gromacs2022
+# namd - dont rebuild namd until get a new stable version. 
+#        As of 2022-04-27 last known source code is still 2.14
+#        do not use nightly or alpha release. 

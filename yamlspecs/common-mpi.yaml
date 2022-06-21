@@ -1,0 +1,12 @@
+---
+- mpi: "{{versions.mpi.name}}"
+  mpi_version: "{{versions.mpi.version}}"
+  mpi_module: "{{mpi}}/{{mpi_version}}/{{compiler}}.{{compiler_version}}"
+  mpi_requires: "{{mpi}}_{{mpi_version}}_{{compiler}}_{{compiler_version}}"
+  basefamily: "{{name}}_{{version}}_{{compiler}}_{{compiler_version}}"
+  baserpm: "{{basefamily}}_{{mpi}}_{{mpi_version}}"
+  build:
+    addmodules:
+      - "{{mpi_module}}"
+    addrequires:
+      - "{{mpi_requires}}"

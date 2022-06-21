@@ -1,16 +1,10 @@
-# Builds the module for openeyetoolkits.
 !include openeye-toolkits.yaml
 !include rcic-module.yaml
 ---
-- package: OpenEye Toolkits Module
+- package: OpenEye Toolkits module
   category: CHEMISTRY
   module:
     prepend_path:
       - PATH {{root}}/bin
       - PYTHONPATH {{root}}/lib/python{{python_major}}/site-packages
-    prereq: 
-      - python/{{python_version}} 
-    setenv: ""
-  requires:
-    - *Requires
-    - "{{module.prereq}}"
+    setenv:

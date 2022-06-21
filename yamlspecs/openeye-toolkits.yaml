@@ -8,7 +8,7 @@
   distroname: OpenEye-toolkits-python3-linux-x64
   src_dir: "{{distroname}}-{{version}}"
   src_tarball: "{{distroname}}-{{version}}.{{extension}}"
-  vendor_source: ""
+  vendor_source:
   addfile:
     - README.openeye-toolkits
   description: |

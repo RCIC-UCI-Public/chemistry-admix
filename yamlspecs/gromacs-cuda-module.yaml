@@ -1,13 +1,6 @@
-# Builds the module for gromacs-cuda. 
 !include gromacs-cuda.yaml
 !include gromacs-module-common.yaml
 ---
 - module:
-    logname: "{{name}}/{{version}}/{{compiler}}.{{compiler_version}}-cuda.{{cuda_version}}"
-    name: "{{compiler}}.{{compiler_version}}-cuda.{{cuda_version}}"
-    prereq:
-      - *ModuleCompiler_prereq
-      - "{{cuda_module}}"
-    requires:
-      - *ModuleCompiler_requires
-      - "{{cuda_module}}"
+    logname: "{{name}}/{{version}}/{{compiler}}.{{compiler_version}}-{{cuda}}.{{cuda_version}}"
+    name: "{{compiler}}.{{compiler_version}}-{{cuda}}.{{cuda_version}}"

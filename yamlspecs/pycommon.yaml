@@ -1,4 +1,5 @@
 !include rcic-package.yaml
+!include rpm.yaml
 ---
 - extension: tar.gz
   versions: !include versions.yaml
@@ -8,13 +9,10 @@
   baserpm: "python_{{python_version}}-{{name}}"
   root: "{{pkg_defaults.app_path}}/python/{{python_version}}"
   build:
-    configure: echo
     modules: python/{{python_version}} 
-    target: 
   install:
-    makeinstall: python{{python_major}} setup.py install --root $(ROOT) 
+    makeinstall: python{{python_family}} setup.py install --root $(ROOT) 
   requires:
     - python_{{python_version}}  
   files:
     - "{{root}}"
-  rpm: !include rpm.extras.yaml

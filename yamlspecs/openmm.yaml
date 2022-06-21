@@ -1,12 +1,10 @@
-!include rcic-package.yaml
+!include pycommon.yaml
 ---
 - package: openmm 
-  release: 3
+  release: 4
   name: openmm 
-  versions: !include versions.yaml
   version: "{{versions.openmm}}"
-  python_version: "{{versions.python3}}"
-  python_family: "{{versions.python3_family}}"
+  baserpm: "{{name}}_{{version}}"
   vendor_source: https://github.com/openmm/openmm/archive/{{version}}.{{extension}}
   description: |
     OpenMM {{version}} is a toolkit for molecular simulation. It can be used either
@@ -19,7 +17,7 @@
       mkdir {{builddir}};
       cd {{builddir}};
       cmake -DCMAKE_INSTALL_PREFIX={{root}} ..;
-      make
+      make -j 8
     modules: 
       - python/{{python_version}} 
       - foundation
@@ -31,9 +29,6 @@
       sed -i 's/OPENMM_LIB_PATH/_OPENMM_LIB_PATH/g' python/setup.py;
       make DESTDIR=$(ROOT) PythonInstall;
       rm -rf $(ROOT){{root}}/docs
-  requires:
-    - python_{{python_version}}  
   files:
     - "{{parent}}"
-    - "{{pkg_defaults.app_path}}/python/{{python_version}}/lib/python{{python_family}}/site-packages"
-  rpm: !include rpm.extras.yaml
+    - "{{pkg_defaults.app_path}}/python/{{python_version}}/lib/python{{python_major}}/site-packages"

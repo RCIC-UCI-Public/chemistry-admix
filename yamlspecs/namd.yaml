@@ -4,11 +4,9 @@
 - package: NAMD Molecular Dynamics 
   name: namd 
   NAME: NAMD
-  release: 2
-
+  release: 3
   basefamily: "{{name}}_{{version}}_{{compiler}}_{{compiler_version}}"
   baserpm: "{{basefamily}}"
-
   versions: !include versions.yaml
   version: "{{versions.namd}}"
   builddir: build
@@ -20,10 +18,8 @@
     - fftw-linux-x86_64.tar.gz
     - tcl8.5.9-linux-x86_64-threaded.tar.gz
     - tcl8.5.9-linux-x86_64.tar.gz
-
   src_tarball: "{{NAME}}_{{version}}_Source.{{extension}}"
   src_dir: "{{NAME}}_{{version}}_Source"
- 
   description: |
     NAMD version {{version}} is a parallel molecular dynamics code designed 
     for high-performance simulation of large biomolecular systems. 
@@ -32,12 +28,10 @@
     NAMD uses the popular molecular graphics program VMD for simulation setup and 
     trajectory analysis, but is also file-compatible with AMBER, CHARMM, and 
     X-PLOR. NAMD is distributed free of charge with source code 
-
-  
   namd_arch: Linux-x86_64-g++  
   dest_arch: "{{namd_arch}}"
   charm_arch: multicore-linux-x86_64 
-  with_cuda: "" 
+  with_cuda:
   build:
     preconfigure: >
        tar xzf ../fftw-linux-x86_64.tar.gz; mv linux-x86_64 fftw; 
@@ -45,35 +39,29 @@
        mv tcl8.5.9-linux-x86_64-threaded tcl-threaded;
        tar xzf ../tcl8.5.9-linux-x86_64.tar.gz;
        mv tcl8.5.9-linux-x86_64 tcl
-
     configure: ./config  
     configure_args: "{{namd_arch}} --charm-base $$charm__PREFIX --charm-arch {{charm_arch}} --with-mkl {{with_cuda}}" 
+    addmodules:
     basemodules:
+      - "{{compiler}}/{{compiler_version}}"
       - "charm/{{versions.charm}}/{{compiler}}.{{compiler_version}}"
       - mkl/{{versions.mkl}}
     modules: 
-      - foundation
-      - "{{compiler}}/{{compiler_version}}"
       - "{{build.basemodules}}"
+      - "{{build.addmodules}}"
     pkgmake: > 
       cd {{namd_arch}};
       make -j 8
-    target: 
-
+    addrequires:
     baserequires:
+      - "{{compiler}}_{{compiler_version}}"
       - "charm_{{versions.charm}}_{{compiler}}_{{compiler_version}}"
       - mkl_{{versions.mkl}}
-    basemodulesrequires:
-      - "charm_{{versions.charm}}_{{compiler}}_{{compiler_version}}-module"
-      - mkl_{{versions.mkl}}-module
- 
-
   install:
      makeinstall: >
        cd {{namd_arch}};
        mkdir -p $(ROOT)/{{root}}/{{dest_arch}};
        install -m 755 charmrun flipbinpdb flipdcd namd2 psfgen sortreplicas $(ROOT)/{{root}}/{{dest_arch}}
-
   requires:
-    - "{{compiler}}_{{compiler_version}}"
     - "{{build.baserequires}}"
+    - "{{build.addrequires}}"

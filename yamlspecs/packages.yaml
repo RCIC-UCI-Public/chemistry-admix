@@ -15,58 +15,31 @@ system:
   - gtk2-devel
   - doxygen
 bootstrap:
-  - wxWidgets
-  - wxWidgets-module
   - mdtraj
   - mdtraj-module
   - charm
   - charm-module
-  - charm-mpi
-  - charm-mpi-module
-  - plumed
-  - plumed-module
   - plumed-mpi
   - plumed-mpi-module
-build:
-  - amber
-  - amber-module
+base_gromacs:
   - gromacs
   - gromacs-module
   - gromacs-cuda
   - gromacs-cuda-module
   - gromacs-mpi
   - gromacs-mpi-module
+  - gromacs-cuda
+  - gromacs-cuda-module
   - gromacs-cuda-mpi
   - gromacs-cuda-mpi-module
-  - gromacs-latest
-  - gromacs-latest-module
-  - gromacs-latest-cuda
-  - gromacs-latest-cuda-module
-  - gromacs-latest-mpi
-  - gromacs-latest-mpi-module
-  - gromacs-latest-cuda-mpi
-  - gromacs-latest-cuda-mpi-module
-#  - gromacs-cuda-mpi-plumed
-#  - gromacs-cuda-mpi-plumed-module
-  - bhmm
-  - gsd
-  - GridDataFormats
-  - mmtf
-  - msmtools
-  - mdanalysis
-  - mdanalysis-module
-  - openmm
-  - openmm-module
-  - openmoltools
-  - openmoltools-module
-  - ppft
-  - pathos
-  - pyemma
-  - pyemma-module
-  - openeye-toolkits
-  - openeye-toolkits-module
-  - openbabel
-  - openbabel-module
+extra_gromacs:
+  - gromacs-cuda-mpi-plumed
+  - gromacs-cuda-mpi-plumed-module
+build:
+  - amber
+  - amber-module
+  - "{{base_gromacs}}"
+  - "{{extra_gromacs}}"
   - namd
   - namd-module
   - namd-cuda
@@ -78,3 +51,35 @@ build:
 manifest:
   - "{{bootstrap}}"
   - "{{build}}"
+sets:
+  - gromacs2021
+  - gromacs2022
+  - centos8
+# Unused
+# in bootstrap
+# - wxWidgets
+# - wxWidgets-module
+# - charm-mpi
+# - charm-mpi-module
+# - plumed
+# - plumed-module
+# in build
+# - bhmm
+# - msmtools
+# - pathos
+# - pyemma
+# - pyemma-module
+# - openbabel
+# - openbabel-module
+# - gsd
+# - GridDataFormats
+# - mmtf
+# - mdanalysis
+# - mdanalysis-module
+# - openmm
+# - openmm-module
+# - openmoltools
+# - openmoltools-module
+# - ppft
+# - openeye-toolkits
+# - openeye-toolkits-module

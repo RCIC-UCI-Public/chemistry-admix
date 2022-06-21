@@ -4,18 +4,15 @@
   plumed_version: "{{versions.plumed}}"
   plumed_module: plumed/{{plumed_version}}/{{compiler}}.{{compiler_version}}-{{mpi}}.{{mpi_version}}
   plumed_requires: plumed_{{plumed_version}}_{{compiler}}_{{compiler_version}}_{{mpi}}_{{mpi_version}}
-  baserpm: "{{basefamily}}_cuda_{{versions.cuda}}_{{mpi}}_{{mpi_version}}_plumed_{{plumed_version}}"
-  root: "{{baseroot}}/cuda/{{cuda_version}}/{{mpi}}/{{mpi_version}}/plumed_{{plumed_version}}"
+  baserpm: "{{basefamily}}_{{cuda}}_{{cuda_version}}_{{mpi}}_{{mpi_version}}_plumed_{{plumed_version}}"
+  root: "{{baseroot}}/{{cuda}}/{{cuda_version}}/{{mpi}}/{{mpi_version}}/plumed_{{plumed_version}}"
   build:
     preconfigure: echo 4 | plumed patch -p
-    modules: 
-      - foundation
-      - "{{compiler}}/{{compiler_version}}"
+    addmodules: 
       - "{{cuda_module}}"
       - "{{mpi_module}}"
       - "{{plumed_module}}"
-  requires:
-    - "{{compiler}}_{{compiler_version}}"
-    - "{{cuda_requires}}" 
-    - "{{mpi_requires}}" 
-    - "{{plumed_requires}}" 
+    addrequires:
+      - "{{cuda_requires}}" 
+      - "{{mpi_requires}}" 
+      - "{{plumed_requires}}" 

@@ -1,5 +1,4 @@
-# Builds the module for amber
-!include amber.yaml
+# common module for amber
 !include rcic-module.yaml
 ---
 - package: amber module 
@@ -9,14 +8,9 @@
     <<: *ModuleCompiler
     prepend_path:
       - *Prepend_path
-      - PYTHONPATH {{root}}/lib/python3.8/site-packages
+      - PYTHONPATH {{root}}/lib/python{{versions.python3_major}}/site-packages
+      - PERL5LIB {{root}}/lib/perl
     setenv:
       - *Setenv
       - AMBER_PREFIX {{root}}
       - AMBERHOME {{root}}
-    prereq:
-      - *ModuleCompiler_prereq
-      - python/{{versions.python3}}
-    requires:
-      - *ModuleCompiler_requires
-      - "{{module.prereq}}" 

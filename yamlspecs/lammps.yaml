@@ -1,29 +1,28 @@
 !include rcic-package.yaml
 !include rpm.yaml
+!include common-mpi.yaml
 ---
 - package: LAMMPS Molecular Dynamics 
   name: lammps 
-  release: 3
+  release: 4
   basefamily: "{{name}}_{{version}}_{{compiler}}_{{compiler_version}}"
   baserpm: "{{basefamily}}"
   versions: !include versions.yaml
-  version: "{{versions.lammps}}"
-  mpi: "{{versions.mpi.name}}"
-  mpi_version: "{{versions.mpi.version}}"
-  mpi_module: "{{mpi}}/{{mpi_version}}/{{compiler}}.{{compiler_version}}"
-  mpi_requires: "{{mpi}}_{{mpi_version}}_{{compiler}}_{{compiler_version}}"
-  root: "{{pkg_defaults.app_path}}/{{name}}/{{version}}/{{compiler}}/{{compiler_version}}"
+  version: "{{versions.lammps.version}}"
+  reltype: "{{versions.lammps.rel}}"
+  update: "{{versions.lammps.update}}"
   compiler: "{{versions.compiler.name}}"
   compiler_version: "{{versions.compiler.version}}"
-  vendor_source: https://github.com/lammps/lammps/archive/stable_{{version}}.{{extension}}
-  src_dir: "{{name}}-stable_{{version}}"
+  baseroot: "{{pkg_defaults.app_path}}/{{name}}/{{version}}/{{compiler}}/{{compiler_version}}"
+  root: "{{baseroot}}/{{mpi}}/{{mpi_version}}"
+  vendor_source: https://github.com/lammps/lammps/archive/{{reltype}}_{{version}}{{update}}.{{extension}}
+  src_dir: "{{name}}-{{reltype}}_{{version}}{{update}}"
   description: |
     LAMMPS version {{version}} - Large-scale Atomic/Molecular Massively Parallel
-    Simulator. LAMMPS is a classical molecular dynamics simulation code designed to
-    run efficiently on parallel computers.  It was developed at Sandia
-    National Laboratories, a US Department of Energy facility, with
-    funding from the DOE.  It is an open-source code, distributed freely
-    under the terms of the GNU Public License (GPL)
+    Simulator. LAMMPS is a classical molecular dynamics simulation code designed
+    to run efficiently on parallel computers. It was developed at Sandia National
+    Laboratories, a US Department of Energy facility, with funding from the DOE.
+    It is an open-source, distributed under the terms of the GNU Public License (GPL)
   optsfile: lammps.{{version}}.cmake
   eigen_md5: "9e30f67e8531477de4117506fe44669b"
   eigen_url: "https://gitlab.com/libeigen/eigen/-/archive"
@@ -31,38 +30,39 @@
     - "{{optsfile}}"
   builddir: builddir
   build:
-    patchfile: "{{name}}.{{version}}.USR-PTM.patch"
-    configure: "no configure"
-    configure_args: ""
-    basemodules:
-      - "{{compiler}}/{{compiler_version}}"
+    preconfigure:
+      sed -i -e 's/URL_MD5.*/URL_MD5 {{eigen_md5}}/' cmake/Modules/Packages/USER-SMD.cmake;
+      sed -i -e 's%URL http.*%URL {{eigen_url}}/{{versions.eigen}}/eigen-{{versions.eigen}}.tar.gz%' cmake/Modules/Packages/USER-SMD.cmake
+    patchfile: "{{name}}.{{version}}.patch"
+    base_modules:
       - ffmpeg/{{versions.ffmpeg}}
       - hdf5/{{versions.hdf5}}/{{compiler}}.{{compiler_version}}
       - gsl/{{versions.gsl}}/{{compiler}}.{{compiler_version}}
+      - "{{build.addmodules}}"
+      - fftw/{{versions.fftw}}/{{compiler}}.{{compiler_version}}
+      - netcdf-c/{{versions.netcdfc}}/{{compiler}}.{{compiler_version}}
     modules: 
-      - "{{build.basemodules}}"
-      - foundation 
-      - "{{mpi_module}}"
-    cmake_args: "-C ../../{{optsfile}} -DBUILD_SHARED_LIBS=on -DBUILD_LIB=on -DCMAKE_INSTALL_PREFIX={{root}}"
+      - "{{build.base_modules}}"
+      - foundation/{{versions.foundation}}
+    gpu_opts: 
+    netcdf_opts: "-DNETCDF_INCLUDE_DIR=$$NETCDF/include"
+    cmake_args: "-C ../../{{optsfile}} -DBUILD_SHARED_LIBS=on -DBUILD_LIB=on {{build.gpu_opts}} {{build.netcdf_opts}} -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX={{root}}"
     pkgmake: > 
-      sed -i -e 's/URL_MD5.*/URL_MD5 {{eigen_md5}}/' cmake/Modules/Packages/USER-SMD.cmake;
-      sed -i -e 's%URL http.*%URL {{eigen_url}}/{{versions.eigen}}/eigen-{{versions.eigen}}.tar.gz%' cmake/Modules/Packages/USER-SMD.cmake;
       mkdir {{builddir}};
       cd {{builddir}};
+      unset MAKEFLAGS;
       cmake {{build.cmake_args}} ../cmake;
-      make -j 8 
-    target: 
+      unset MAKEFLAGS; make #-j 2
   install:
      makeinstall: >
        cd {{builddir}};
        make install DESTDIR=$(ROOT);
        cd build;
-       mv libkim-api.so libkim-api.so.2 $(ROOT){{root}}/lib64
+       mv libkim-api.so* $(ROOT){{root}}/lib64
   requires:
-    - "{{compiler}}_{{compiler_version}}"
     - ffmpeg_{{versions.ffmpeg}}
-    - "{{mpi_requires}}"
     - hdf5_{{versions.hdf5}}_{{compiler}}_{{compiler_version}}
     - gsl_{{versions.gsl}}_{{compiler}}_{{compiler_version}}
+    - "{{build.addrequires}}"
 
 # see ../README.md comments

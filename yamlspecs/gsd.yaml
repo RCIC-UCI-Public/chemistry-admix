@@ -5,6 +5,7 @@
   version: "{{versions.gsd}}"
   vendor_source: http://glotzerlab.engin.umich.edu/Downloads/gsd/{{name}}-v{{version}}.{{extension}}
   src_dir: "{{name}}-v{{version}}"
+  src_tarball: "{{name}}-v{{version}}.{{extension}}"
   description: |
     The GSD file format {{version}} is the native file format for HOOMD-blue. 
     GSD files store trajectories of the HOOMD-blue system state in a binary

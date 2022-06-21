@@ -1,4 +1,5 @@
 !include rcic-package.yaml
+!include rpm.yaml
 ---
 - package: PLUMED molecular dynamics 
   name: plumed 
@@ -18,13 +19,15 @@
   build:
     configure: ./configure
     configure_args: --disable-mpi --prefix={{root}}
+    addmodules:
     basemodules: 
       - "{{compiler}}/{{compiler_version}}"
       - python/{{versions.python3}}
     modules: 
       - "{{build.basemodules}}"
+      - "{{build.addmodules}}"
     pkgmake: make -j 4
-    target: 
+    addrequires:
     baserequires:
       - "{{compiler}}_{{compiler_version}}"
       - python_{{versions.python3}}
@@ -35,4 +38,4 @@
      installextra: $(INSTALL) -m 644  README* COPY* $(ROOT){{root}} 
   requires:
     - "{{build.baserequires}}"
-  rpm: !include rpm.extras.yaml
+    - "{{build.addrequires}}"

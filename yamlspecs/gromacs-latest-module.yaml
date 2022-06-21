@@ -1,4 +1,0 @@
-# Builds the module for gromacs.
-!include gromacs-module.yaml
----
-- version: "{{versions.gromacs_latest}}"

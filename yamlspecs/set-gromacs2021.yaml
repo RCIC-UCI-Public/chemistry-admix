@@ -1,0 +1,8 @@
+!include packages.yaml
+---
+versions: versions-gromacs2021.yaml
+bootstrap:
+build:
+  - "{{base_gromacs}}"
+manifest:
+  - "{{build}}"

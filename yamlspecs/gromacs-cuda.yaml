@@ -1,24 +1,18 @@
 !include gromacs.yaml
-!include rpm.yaml
+!include common-cuda.yaml
 ---
 - package: gromacs-cuda
-  version: "{{versions.gromacs}}"
-  cuda_version: "{{versions.cuda}}"
-  cuda_module: cuda/{{cuda_version}}
-  cuda_requires: cuda-toolkit_{{cuda_version}}
-  baserpm: "{{basefamily}}_cuda_{{cuda_version}}"
   root: "{{baseroot}}/cuda/{{cuda_version}}"
   enabled: "cuda"
   addfile: 
     - filter-requires-{{name}}.sh
   build:
-    modules: 
-      - foundation
-      - "{{compiler}}/{{compiler_version}}"
-      - "{{cuda_module}}"
-    cuda_args: "-DGMX_GPU=ON -DCUDA_TOOLKIT_ROOT_DIR=$$CUDA_PATH"
+    cuda_args: "-DGMX_GPU={{versions.gromacs.GMX_GPU}} -DCUDA_TOOLKIT_ROOT_DIR=$$CUDA_PATH"
     options_args: "{{build.cuda_args}}"
-  requires:
-    - "{{compiler}}_{{compiler_version}}"
-    - "{{cuda_requires}}" 
+    addmodules:
+      - "{{cuda_module}}"
+      -  !ifeq "{{version}},2022.1,python/{{versions.python3}},"
+    addrequires:
+      - "{{cuda_requires}}"
+      -  !ifeq "{{version}},2022.1,python_{{versions.python3}},"
   rpmFilters: *filterRequires
