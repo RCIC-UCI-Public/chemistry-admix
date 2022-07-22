@@ -20,7 +20,7 @@
   build:
     configure: echo no configure 
     modules: 
-      - foundation
+      - foundation{{versions.foundation}}
       - eigen/{{versions.eigen}}
     base_modules: 
       - "{{compiler}}/{{compiler_version}}"

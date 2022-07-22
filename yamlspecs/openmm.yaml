@@ -20,7 +20,7 @@
       make -j 8
     modules: 
       - python/{{python_version}} 
-      - foundation
+      - foundation/{{versions.foundation}}
   install:
     makeinstall: >
       cd {{builddir}};
