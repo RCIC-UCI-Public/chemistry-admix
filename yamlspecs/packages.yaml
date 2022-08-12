@@ -28,8 +28,6 @@ base_gromacs:
   - gromacs-cuda-module
   - gromacs-mpi
   - gromacs-mpi-module
-  - gromacs-cuda
-  - gromacs-cuda-module
   - gromacs-cuda-mpi
   - gromacs-cuda-mpi-module
 extra_gromacs:
