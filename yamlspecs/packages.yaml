@@ -19,6 +19,8 @@ bootstrap:
   - mdtraj-module
   - charm
   - charm-module
+  - charm-mpi
+  - charm-mpi-module
   - plumed-mpi
   - plumed-mpi-module
 base_gromacs:
@@ -53,12 +55,11 @@ sets:
   - gromacs2021
   - gromacs2022
   - centos8
+
 # Unused
 # in bootstrap
 # - wxWidgets
 # - wxWidgets-module
-# - charm-mpi
-# - charm-mpi-module
 # - plumed
 # - plumed-module
 # in build

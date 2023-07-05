@@ -4,3 +4,13 @@
 - package: namd-mpi
   dest_arch: Linux-x86_64.{{mpi}} 
   charm_arch: mpi-linux-x86_64 
+
+  build:
+    basemodules:
+      - "{{compiler}}/{{compiler_version}}"
+      - "charm/{{versions.charm}}/{{compiler}}.{{compiler_version}}-{{mpi}}.{{mpi_version}}"
+      - mkl/{{versions.mkl}}
+    baserequires:
+      - "{{compiler}}_{{compiler_version}}"
+      - "charm_{{versions.charm}}_{{compiler}}_{{compiler_version}}_{{mpi}}_{{mpi_version}}"
+      - mkl_{{versions.mkl}}
