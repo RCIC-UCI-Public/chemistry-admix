@@ -40,7 +40,7 @@
        tar xzf ../tcl8.5.9-linux-x86_64.tar.gz;
        mv tcl8.5.9-linux-x86_64 tcl
     configure: ./config  
-    configure_args: "{{namd_arch}} --charm-base $$charm__PREFIX --charm-arch {{charm_arch}} --with-mkl {{with_cuda}}" 
+    configure_args: "{{namd_arch}} --charm-base $$charm__PREFIX/.. --charm-arch {{charm_arch}} --with-mkl {{with_cuda}}"
     addmodules:
     basemodules:
       - "{{compiler}}/{{compiler_version}}"
