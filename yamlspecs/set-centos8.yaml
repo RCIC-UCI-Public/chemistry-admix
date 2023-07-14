@@ -2,8 +2,8 @@
 ---
 versions: versions-centos8.yaml
 bootstrap:
-  - mdtraj
-  - mdtraj-module
+# - mdtraj
+# - mdtraj-module
   - charm
   - charm-module
   - plumed

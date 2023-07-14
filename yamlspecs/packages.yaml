@@ -15,8 +15,8 @@ system:
   - gtk2-devel
   - doxygen
 bootstrap:
-  - mdtraj
-  - mdtraj-module
+# - mdtraj
+# - mdtraj-module
   - charm
   - charm-module
   - charm-mpi
