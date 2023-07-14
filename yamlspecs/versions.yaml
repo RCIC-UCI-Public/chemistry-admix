@@ -11,7 +11,7 @@ mdtraj: "1.9.3"
 namd: "2.14b2"
 charm: "6.10.1"
 charm_buildtype: "autotools"
-plumed: "2.6.1"
+#plumed: "2.6.1"
 lammps:
   version:  "3Mar2020"
   rel: "stable"

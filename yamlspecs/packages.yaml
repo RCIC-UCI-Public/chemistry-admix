@@ -21,8 +21,8 @@ bootstrap:
   - charm-module
   - charm-mpi
   - charm-mpi-module
-  - plumed-mpi
-  - plumed-mpi-module
+# - plumed-mpi
+# - plumed-mpi-module
 base_gromacs:
   - gromacs
   - gromacs-module
