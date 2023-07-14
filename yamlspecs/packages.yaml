@@ -28,6 +28,7 @@ base_gromacs:
   - gromacs-module
   - gromacs-cuda
   - gromacs-cuda-module
+mpi_gromacs:
   - gromacs-mpi
   - gromacs-mpi-module
   - gromacs-cuda-mpi
@@ -39,7 +40,7 @@ build:
   - amber
   - amber-module
   - "{{base_gromacs}}"
-  - "{{extra_gromacs}}"
+# - "{{extra_gromacs}}"
   - namd
   - namd-module
   - namd-cuda

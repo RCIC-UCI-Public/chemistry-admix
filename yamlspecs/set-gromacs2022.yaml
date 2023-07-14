@@ -4,5 +4,6 @@ versions: versions-gromacs2022.yaml
 bootstrap:
 build:
   - "{{base_gromacs}}"
+  - "{{mpi_gromacs}}"
 manifest:
   - "{{build}}"
