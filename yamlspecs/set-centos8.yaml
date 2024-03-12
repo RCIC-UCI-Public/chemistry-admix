@@ -2,14 +2,8 @@
 ---
 versions: versions-centos8.yaml
 bootstrap:
-# - mdtraj
-# - mdtraj-module
   - charm
   - charm-module
-  - plumed
-  - plumed-module
-  - plumed-mpi
-  - plumed-mpi-module
 build:
   - amber-cmake
   - amber-cmake-module

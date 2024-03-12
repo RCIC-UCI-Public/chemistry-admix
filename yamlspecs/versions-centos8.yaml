@@ -1,10 +1,8 @@
 !include versions.yaml
 !include updates8.yaml
 ---
-mdtraj: "1.9.7"
 charm: "7.0.0"
 charm_buildtype: "cmake"
-plumed: "2.8.0"
 amber:
   version: "21.12"
   ambertools: "20_src"

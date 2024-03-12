@@ -1,9 +1,6 @@
 !include site.yaml
 ---
 tcl: "8.6.9"
-amber:
-  version: "19.11"
-  ambertools: "18"
 gromacs: 
   version: "2020.4"
   GMX_GPU: "ON"
@@ -11,25 +8,7 @@ mdtraj: "1.9.3"
 namd: "2.14b2"
 charm: "6.10.1"
 charm_buildtype: "autotools"
-#plumed: "2.6.1"
 lammps:
   version:  "3Mar2020"
   rel: "stable"
   update:
-# unused, keep for a reference
-#wxWidgets: "3.1.3"
-#bhmm: "0.6.3"
-#msmtools: "1.2.5"
-#pathos: "0.2.5"
-#pyemma: "2.5.7"
-#openbabel:
-#  version: "3.0.0"
-#  version_str: "3-0-0"
-#gsd: "2.1.0"
-#GridDataFormats: "0.5.0"
-#mmtf: "1.1.2"
-#mdanalysis: "0.20.1"
-#openmoltools: "0.8.6"
-#openmm: "7.4.1"
-#ppft: "1.6.6.1"
-#openeyetoolkits: "2019.10.2"

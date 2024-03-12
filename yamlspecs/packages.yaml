@@ -15,14 +15,8 @@ system:
   - gtk2-devel
   - doxygen
 bootstrap:
-# - mdtraj
-# - mdtraj-module
   - charm
   - charm-module
-  - charm-mpi
-  - charm-mpi-module
-# - plumed-mpi
-# - plumed-mpi-module
 base_gromacs:
   - gromacs
   - gromacs-module
@@ -37,10 +31,8 @@ extra_gromacs:
   - gromacs-cuda-mpi-plumed
   - gromacs-cuda-mpi-plumed-module
 build:
-  - amber
-  - amber-module
-  - "{{base_gromacs}}"
-# - "{{extra_gromacs}}"
+  - gromacs-cuda
+  - gromacs-cuda-module
   - namd
   - namd-module
   - namd-cuda
@@ -56,30 +48,3 @@ sets:
   - gromacs2021
   - gromacs2022
   - centos8
-
-# Unused
-# in bootstrap
-# - wxWidgets
-# - wxWidgets-module
-# - plumed
-# - plumed-module
-# in build
-# - bhmm
-# - msmtools
-# - pathos
-# - pyemma
-# - pyemma-module
-# - openbabel
-# - openbabel-module
-# - gsd
-# - GridDataFormats
-# - mmtf
-# - mdanalysis
-# - mdanalysis-module
-# - openmm
-# - openmm-module
-# - openmoltools
-# - openmoltools-module
-# - ppft
-# - openeye-toolkits
-# - openeye-toolkits-module
