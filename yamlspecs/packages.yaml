@@ -17,6 +17,8 @@ system:
 bootstrap:
   - charm
   - charm-module
+  - charm-mpi
+  - charm-mpi-module
 base_gromacs:
   - gromacs
   - gromacs-module
