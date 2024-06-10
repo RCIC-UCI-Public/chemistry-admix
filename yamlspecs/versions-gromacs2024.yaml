@@ -1,0 +1,11 @@
+!include versions.yaml
+!include updates8.yaml
+---
+gromacs: 
+  version: "2024.2"
+  GMX_GPU: "CUDA"
+compiler:
+  version: "11.2.0"
+mpi:
+  name: openmpi
+  version: "5.0.1"
