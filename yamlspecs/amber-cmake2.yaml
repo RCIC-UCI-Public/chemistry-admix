@@ -1,0 +1,34 @@
+!include amber.yaml
+---
+- builddir: build
+  fpath: AmberTools/src/pytraj/pytraj/datafiles
+  extension: tar.bz2
+  src_tarball: AmberTools{{versions.amber.ambertools}}.{{extension}}
+  src_dir: amber{{versions.amber.ambertools}}_src
+  amberFull: Amber{{versions.amber.version}}.{{extension}}
+  addsource: "{{amberFull}}"
+  addfile: amberfixln.sh
+  build:
+    modules: 
+      - "{{compiler}}/{{compiler_version}}"
+      - python/{{versions.python3}}
+      - foundation/{{versions.foundation}}
+      - mkl/{{versions.mkl}}
+    cmake_args: -DCOMPILER=GNU -DMPI=FALSE -DCUDA=FALSE -DINSTALL_TESTS=TRUE -DDOWNLOAD_MINICONDA=FALSE
+    preconfigure: >
+      (cd ..; bzcat {{amberFull}} | tar xf -)
+    pkgmake: >
+      (pushd AmberTools/src/pytraj; python setup.py --cythonize; popd);
+      sed -i '6,8d' dat/CMakeLists.txt;
+      sed -i 's%/usr/bin/Rscript%/usr/bin/env Rscript%' dat/SIRAH/tools/ssmtx2png.R;
+      cd {{builddir}};
+      unset MAKEFLAGS;
+      cmake {{build.cmake_args}} -DCMAKE_INSTALL_PREFIX={{root}} ..;
+      make -j 8
+  install:
+    makeinstall: >
+      cd {{builddir}};
+      make DESTDIR=$(ROOT) install;
+      if [ "$(ROOT)" != "" ]; then /bin/rm -rf $(ROOT)/export; fi;
+      find $(ROOT) -type l -exec ../../amberfixln.sh {} $(ROOT) \;
+# NOTE: see ../README.md for notes about building
