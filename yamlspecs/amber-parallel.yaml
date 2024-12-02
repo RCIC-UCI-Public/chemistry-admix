@@ -6,11 +6,13 @@
   mpi: "{{versions.mpi.name}}"
   mpi_version: "{{versions.mpi.version}}"
   build:
-    modules: 
+    base_modules:
       - "{{compiler}}/{{compiler_version}}"
       - python/{{versions.python3}}
-      - foundation/{{versions.foundation}}
       - mkl/{{versions.mkl}}
       - "{{cuda_module}}" 
       - "{{mpi}}/{{mpi_version}}/{{compiler}}.{{compiler_version}}-{{cuda}}.{{cuda_version}}"
+    modules:
+      - "{{build.base_modules}}"
+      - cmake/{{versions.cmake}}
     cmake_args: -DCOMPILER=GNU -DMPI=TRUE -DCUDA=TRUE -DINSTALL_TESTS=TRUE -DDOWNLOAD_MINICONDA=FALSE

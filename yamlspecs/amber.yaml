@@ -14,9 +14,11 @@
   description: |
     AMBER version {{version}}
   build:
-    modules: 
+    base_modules:
       - "{{compiler}}/{{compiler_version}}"
       - python/{{versions.python3}}
+    modules:
+      - "{{build.base_modules}}"
     pkgmake: > 
       export AMBERHOME=`pwd`;
       unset MAKEFLAGS;

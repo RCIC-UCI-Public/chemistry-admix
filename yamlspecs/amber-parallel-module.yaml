@@ -1,10 +1,8 @@
 !include amber-parallel.yaml
-!include rcic-module.yaml
+!include amber-module-common.yaml
 ---
 - release: 1
-  category: CHEMISTRY
   module:
-    <<: *Module
     logname: "{{name}}/{{version}}/{{compiler}}.{{compiler_version}}-{{cuda}}.{{cuda_version}}-{{mpi}}.{{mpi_version}}"
     name: "{{compiler}}.{{compiler_version}}-{{cuda}}.{{cuda_version}}-{{mpi}}.{{mpi_version}}"
     path: "{{mod_defaults.path}}/{{version}}"
@@ -12,9 +10,3 @@
       - *Prepend_path
       - PYTHONPATH {{root}}/lib/python{{versions.python3_major}}/site-packages
       - PERL5LIB {{root}}/lib/perl
-    prereq_mpi: &ModuleCompilerMpi_prereq
-
-    setenv:
-      - *Setenv
-      - AMBER_PREFIX {{root}}
-      - AMBERHOME {{root}}

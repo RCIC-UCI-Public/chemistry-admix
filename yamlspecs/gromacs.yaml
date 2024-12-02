@@ -27,7 +27,7 @@
       - "{{compiler}}/{{compiler_version}}"
       - "{{build.addmodules}}"
     modules: 
-      - foundation/{{versions.foundation}}
+      - cmake/{{versions.cmake}}
       - "{{build.base_modules}}"
     options_args:
     cmake_args: -DGMX_BUILD_OWN_FFTW=ON -DCMAKE_INSTALL_PREFIX={{root}}

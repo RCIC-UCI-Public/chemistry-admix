@@ -14,3 +14,5 @@
       - *Setenv
       - AMBER_PREFIX {{root}}
       - AMBERHOME {{root}}
+    prereq:
+      - "{{build.base_modules}}"

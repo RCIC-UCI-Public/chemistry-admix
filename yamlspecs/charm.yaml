@@ -33,7 +33,7 @@
       - "{{compiler}}/{{compiler_version}}"
       - "{{build.addmodules}}"
     modules: 
-      - foundation/{{versions.foundation}}
+      - cmake/{{versions.cmake}}
       - "{{build.base_modules}}"
     build_args: >
       charm++ {{charm_arch}} {{charm_compiler}} {{charm_flags}} --build-shared
