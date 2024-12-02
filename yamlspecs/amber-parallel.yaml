@@ -1,0 +1,16 @@
+!include amber-cmake2.yaml
+!include common-cuda.yaml
+---
+- baserpm: "{{name}}_{{version}}_{{compiler}}_{{compiler_version}}_{{cuda}}_{{cuda_version}}_{{mpi}}_{{mpi_version}}"
+  root: "{{pkg_defaults.app_path}}/{{name}}/{{version}}/{{compiler}}/{{compiler_version}}/{{cuda}}/{{cuda_version}}/{{mpi}}/{{mpi_version}}"
+  mpi: "{{versions.mpi.name}}"
+  mpi_version: "{{versions.mpi.version}}"
+  build:
+    modules: 
+      - "{{compiler}}/{{compiler_version}}"
+      - python/{{versions.python3}}
+      - foundation/{{versions.foundation}}
+      - mkl/{{versions.mkl}}
+      - "{{cuda_module}}" 
+      - "{{mpi}}/{{mpi_version}}/{{compiler}}.{{compiler_version}}-{{cuda}}.{{cuda_version}}"
+    cmake_args: -DCOMPILER=GNU -DMPI=TRUE -DCUDA=TRUE -DINSTALL_TESTS=TRUE -DDOWNLOAD_MINICONDA=FALSE

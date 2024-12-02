@@ -1,0 +1,8 @@
+!include packages.yaml
+---
+versions: versions-2024.yaml
+build:
+  - amber-cmake2
+  - amber-cmake2-module
+  - amber-parallel
+  - amber-parallel-module

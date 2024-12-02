@@ -1,0 +1,12 @@
+!include versions.yaml
+!include updates8.yaml
+---
+amber:
+  version: "24"
+  ambertools: "24"
+cuda:
+  version: "11.7.1"
+mpi:
+  name: openmpi
+  version: "5.0.1"
+
