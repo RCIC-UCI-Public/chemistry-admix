@@ -3,11 +3,13 @@
 - builddir: build
   fpath: AmberTools/src/pytraj/pytraj/datafiles
   build:
-    modules: 
+    base_modules:
       - "{{compiler}}/{{compiler_version}}"
       - python/{{versions.python3}}
-      - foundation/{{versions.foundation}}
       - mkl/{{versions.mkl}}
+    modules: 
+      - "{{build.base_modules}}"
+      - cmake/{{versions.cmake}}
     cmake_args: -DCOMPILER=GNU -DMPI=FALSE -DCUDA=FALSE -DINSTALL_TESTS=TRUE -DDOWNLOAD_MINICONDA=FALSE
     pkgmake: >
       (pushd AmberTools/src/pytraj; python setup.py --cythonize; popd);

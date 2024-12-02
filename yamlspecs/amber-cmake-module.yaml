@@ -10,3 +10,5 @@
       - PKG_CONFIG_PATH {{root}}/lib64/pkgconfig
       - PYTHONPATH {{root}}/lib/python{{versions.python3_major}}/site-packages
       - PERL5LIB {{root}}/lib/perl
+    prereq:
+      - "{{build.base_modules}}"
