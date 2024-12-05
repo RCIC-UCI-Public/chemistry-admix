@@ -17,8 +17,8 @@ system:
 bootstrap:
   - charm
   - charm-module
-  - charm-mpi
-  - charm-mpi-module
+# - charm-mpi
+# - charm-mpi-module
 base_gromacs:
   - gromacs
   - gromacs-module
@@ -51,3 +51,4 @@ sets:
   - gromacs2022
   - gromacs2024
   - centos8
+  - "2024"
