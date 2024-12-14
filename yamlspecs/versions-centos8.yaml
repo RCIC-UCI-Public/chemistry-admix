@@ -10,3 +10,4 @@ lammps:
   version:  "29Sep2021"
   rel: "stable"
   update: "_update3"
+  cmake: "3.20.5"
