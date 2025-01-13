@@ -2,9 +2,11 @@
 !include rcic-module.yaml
 ---
 - package: "{{name}} module"
-  release: 2
+  release: 3
   category: CHEMISTRY
   module:
     <<: *ModuleCompiler
+    setenv:
+      - NAMD_HOME {{root}}/{{dest_arch}}
     prepend_path:
-      - PATH {{root}}/{{namd_arch}}
+      - PATH {{root}}/{{dest_arch}}

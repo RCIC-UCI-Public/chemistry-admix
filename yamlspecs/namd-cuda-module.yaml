@@ -2,12 +2,14 @@
 !include rcic-module.yaml
 ---
 - package: "{{name}} module"
-  release: 2
+  release: 3
   category: CHEMISTRY
   # substitute cuda for mpi and inherit ModuleCompilerMpi
   mpi: cuda
   mpi_version: "{{versions.cuda.version}}"
   module:
     <<: *ModuleCompilerMpi
+    setenv:
+      - NAMD_HOME {{root}}/{{dest_arch}}
     prepend_path: 
-      - PATH {{root}}/{{namd_arch}}
+      - PATH {{root}}/{{dest_arch}}
