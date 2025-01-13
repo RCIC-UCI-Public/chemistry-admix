@@ -12,3 +12,4 @@ lammps:
   version:  "3Mar2020"
   rel: "stable"
   update:
+  cmake: "3.20.5"
