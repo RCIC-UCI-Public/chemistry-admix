@@ -49,6 +49,5 @@ manifest:
 sets:
   - gromacs2021
   - gromacs2022
-  - gromacs2024
   - centos8
   - "2024"

@@ -2,7 +2,11 @@
 ---
 versions: versions-2024.yaml
 build:
+  - "{{base_gromacs}}"
+  - "{{mpi_gromacs}}"
   - amber-cmake2
   - amber-cmake2-module
   - amber-parallel
   - amber-parallel-module
+manifest:
+  - "{{build}}"
