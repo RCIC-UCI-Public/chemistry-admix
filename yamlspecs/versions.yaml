@@ -1,5 +1,6 @@
 !include site.yaml
 ---
+admix: chemistry-admix
 tcl: "8.6.9"
 gromacs: 
   version: "2020.4"
