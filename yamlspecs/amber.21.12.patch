@@ -1,0 +1,20 @@
+--- amber20_src/AmberTools/src/leap/src/leap/getline.c	2021-04-24 17:42:47.000000000 -0700
++++ amber20_src/AmberTools/src/leap/src/leap/getline.c.new	2025-05-09 14:44:48.429389704 -0700
+@@ -114,7 +114,7 @@
+ 
+ /************************ nonportable part *********************************/
+ 
+-extern int      write();
++extern ssize_t  write();
+ extern void     exit();
+ 
+ #if (defined WIN32)
+@@ -130,7 +130,7 @@
+ #endif
+ 
+ #ifdef unix
+-extern int      read();
++extern ssize_t  read();
+ #   define POSIX
+ 
+ #   ifdef POSIX		/* use POSIX interface */
