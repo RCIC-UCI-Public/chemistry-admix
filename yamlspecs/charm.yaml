@@ -27,11 +27,13 @@
   builddir: cbuild
   src_dir: "{{name}}-v{{version}}"
   build:
+    pymod: !eval "'python/{{versions.python3}}' if {{versions.os_release}} >= 9 else ''"
     configure: echo use charm-supplied build script 
     addmodules:
     base_modules: 
       - "{{compiler}}/{{compiler_version}}"
       - "{{build.addmodules}}"
+      - "{{build.pymod}}"
     modules: 
       - cmake/{{versions.cmake}}
       - "{{build.base_modules}}"
