@@ -14,3 +14,17 @@ lammps:
   rel: "stable"
   update:
   cmake: "3.20.5"
+# need older ocmpiler for base build
+compiler:
+  name: gcc
+  version: "8.4.0"
+hdf5: "1.10.5"
+gsl: "2.6"
+intel_tbb: "20190605"
+mkl: "2019.5.281"
+mpi:
+  name: openmpi
+  version: "4.0.3"
+fftw: "3.3.8"
+netcdfc: "4.7.0"
+netcdff: "4.5.2"
