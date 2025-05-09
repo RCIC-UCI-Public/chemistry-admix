@@ -4,3 +4,8 @@
 - package: namd-cuda
   dest_arch: Linux-x86_64.cuda10 
   with_cuda: "--with-cuda --cuda-prefix $$CUDA_HOME"
+  build:
+    cub: !eval "'mv cub cub.save' if {{versions.os_release}} >= 9 else 'echo'"
+    configure: >
+      {{build.cub}};
+      ./config
