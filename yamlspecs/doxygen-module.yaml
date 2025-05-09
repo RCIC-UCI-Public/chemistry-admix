@@ -1,0 +1,11 @@
+!include doxygen.yaml
+!include rcic-module.yaml
+---
+- package: "{{name}} module"
+  category: TOOLS
+  module:
+    <<: *ModuleCompiler
+    prereq:
+      - "{{build.base_modules}}"
+    prepend_path:
+      - PATH {{root}}/bin

@@ -1,6 +1,8 @@
 !include packages.yaml
 ---
 versions: versions-2024.yaml
+bootstrap:
+  - "{{bootstrap0}}"
 build:
   - "{{base_gromacs}}"
   - "{{mpi_gromacs}}"

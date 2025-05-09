@@ -28,3 +28,6 @@ mpi:
 fftw: "3.3.8"
 netcdfc: "4.7.0"
 netcdff: "4.5.2"
+doxygen: "1.9.5"
+doxygen_rel: "1_9_5"
+eigen: "3.3.7"
