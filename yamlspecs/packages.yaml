@@ -1,3 +1,4 @@
+---
 system:
   - tcsh
   - which
@@ -14,15 +15,6 @@ system:
   - libxml2-devel
   - gtk2-devel
   - doxygen
-bootstrap0:
-  - charm
-  - charm-module
-  - charm-mpi
-  - charm-mpi-module
-bootstrap:
-  - "{{bootstrap0}}"
-  - doxygen
-  - doxygen-module
 base_gromacs:
   - gromacs
   - gromacs-module
@@ -33,25 +25,14 @@ mpi_gromacs:
   - gromacs-mpi-module
   - gromacs-cuda-mpi
   - gromacs-cuda-mpi-module
-extra_gromacs:
-  - gromacs-cuda-mpi-plumed
-  - gromacs-cuda-mpi-plumed-module
+bootstrap:
 build:
-  - gromacs-cuda
-  - gromacs-cuda-module
-  - namd
-  - namd-module
-  - namd-cuda
-  - namd-cuda-module
-  - namd-mpi
-  - namd-mpi-module
-  - lammps
-  - lammps-module
 manifest:
-  - "{{bootstrap0}}"
+  - "{{bootstrap}}"
   - "{{build}}"
 sets:
-  - gromacs2021
-  - gromacs2022
+  - base
+  - "2021"
+  - "2022"
   - centos8
   - "2024"

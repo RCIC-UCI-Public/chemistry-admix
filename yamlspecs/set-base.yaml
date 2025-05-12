@@ -1,0 +1,21 @@
+!include packages.yaml
+---
+versions: versions.yaml
+bootstrap:
+  - charm
+  - charm-module
+  - charm-mpi
+  - charm-mpi-module
+  - doxygen
+  - doxygen-module
+build:
+  - gromacs-cuda
+  - gromacs-cuda-module
+  - namd
+  - namd-module
+  - namd-cuda
+  - namd-cuda-module
+  - namd-mpi
+  - namd-mpi-module
+  - lammps
+  - lammps-module
