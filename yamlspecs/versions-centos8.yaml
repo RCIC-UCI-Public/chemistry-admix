@@ -1,7 +1,7 @@
 !include versions.yaml
 !include updates8.yaml
 ---
-charm: "7.0.0"
+#charm: "7.0.0"
 charm_buildtype: "cmake"
 amber:
   version: "21.12"

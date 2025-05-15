@@ -2,8 +2,8 @@
 ---
 versions: versions-centos8.yaml
 bootstrap:
-  - charm
-  - charm-module
+# - charm
+# - charm-module
 build:
   - amber-cmake
   - amber-cmake-module

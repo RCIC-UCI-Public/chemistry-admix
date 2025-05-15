@@ -2,10 +2,10 @@
 ---
 versions: versions-2024.yaml
 bootstrap:
-  - charm
-  - charm-module
-  - charm-mpi
-  - charm-mpi-module
+# - charm
+# - charm-module
+# - charm-mpi
+# - charm-mpi-module
 build:
   - "{{base_gromacs}}"
   - "{{mpi_gromacs}}"
