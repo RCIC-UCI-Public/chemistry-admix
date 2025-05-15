@@ -8,7 +8,9 @@ bootstrap:
 # - charm-mpi-module
 build:
   - "{{base_gromacs}}"
+  - "{{cuda_gromacs}}"
   - "{{mpi_gromacs}}"
+  - "{{mpi_cuda_gromacs}}"
   - amber-cmake2
   - amber-cmake2-module
   - amber-parallel

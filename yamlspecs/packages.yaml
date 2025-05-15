@@ -18,11 +18,13 @@ system:
 base_gromacs:
   - gromacs
   - gromacs-module
+cuda_gromacs:
   - gromacs-cuda
   - gromacs-cuda-module
 mpi_gromacs:
   - gromacs-mpi
   - gromacs-mpi-module
+mpi_cuda_gromacs:
   - gromacs-cuda-mpi
   - gromacs-cuda-mpi-module
 bootstrap:
