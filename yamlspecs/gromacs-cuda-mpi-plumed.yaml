@@ -8,11 +8,11 @@
   root: "{{baseroot}}/{{cuda}}/{{cuda_version}}/{{mpi}}/{{mpi_version}}/plumed_{{plumed_version}}"
   build:
     preconfigure: echo 4 | plumed patch -p
-    addmodules: 
+    addmodules:
       - "{{cuda_module}}"
       - "{{mpi_module}}"
       - "{{plumed_module}}"
     addrequires:
-      - "{{cuda_requires}}" 
-      - "{{mpi_requires}}" 
-      - "{{plumed_requires}}" 
+      - "{{cuda_requires}}"
+      - "{{mpi_requires}}"
+      - "{{plumed_requires}}"

@@ -7,7 +7,7 @@ system:
   - patch
   - bc
   - libXt-devel
-  - libXext-devel 
+  - libXext-devel
   - util-linux
   - wget
   - bzip2-devel

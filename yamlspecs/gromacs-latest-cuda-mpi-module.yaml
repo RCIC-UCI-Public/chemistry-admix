@@ -1,4 +1,4 @@
-# # Builds the module for gromacs-cuda-mpi. 
+# Builds the module for gromacs-cuda-mpi.
 !include gromacs-cuda-mpi-module.yaml
 ---
 - version: "{{versions.gromacs_latest}}"

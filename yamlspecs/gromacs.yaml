@@ -1,8 +1,8 @@
 !include rcic-package.yaml
 !include rpm.yaml
 ---
-- package: GROMACS molecular dynamics 
-  name: gromacs 
+- package: GROMACS molecular dynamics
+  name: gromacs
   release: 5
   basefamily: "{{name}}_{{version}}_{{compiler}}_{{compiler_version}}"
   baserpm: "{{basefamily}}"
@@ -16,22 +16,23 @@
   builddir: build
   enabled: "default options"
   base_description: |
-    GROMACS version {{version}}.  Build with {{enabled}}.
+    GROMACS is a software suite for high-performance molecular dynamics and output analysis.
+    Build with {{enabled}}.
   description: |
     {{base_description}}
     Built with cmake arguments {{build.options_args}} {{build.cmake_args}}.
   build:
     addmodules:
     addrequires:
-    base_modules: 
+    base_modules:
       - "{{compiler}}/{{compiler_version}}"
       - "{{build.addmodules}}"
-    modules: 
+    modules:
       - cmake/{{versions.cmake}}
       - "{{build.base_modules}}"
     options_args:
     cmake_args: -DGMX_BUILD_OWN_FFTW=ON -DCMAKE_INSTALL_PREFIX={{root}}
-    pkgmake: > 
+    pkgmake: >
       mkdir {{builddir}};
       cd {{builddir}};
       cmake {{build.options_args}} {{build.cmake_args}} ..;
@@ -40,7 +41,7 @@
      makeinstall: >
        cd {{builddir}};
        make DESTDIR=$(ROOT) install
-     installextra: $(INSTALL) -m 644  README* COPYING AUTHORS $(ROOT){{root}} 
+     installextra: $(INSTALL) -m 644  README* COPYING AUTHORS $(ROOT){{root}}
   requires:
     - "{{compiler}}_{{compiler_version}}"
     - "{{build.addrequires}}"

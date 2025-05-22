@@ -3,9 +3,9 @@
 ---
 - module:
     <<: *ModuleCompilerMpi
-    setenv: 
+    setenv:
       - GROMACS_HOME {{root}}
-    prepend_path: 
+    prepend_path:
       - PATH {{root}}/bin
     prereq:
       - "{{build.base_modules}}"

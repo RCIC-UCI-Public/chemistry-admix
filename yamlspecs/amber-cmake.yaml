@@ -8,7 +8,7 @@
       - "{{compiler}}/{{compiler_version}}"
       - python/{{versions.python3}}
       - mkl/{{versions.mkl}}
-    modules: 
+    modules:
       - "{{build.base_modules}}"
       - cmake/{{versions.cmake}}
     cmake_args: -DCOMPILER=GNU -DMPI=FALSE -DCUDA=FALSE -DINSTALL_TESTS=TRUE -DDOWNLOAD_MINICONDA=FALSE

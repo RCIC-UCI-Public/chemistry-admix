@@ -2,7 +2,7 @@
 ---
 admix: chemistry-admix
 tcl: "8.6.9"
-gromacs: 
+gromacs:
   version: "2020.4"
   GMX_GPU: "ON"
 mdtraj: "1.9.3"

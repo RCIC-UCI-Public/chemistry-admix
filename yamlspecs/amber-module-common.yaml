@@ -1,7 +1,7 @@
 # common module for amber
 !include rcic-module.yaml
 ---
-- package: amber module 
+- package: amber module
   category: CHEMISTRY
   release: 2
   module:

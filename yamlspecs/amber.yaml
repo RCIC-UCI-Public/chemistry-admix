@@ -1,8 +1,8 @@
 !include rcic-package.yaml
 !include rpm.yaml
 ---
-- package: AMBER molecular dynamics 
-  name: amber 
+- package: AMBER molecular dynamics
+  name: amber
   baserpm: "{{name}}_{{version}}_{{compiler}}_{{compiler_version}}"
   versions: !include versions.yaml
   version: "{{versions.amber.version}}"
@@ -12,17 +12,17 @@
   compiler_version: "{{versions.compiler.version}}"
   vendor_source:
   description: |
-    AMBER version {{version}}
+    AMBER molecular dynamics.
   build:
     base_modules:
       - "{{compiler}}/{{compiler_version}}"
       - python/{{versions.python3}}
     modules:
       - "{{build.base_modules}}"
-    pkgmake: > 
+    pkgmake: >
       export AMBERHOME=`pwd`;
       unset MAKEFLAGS;
-      ./configure --no-updates --with-python `which python` gnu; 
+      ./configure --no-updates --with-python `which python` gnu;
       unset MAKEFLAGS; make -j8 install
   install:
      makeinstall: >

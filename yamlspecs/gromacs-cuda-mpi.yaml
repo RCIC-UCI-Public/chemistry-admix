@@ -6,10 +6,10 @@
   root: "{{baseroot}}/{{cuda}}/{{cuda_version}}/{{mpi}}/{{mpi_version}}"
   enable: "cuda mpi"
   build:
-    addmodules: 
+    addmodules:
       - "{{cuda_module}}"
       - "{{mpi_module}}"
     options_args: -DGMX_MPI=ON -DGMX_BUILD_MDRUN_ONLY=ON {{build.cuda_args}}
     addrequires:
-      - "{{cuda_requires}}" 
+      - "{{cuda_requires}}"
       - "{{mpi_requires}}"

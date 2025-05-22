@@ -1,6 +1,6 @@
 !include rcic-module.yaml
 ---
-- package: gromacs module 
+- package: gromacs module
   category: CHEMISTRY
   release: 6
   description: "{{base_description}}"
@@ -8,7 +8,7 @@
   env: &env
     - *Setenv
     - GROMACS_HOME {{root}}
-  module: 
+  module:
     <<: *ModuleCompiler
     lib: *lib
     setenv: *env

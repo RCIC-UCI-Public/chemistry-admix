@@ -2,7 +2,7 @@
 !include rpm.yaml
 ---
 - package: charm
-  name: charm 
+  name: charm
   release: 2
   baserpm: "{{name}}_{{version}}_{{compiler}}_{{compiler_version}}"
   versions: !include versions.yaml
@@ -18,30 +18,33 @@
   charm_flags_desc:
   buildtype: "{{versions.charm_buildtype}}"
   description: |
-    CHARM++ version {{version}} is a machine independent parallel programming system. 
-    Programs written using this system will run unchanged on MIMD machines with or 
-    without a shared memory. It provides high-level mechanisms and strategies to 
+    CHARM++ version {{version}} is a machine independent parallel programming system.
+    Programs written using this system will run unchanged on MIMD machines with or
+    without a shared memory. It provides high-level mechanisms and strategies to
     facilitate the task of developing even highly complex parallel applications.
     Built with arguments charm++ {{charm_arch}} {{charm_compiler}} {{charm_flags_desc}} --build-shared
     --enable-zlib --with-production --destination={{builddir}} -j8
+  shortdescription: |
+    CHARM++ is a machine independent parallel programming system.
+    Built with arguments "{{build.build_args}}".
   builddir: cbuild
   src_dir: "{{name}}-v{{version}}"
   build:
     pymod: !eval "'python/{{versions.python3}}' if {{versions.os_release}} >= 9 else ''"
-    configure: echo use charm-supplied build script 
+    configure: echo use charm-supplied build script
     addmodules:
-    base_modules: 
+    base_modules:
       - "{{compiler}}/{{compiler_version}}"
       - "{{build.addmodules}}"
       - "{{build.pymod}}"
-    modules: 
+    modules:
       - cmake/{{versions.cmake}}
       - "{{build.base_modules}}"
     build_args: >
       charm++ {{charm_arch}} {{charm_compiler}} {{charm_flags}} --build-shared
       --enable-zlib --with-production --destination={{builddir}} -j8
     pkgmake: unset MAKEFLAGS; ./build
-    target: "{{build.build_args}}" 
+    target: "{{build.build_args}}"
     addrequires:
     baserequires:
       - "{{compiler}}_{{compiler_version}}"

@@ -2,7 +2,7 @@
 !include rpm.yaml
 ---
 - package: doxygen
-  name: doxygen 
+  name: doxygen
   basefamily: "{{name}}_{{version}}_{{compiler}}_{{compiler_version}}"
   baserpm: "{{basefamily}}"
   versions: !include versions.yaml
@@ -14,15 +14,15 @@
   src_dir: doxygen-Release_{{versions.doxygen_rel}}
   builddir: build
   description: |
-    Doxygen version {{version}}. 
+    Doxygen version {{version}}.
   build:
-    base_modules: 
+    base_modules:
       - "{{compiler}}/{{compiler_version}}"
-    modules: 
+    modules:
       - cmake/{{versions.cmake}}
       - "{{build.base_modules}}"
     cmake_args: -DICONV_INCLUDE_DIR=$$GCC_INSTALL_PREFIX/include -DICONV_LIBRARY=$$GCC_INSTALL_PREFIX/lib/libiconv.so
-    pkgmake: > 
+    pkgmake: >
       mkdir {{builddir}};
       cd {{builddir}};
       cmake -G "Unix Makefiles" {{build.cmake_args}} -DCMAKE_INSTALL_PREFIX={{root}} ..;
@@ -31,6 +31,6 @@
      makeinstall: >
        cd {{builddir}};
        make DESTDIR=$(ROOT) install
-     installextra: $(INSTALL) -m 644  ../README* ../LICENSE $(ROOT){{root}} 
+     installextra: $(INSTALL) -m 644  ../README* ../LICENSE $(ROOT){{root}}
   requires:
     - "{{compiler}}_{{compiler_version}}"

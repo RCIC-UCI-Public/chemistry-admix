@@ -10,7 +10,7 @@
       - "{{compiler}}/{{compiler_version}}"
       - python/{{versions.python3}}
       - mkl/{{versions.mkl}}
-      - "{{cuda_module}}" 
+      - "{{cuda_module}}"
       - "{{mpi}}/{{mpi_version}}/{{compiler}}.{{compiler_version}}-{{cuda}}.{{cuda_version}}"
     modules:
       - "{{build.base_modules}}"

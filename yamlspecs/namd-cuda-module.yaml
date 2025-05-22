@@ -11,5 +11,5 @@
     <<: *ModuleCompilerMpi
     setenv:
       - NAMD_HOME {{root}}/{{dest_arch}}
-    prepend_path: 
+    prepend_path:
       - PATH {{root}}/{{dest_arch}}

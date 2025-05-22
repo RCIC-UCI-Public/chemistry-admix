@@ -2,8 +2,8 @@
 !include rpm.yaml
 !include common-mpi.yaml
 ---
-- package: LAMMPS Molecular Dynamics 
-  name: lammps 
+- package: LAMMPS Molecular Dynamics
+  name: lammps
   release: 4
   basefamily: "{{name}}_{{version}}_{{compiler}}_{{compiler_version}}"
   baserpm: "{{basefamily}}"
@@ -18,15 +18,14 @@
   vendor_source: https://github.com/lammps/lammps/archive/{{reltype}}_{{version}}{{update}}.{{extension}}
   src_dir: "{{name}}-{{reltype}}_{{version}}{{update}}"
   description: |
-    LAMMPS version {{version}} - Large-scale Atomic/Molecular Massively Parallel
-    Simulator. LAMMPS is a classical molecular dynamics simulation code designed
-    to run efficiently on parallel computers. It was developed at Sandia National
-    Laboratories, a US Department of Energy facility, with funding from the DOE.
-    It is an open-source, distributed under the terms of the GNU Public License (GPL)
+    LAMMPS - Large-scale Atomic/Molecular Massively Parallel Simulator.
+    A classical molecular dynamics simulation code designed to run
+    efficiently on parallel computers. It is an open-source, distributed
+    under the terms of the GNU Public License (GPL).
   optsfile: lammps.{{version}}.cmake
   eigen_md5: "9e30f67e8531477de4117506fe44669b"
   eigen_url: "https://gitlab.com/libeigen/eigen/-/archive"
-  addfile: 
+  addfile:
     - "{{optsfile}}"
   builddir: builddir
   build:
@@ -42,14 +41,14 @@
       - "{{build.addmodules}}"
       - fftw/{{versions.fftw}}/{{compiler}}.{{compiler_version}}
       - netcdf-c/{{versions.netcdfc}}/{{compiler}}.{{compiler_version}}
-    modules: 
+    modules:
       - "{{build.base_modules}}"
       - cmake/{{versions.lammps.cmake}}
       - "{{build.specmod}}"
-    gpu_opts: 
+    gpu_opts:
     netcdf_opts: "-DNETCDF_INCLUDE_DIR=$$NETCDF/include"
     cmake_args: "-C ../../{{optsfile}} -DBUILD_SHARED_LIBS=on -DBUILD_LIB=on {{build.gpu_opts}} {{build.netcdf_opts}} -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX={{root}}"
-    pkgmake: > 
+    pkgmake: >
       mkdir {{builddir}};
       cd {{builddir}};
       unset MAKEFLAGS;

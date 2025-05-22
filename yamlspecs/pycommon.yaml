@@ -9,10 +9,10 @@
   baserpm: "python_{{python_version}}-{{name}}"
   root: "{{pkg_defaults.app_path}}/python/{{python_version}}"
   build:
-    modules: python/{{python_version}} 
+    modules: python/{{python_version}}
   install:
-    makeinstall: python{{python_family}} setup.py install --root $(ROOT) 
+    makeinstall: python{{python_family}} setup.py install --root $(ROOT)
   requires:
-    - python_{{python_version}}  
+    - python_{{python_version}}
   files:
     - "{{root}}"
