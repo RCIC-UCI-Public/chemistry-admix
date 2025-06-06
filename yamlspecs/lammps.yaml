@@ -52,6 +52,7 @@
       mkdir {{builddir}};
       cd {{builddir}};
       unset MAKEFLAGS;
+      export CXXFLAGS+=" -I$${gsl__PREFIX}/include";
       cmake {{build.cmake_args}} ../cmake;
       unset MAKEFLAGS; make #-j 2
   install:
