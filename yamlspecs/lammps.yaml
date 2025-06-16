@@ -29,7 +29,7 @@
     - "{{optsfile}}"
   builddir: builddir
   build:
-    specmod: !eval "'doxygen/{{versions.doxygen}}' if '{{versions.os_release}}.{{compiler_version}}' == '9.8.4.0' else ''"
+    specmod: !eval "'doxygen/{{versions.doxygen}}/{{compiler}}.{{compiler_version}}' if '{{versions.os_release}}.{{compiler_version}}' == '9.8.4.0' else ''"
     preconfigure:
       sed -i -e 's/URL_MD5.*/URL_MD5 {{eigen_md5}}/' cmake/Modules/Packages/USER-SMD.cmake;
       sed -i -e 's%URL http.*%URL {{eigen_url}}/{{versions.eigen}}/eigen-{{versions.eigen}}.tar.gz%' cmake/Modules/Packages/USER-SMD.cmake
