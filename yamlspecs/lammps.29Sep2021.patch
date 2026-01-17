@@ -8,3 +8,21 @@
    list(LENGTH BLAS_LIBRARIES} NUM_BLAS)
    list(LENGTH LAPACK_LIBRARIES NUM_LAPACK)
    if((NUM_BLAS GREATER 1) OR (NUM_LAPACK GREATER 1))
+--- lammps-stable_29Sep2021_update3/cmake/Modules/Packages/ML-QUIP.cmake	2022-03-24 11:20:52.000000000 -0700
++++ lammps-stable_29Sep2021_update3/cmake/Modules/Packages/ML-QUIP.cmake.new	2026-01-17 11:23:22.187411207 -0800
+@@ -47,11 +47,10 @@
+   # The LAMMPS interface wrapper has a compatibility constant that is being checked at runtime.
+   include(ExternalProject)
+   ExternalProject_Add(quip_build
+-    GIT_REPOSITORY "https://github.com/libAtoms/QUIP/"
+-    GIT_TAG origin/public
+-    GIT_SHALLOW YES
+-    GIT_PROGRESS YES
+-    GIT_SUBMODULES "src/fox;src/GAP"
++    DOWNLOAD_COMMAND ""
++    COMMAND tar xzf ../../../QUIP.tar.gz 
++    COMMAND rmdir quip_build 
++    COMMAND mv QUIP quip_build 
+     PATCH_COMMAND ${CMAKE_COMMAND} -E copy_if_different ${CMAKE_BINARY_DIR}/quip.config <SOURCE_DIR>/arch/Makefile.lammps
+     CONFIGURE_COMMAND env QUIP_ARCH=lammps make config
+     BUILD_COMMAND env QUIP_ARCH=lammps make libquip

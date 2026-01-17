@@ -49,6 +49,7 @@
     netcdf_opts: "-DNETCDF_INCLUDE_DIR=$$NETCDF/include"
     cmake_args: "-C ../../{{optsfile}} -DBUILD_SHARED_LIBS=on -DBUILD_LIB=on {{build.gpu_opts}} {{build.netcdf_opts}} -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX={{root}}"
     pkgmake: >
+      if [ -f $(REDHAT.ROOT)/sources/QUIP.tar.gz ]; then cp $(REDHAT.ROOT)/sources/QUIP.tar.gz . ; fi ;
       mkdir {{builddir}};
       cd {{builddir}};
       unset MAKEFLAGS;

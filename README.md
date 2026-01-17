@@ -96,3 +96,13 @@ chemistry and md software
    CMake is not able to find currently installed eigen provided via module
    Patch USER-SMD.cmake in yaml updating URL links for downloading eigen3
    and force  local build.
+
+   On Rocky LInux 9.6 lammps for 29Sep2021 fails as the git cloning during cmake 
+   download of third party packages checks out much newer version compare to one that was used
+   earlier during the original build.  Newer versions use meson build and not config build.
+   Fix:
+   - Create QUIP.tar.gz with git checkout for known working git hashes that worked during Rocky 9.6 build
+     This includes quip itself and its two dependend submodules GAP and fox.  The tar file has to have
+     all .git directories as apparently some build commands use them for a reference.
+   - Replace git checkout cmake commands with the contents of QUIP.tar.gz via a patch to ML-QUIP.cmake
+   - update lammps.yaml to copy QUIP.tar.gz into build directory 
