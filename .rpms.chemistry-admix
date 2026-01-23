@@ -32,6 +32,14 @@
 8400            gromacs_2024.2_gcc_11.2.0_cuda_11.7.1_openmpi_5.0.1-module-2024.2-6.x86_64.rpm
 10823000        gromacs_2024.2_gcc_11.2.0_openmpi_5.0.1-2024.2-5.x86_64.rpm
 8100            gromacs_2024.2_gcc_11.2.0_openmpi_5.0.1-module-2024.2-6.x86_64.rpm
+11563200        gromacs_2026.0_gcc_11.2.0-2026.0-5.x86_64.rpm
+8100            gromacs_2026.0_gcc_11.2.0-module-2026.0-6.x86_64.rpm
+19548400        gromacs_2026.0_gcc_11.2.0_cuda_12.2.0-2026.0-5.x86_64.rpm
+8200            gromacs_2026.0_gcc_11.2.0_cuda_12.2.0-module-2026.0-6.x86_64.rpm
+19488100        gromacs_2026.0_gcc_11.2.0_cuda_12.2.0_openmpi_5.0.1-2026.0-5.x86_64.rpm
+8400            gromacs_2026.0_gcc_11.2.0_cuda_12.2.0_openmpi_5.0.1-module-2026.0-6.x86_64.rpm
+11500700        gromacs_2026.0_gcc_11.2.0_openmpi_5.0.1-2026.0-5.x86_64.rpm
+8100            gromacs_2026.0_gcc_11.2.0_openmpi_5.0.1-module-2026.0-6.x86_64.rpm
 57493000        lammps_29Sep2021_gcc_11.2.0-29Sep2021-4.x86_64.rpm
 8700            lammps_29Sep2021_gcc_11.2.0-module-29Sep2021-4.x86_64.rpm
 32068900        lammps_3Mar2020_gcc_8.4.0-3Mar2020-4.x86_64.rpm

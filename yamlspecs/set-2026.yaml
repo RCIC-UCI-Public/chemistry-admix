@@ -1,0 +1,13 @@
+!include packages.yaml
+---
+versions: versions-2026.yaml
+bootstrap:
+build:
+# - lammps
+# - lammps-module
+  - "{{base_gromacs}}"
+  - "{{cuda_gromacs}}"
+  - "{{mpi_gromacs}}"
+  - "{{mpi_cuda_gromacs}}"
+manifest:
+  - "{{build}}"

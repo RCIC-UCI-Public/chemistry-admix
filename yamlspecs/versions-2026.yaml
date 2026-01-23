@@ -1,0 +1,21 @@
+!include versions.yaml
+!include updates8.yaml
+---
+# need at least cuda 12.1 for gromacs 2026
+cuda:
+  name: cuda
+  version:  "12.2.0"
+gromacs:
+  version: "2026.0"
+  GMX_GPU: "CUDA"
+compiler:
+  version: "11.2.0"
+mpi:
+  name: openmpi
+  version: "5.0.1"
+
+#lammps:
+#  version:  "22Jul2025"
+#  rel: "stable"
+#  update:
+#  cmake: "3.30.2"
