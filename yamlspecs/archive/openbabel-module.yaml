@@ -1,9 +1,0 @@
-!include openbabel.yaml
-!include rcic-module.yaml
----
-- package: openbabel module
-  category: CHEMISTRY
-  release: 2
-  module:
-    prereq:
-      - "{{build.base_modules}}"

@@ -1,9 +1,0 @@
-!include mdanalysis.yaml
-!include rcic-module.yaml
----
-- package: mdanalysis module
-  category: CHEMISTRY
-  release: 2
-  module:
-    prepend_path:
-    setenv:
